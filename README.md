@@ -3,7 +3,7 @@
 ## Prerequisites for the training
 
 - Python 3.x, `pip`, and Robot Framework installed on your machine
-- Knowledge of how to write Robot Framework and Python (RF training 101)
+- Knowledge of how to write Robot Framework and Python ([Fundamentals training](https://github.com/eficode-academy/rf-katas))
 - A working browser + driver combination (e.g. Chrome and
 [chromedriver](https://chromedriver.chromium.org/downloads))
 
