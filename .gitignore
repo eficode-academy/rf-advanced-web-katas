@@ -1,0 +1,8 @@
+*.swp
+.vscode
+*.pyc
+selenium-screenshot-*
+.DS_Store
+.idea
+**/geckodriver.log
+

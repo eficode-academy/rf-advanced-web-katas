@@ -1,0 +1,229 @@
+form {
+  /* Just to center the form on the page */
+  margin: 0 auto;
+  width: 400px;
+  /* To see the outline of the form */
+  padding: 1em;
+}
+
+body {
+    font-family: "Lato", "Arial", "Helvetica";
+}
+
+.error_message {
+    border: 0.1em;
+    border-style: solid;
+    background-color: #F75B48;
+    color: #0B0500;
+}
+
+#validation {
+    margin: 15px 38% 15px 25%;
+    padding: 5px;
+}
+
+.sidebar {
+    background-color: #FFD700;
+    display: flex;
+    flex-direction: column;
+    min-width: 20%;
+    height: 100vh;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 100%;
+}
+
+form div + div {
+  margin-top: 1em;
+}
+
+h3 {
+  text-align: left;
+  font-family: "Montserrat", "Arial", "Helvetica" !important;
+}
+
+label {
+  /* To make sure that all labels have the same size and are properly aligned */
+  display: block;
+  width: 90px;
+  text-align: left;
+  font-size: 0.8em;
+  font-family: "Lato", "Arial", "Helvetica";
+}
+
+.index-page-div > iframe {
+  width: 800;
+  height: 800;
+  border: 0;
+  margin: 0 auto;
+  display: block;
+}
+
+input, textarea {
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+
+  /* To give the same size to all text fields */
+  width: 300px;
+  max-width: 300px !important;
+  min-width: 300px !important;
+  min-height: 40px;
+  box-sizing: border-box;
+
+  /* To harmonize the look & feel of text field border */
+  border: 1px solid #999;
+  margin-bottom: 5px !important;
+}
+
+input:focus, textarea:focus {
+  /* To give a little highlight on active elements */
+  border-color: #000;
+}
+
+textarea {
+  /* To properly align multiline text fields with their labels */
+  vertical-align: top;
+
+  /* To give enough room to type some text */
+  height: 5em;
+}
+
+input[readonly] {
+  background-color: #dddddd;
+}
+
+
+.button {
+  /* To position the buttons to the same position of the text fields */
+  padding-left: 90px; /* same size as the label elements */
+}
+
+button {
+  /* This extra margin represent roughly the same space as the space
+     between the labels and their text fields */
+  margin-left: .5em;
+}
+
+.button-centered {
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+.dropdown {
+    margin: 0 auto;
+}
+
+.dropdown-menu {
+	width:1000px;
+	height:500px;
+}
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.form-item {
+    margin: 0 auto;
+    font-family: "Lato", "Arial", "Helvetica";
+}
+
+.tooltip {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.icon {
+  height: 15px;
+}
+
+
+/* .form-success {
+  background-color: mediumseagreen;
+} */
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

@@ -1,0 +1,50 @@
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link type="text/css" rel="Stylesheet" href="static/style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="display: flex; flex-direction: row;">
+	<section class="sidebar">
+		<nav>
+			<a class="btn btn-default dropdown-toggle" style="display: none;" href="#"></a>
+			<div class="dropdown index-page-div {{ open }}">
+				<!-- Link or button to toggle dropdown -->
+
+				<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="icon-user"></i> TestDropdown
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><a tabindex="-1" href="#">Action</a></li>
+					<li><a tabindex="-1" href="#">Another action</a></li>
+					<li><a tabindex="-1" href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a tabindex="-1" href="#">Separated link</a></li>
+				</ul>
+			</div>
+		</nav>
+		<button style="width: 100px; margin: -100 auto 20 auto;">Show Form</button>
+		<p style="margin: 0 auto;">Powered by</p>
+		<img class="logo" src="static/images/eficode_logo.png">
+	</section>
+<section class="content">
+	<div class="hidden index-page-div">
+		<iframe id="iframe-{{ random_number1 }}" src="{{ iframe }}" style="width:0;height:0;border:0; border:none;"></iframe>
+	</div>
+
+	<div class="index-page-div">
+		<iframe id="iframe-{{ random_number2 }}" src="{{ iframe }}" style="display:none">
+	</iframe>
+	</div>
+</section>
+</body>
+
+<script>
+$(document).ready(function(){
+	$('button').on('click', function(event) {
+        $('#iframe-{{ random_number2 }}').toggle('show');
+	});
+});
+</script>

@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
+<link type="text/css" rel="Stylesheet" href="static/style.css" />
+<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
+<script src="static/script.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $("#datepicker").datepicker({dateFormat: 'dd.mm.yy'});
+  } );
+
+  function displayChange(newValue) {
+      document.getElementById("number").innerHTML = newValue;
+      document.evaluate("//input[@name='important_number']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.value = newValue;
+  }
+</script>
+<p id="validation"></p>
+<form action="/form" onsubmit="return validateForm()" method="post" name="myForm">
+  <fieldset class="uk-fieldset">
+    <h3>Important Form</h3>
+    <div class="form-item">
+      <label for="name">
+        Name:
+        <span class="tooltip">
+          <img class="icon" src="static/images/help-icon.png">
+          <span class="tooltiptext">Full Name</span>
+        </span>
+      </label>
+      <input type="text" class="uk-input" />
+      <div>
+        <div class="form-item">
+          <label for="mail">
+            E-mail:
+            <span class="tooltip">
+                <img class="icon" src="static/images/help-icon.png">
+                <span class="tooltiptext">Must contain a "@"-character.</span>
+              </span>
+          </label>
+          <input type="email" class="uk-input" />
+        </div>
+        <div class="form-item">
+          <label for="msg">Message:
+              <span class="tooltip">
+                  <img class="icon" src="static/images/help-icon.png">
+                  <span class="tooltiptext">Cannot be empty</span>
+                </span>
+          </label>
+          <textarea class="uk-textarea"></textarea>
+        </div>
+        <div class="form-item">
+          <label for="company">Company:</label>
+          <input id="company" value="Eficode Oy" readonly class="read-only uk-input">
+        </div>
+        <div class="form-item">
+          <label for="datepicker">Date:
+              <span class="tooltip">
+                  <img class="icon" src="static/images/help-icon.png">
+                  <span class="tooltiptext">A date within 2 weeks. The date cannot be in the past.</span>
+                </span>
+          </label>
+          <input type="text" id="datepicker" readonly class="read-only uk-input"/>
+        </div>
+        <div class="form-item">
+            <p>Important number: <span id="number">0</span>
+              <span class="tooltip">
+                  <img class="icon" src="static/images/help-icon.png">
+                  <span class="tooltiptext">Any number 10-90.</span>
+                </span></p>
+            <input type="range" min="0" max="100" value="0" oninput="displayChange(this.value)" name="important_number" />
+        </div>
+        <div class="button popup" onclick="myFunction()">
+          <button type="submit">Send your information<span class="popuptext"
+              id="myPopup">Thank you!!</span></button>
+        </div> 
+      </div>
+    </div>
+  </fieldset>
+</form>
