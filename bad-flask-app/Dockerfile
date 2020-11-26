@@ -1,4 +1,4 @@
-FROM python:3.5.7-alpine
+FROM python:3.8-alpine
 
 RUN pip install --upgrade pip
 COPY ./requirements.txt /app/requirements.txt
