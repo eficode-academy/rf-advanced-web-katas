@@ -4,8 +4,16 @@
 
 - Python 3.x, `pip`, and Robot Framework installed on your machine
 - Knowledge of how to write Robot Framework and Python ([Fundamentals training](https://github.com/eficode-academy/rf-katas))
+
+It's possible to take 2 routes for this training: SeleniumLibrary and Browser Library.
+For SeleniumLibrary you need
+
 - A working browser + driver combination (e.g. Chrome and
 [chromedriver](https://chromedriver.chromium.org/downloads))
+
+For Browser you need Python 3.7 or newer
+
+- See detailed installation instructions for Browser from the [official installation instructions](https://github.com/MarketSquare/robotframework-browser#installation-instructions)
 
 ## Learning Goals
 

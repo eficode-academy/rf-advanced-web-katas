@@ -2,7 +2,7 @@
 
 ## Learning Goals
 
-- You know how to make basics of making REST API requests with the RESTInstance library.
+- You know how to make basics of making REST API requests with Robot Framework.
 
 ## Introduction
 
@@ -37,6 +37,11 @@ should check the following:
   - It's possible to edit an existing form (`/api/forms/1`). Request body needs to be a JSON string.
 
 ### Step-by-step
+
+<details>
+  <summary>SeleniumLibrary</summary>
+
+#### SeleniumLibrary
 
 **Initialize your test suite with `REST` library.**
 
@@ -217,3 +222,30 @@ variable and we need to verify the emails are not equal.
 > after `Get` and after `Put`.
 >
 > If you want to check the `response status` of `Put` as well, it should be `200`.
+
+</details>
+
+#### Browser
+
+<details>
+  <summary>Browser</browser>
+
+**Initialize your test suite with `Browser` library.**
+
+---
+
+**Authenticate to server and set headers.**
+
+---
+
+**Get the first form and verify that its poster's name is `John Doe`.**
+
+---
+
+**Create a new form using `POST` and verify it succeeded.**
+
+---
+
+**Modify the form form's email address using `PUT` and verify it succeeded.**
+
+</details>

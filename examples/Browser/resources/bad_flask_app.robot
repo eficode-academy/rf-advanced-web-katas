@@ -26,7 +26,7 @@ Authenticate And Set Headers
     ${response}=        Http        /api/auth       POST
     Set Suite Variable      ${HEADERS}      { "Authorization": "Bearer ${response["body"]}" }
 
-# Exercise 02
+# Exercise 01
 Open Browser To Our Application
     [Arguments]     ${headless}=${FALSE}
     New Browser     browser=${BROWSER}      headless=${headless}
