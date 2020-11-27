@@ -225,10 +225,11 @@ variable and we need to verify the emails are not equal.
 
 </details>
 
+<details>
+  <summary>Browser</summary>
+
 #### Browser
 
-<details>
-  <summary>Browser</browser>
 
 **Initialize your test suite with `Browser` library.**
 
