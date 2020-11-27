@@ -6,9 +6,11 @@ Resource            ../resources/bad_flask_app.robot
 Suite Setup         Open Browser To Our Application     headless=${TRUE}
 Test Setup          Authenticate And Set Headers
 
+Force Tags          api
+
 *** Variables ***
-${NEW_FORM_DATA}            { "id": 11, "name": "Harrison Ford" }
-${NEW_EMAIL}                { "email": "firstname.lastname@example.com" }
+${NEW_FORM_DATA}    { "id": 11, "name": "Harrison Ford" }
+${NEW_EMAIL}        { "email": "firstname.lastname@example.com" }
 
 *** Test Cases ***
 Get First Form And Verify Poster's Identity
