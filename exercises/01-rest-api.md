@@ -38,10 +38,11 @@ should check the following:
 
 ### Step-by-step
 
-<details>
-  <summary>SeleniumLibrary</summary>
-
 #### SeleniumLibrary
+
+<details>
+  <summary>Expand</summary>
+
 
 **Initialize your test suite with `REST` library.**
 
@@ -225,10 +226,10 @@ variable and we need to verify the emails are not equal.
 
 </details>
 
-<details>
-  <summary>Browser</summary>
-
 #### Browser
+
+<details>
+  <summary>Expand</summary>
 
 
 **Initialize your test suite with `Browser` library.**
