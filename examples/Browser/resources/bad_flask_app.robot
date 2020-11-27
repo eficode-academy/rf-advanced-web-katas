@@ -22,9 +22,9 @@ ${DEFAULT_IMPORTANT_NUMBER}     15
 *** Keywords ***
 # Exercise 01
 Authenticate And Set Headers
-    [Documentation]     Must be called before any other API call as this sets the headers variable.
-    ${response}=        Http        /api/auth       POST
-    Set Suite Variable      ${HEADERS}      { "Authorization": "Bearer ${response["body"]}" }
+    [Documentation]     Must be called before any other API call as this sets the HEADERS variable.
+    &{response}=        Http        /api/auth       POST
+    Set Test Variable      ${HEADERS}      { "Authorization": "Bearer ${response.body}" }
 
 # Exercise 01
 Open Browser To Our Application
