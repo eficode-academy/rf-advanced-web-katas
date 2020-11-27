@@ -20,9 +20,16 @@ ${DEFAULT_DAYS}                 3
 ${DEFAULT_IMPORTANT_NUMBER}     15
 
 *** Keywords ***
+# Exercise 01
+Authenticate And Set Headers
+    [Documentation]     Must be called before any other API call as this sets the headers variable.
+    ${response}=        Http        /api/auth       POST
+    Set Suite Variable      ${HEADERS}      { "Authorization": "Bearer ${response["body"]}" }
+
 # Exercise 02
 Open Browser To Our Application
-    New Browser     browser=${BROWSER}      headless=${FALSE}
+    [Arguments]     ${headless}=${FALSE}
+    New Browser     browser=${BROWSER}      headless=${headless}
     New Page        ${SERVER}
     Get Title       ==      Bad Flask App
 
@@ -36,7 +43,7 @@ Show Form
     ${visible}=     Get Element State       ${FORM_IFRAME}      visible
     Run Keyword If      not ${visible}      Click           button
 
-# Exercise 04
+# Exercise 05
 Fill All Form Fields
     [Arguments]         ${name}=${DEFAULT_NAME}
     ...                 ${email}=${DEFAULT_EMAIL}
@@ -49,22 +56,22 @@ Fill All Form Fields
     Select Date From Future         ${days}
     Change Important Number         ${important_number}     ${FALSE}
 
-# Exercise 04
+# Exercise 05
 Fill Form With Valid Data
     Fill All Form Fields
 
-# Exercise 04
+# Exercise 05
 Fill Form Field
     [Arguments]     ${field}        ${value}
     Fill Text       ${FORM_IFRAME} >>> //label[contains(text(), "${field}")]/${INPUT_FIELD}
     ...             ${value}
 
-# Exercise 04
+# Exercise 05
 Input "${value}" Into ${field} Field
     Fill Text       ${FORM_IFRAME} >>> //label[contains(text(), "${field}")]/${INPUT_FIELD}
     ...             ${value}
 
-# Exercise 05
+# Exercise 06
 Select Date From Future
     [Arguments]     ${days}
     Click           ${FORM_IFRAME} >>> id=datepicker
@@ -74,16 +81,16 @@ Select Date From Future
     ...         Click       ${FORM_IFRAME} >>> ${DATEPICKER_NEXT_BUTTON}
     Click           ${FORM_IFRAME} >>> //a[text()='${future_date.day}']
 
-# Exercise 06 and 07
+# Exercise 07 and 08
 Change Important Number
     [Documentation]     If `execute_javascript` is TRUE,
     ...                 the UI doesn't update with the value.
     [Arguments]     ${wanted_value}     ${execute_javascript}=${FALSE}
-    # Exercise 07
+    # Exercise 08
     Run Keyword If      ${execute_javascript}
     ...         Execute Javascript      document.querySelector("input[name='important_number']").value = ${wanted_value}
     Return From Keyword If      ${execute_javascript}
-    # Exercise 06
+    # Exercise 07
     ${width}=      Get BoundingBox        ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}     width
     Hover           ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}
     Mouse Button    down
@@ -96,10 +103,10 @@ Change Important Number
     END
     Mouse Button     up
 
-# Exercise 07
+# Exercise 08
 Submit Form
     Click       ${FORM_IFRAME} >>> button
 
-# Exercise 07
+# Exercise 08
 Validate That Form Submit Succeeded
     Get Text    ${FORM_IFRAME} >>> h3   ==      ${SUBMIT_SUCCESSFUL_TEXT}
