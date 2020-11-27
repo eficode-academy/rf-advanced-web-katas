@@ -38,8 +38,9 @@ All exercises have some explanation on why some things are done as
 they are in normal paragrahs.
 
 - All exercise steps are bulleted. The bulleted points summarize the previous
-paragraphs as small individual tasks. To finish the exercise, it's sufficient to read
-only the bulleted steps.
+paragraphs as small individual tasks. **To finish the exercise, it's sufficient to read
+only the bulleted steps.** All other text is just narrative and explanations as to why things are
+done as they are.
 
 > Quoted blocks indicate "nice to know" stuff and can be safely ignored.
 > They won't affect the outcome of the exercise, but generally include

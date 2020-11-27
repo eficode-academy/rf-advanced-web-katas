@@ -43,9 +43,9 @@ should check the following:
 ### Step-by-step
 
 <details>
-  <summary>SeleniumLibrary</summary>
+  <summary>RESTinstance</summary>
 
-#### SeleniumLibrary
+#### RESTinstance
 
 **Initialize your test suite with `REST` library.**
 
