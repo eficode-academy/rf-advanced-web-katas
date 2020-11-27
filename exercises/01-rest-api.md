@@ -13,6 +13,10 @@ or similar, but Robot Framework also has a library for this already:
 a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the
 `GET` and `POST` APIs for your website.
 
+Another way to do it by using the [`Http`](https://marketsquare.github.io/robotframework-browser/Browser.html#Http) keyword from the Browser library.
+The Browser library API handling is much more limited than RESTinstance, but if you only have some basic
+requests you want to make, it works just fine.
+
 In the exercises we'll test the REST API of the Bad Flask App. The endpoints in the Bad Flask App
 are:
 
