@@ -20,20 +20,23 @@ ${DEFAULT_DAYS}                 3
 ${DEFAULT_IMPORTANT_NUMBER}     15
 
 *** Keywords ***
-
+# Exercise 02
 Open Browser To Our Application
     New Browser     browser=${BROWSER}      headless=${FALSE}
     New Page        ${SERVER}
     Get Title       ==      Bad Flask App
 
+# Exercise 03
 Close Dropdown If Opened
     ${visible}=     Get Element State       .dropdown-menu>li>a     visible
     Run Keyword If      ${visible}      Click       ${OPENED DROPDOWN}
 
+# Exercise 03
 Show Form
     ${visible}=     Get Element State       ${FORM_IFRAME}      visible
     Run Keyword If      not ${visible}      Click           button
 
+# Exercise 04
 Fill All Form Fields
     [Arguments]         ${name}=${DEFAULT_NAME}
     ...                 ${email}=${DEFAULT_EMAIL}
@@ -46,14 +49,22 @@ Fill All Form Fields
     Select Date From Future         ${days}
     Change Important Number         ${important_number}     ${FALSE}
 
+# Exercise 04
 Fill Form With Valid Data
     Fill All Form Fields
 
+# Exercise 04
 Fill Form Field
     [Arguments]     ${field}        ${value}
     Fill Text       ${FORM_IFRAME} >>> //label[contains(text(), "${field}")]/${INPUT_FIELD}
     ...             ${value}
 
+# Exercise 04
+Input "${value}" Into ${field} Field
+    Fill Text       ${FORM_IFRAME} >>> //label[contains(text(), "${field}")]/${INPUT_FIELD}
+    ...             ${value}
+
+# Exercise 05
 Select Date From Future
     [Arguments]     ${days}
     Click           ${FORM_IFRAME} >>> id=datepicker
@@ -63,16 +74,16 @@ Select Date From Future
     ...         Click       ${FORM_IFRAME} >>> ${DATEPICKER_NEXT_BUTTON}
     Click           ${FORM_IFRAME} >>> //a[text()='${future_date.day}']
 
+# Exercise 06 and 07
 Change Important Number
     [Documentation]     If `execute_javascript` is TRUE,
-    ...                 the UI doesn't update with the value. If `execute_javascript` is FALSE,
-    ...                 the keyword execution takes _much_ longer.
+    ...                 the UI doesn't update with the value.
     [Arguments]     ${wanted_value}     ${execute_javascript}=${FALSE}
-    # Exercise 08
+    # Exercise 07
     Run Keyword If      ${execute_javascript}
     ...         Execute Javascript      document.querySelector("input[name='important_number']").value = ${wanted_value}
     Return From Keyword If      ${execute_javascript}
-    # Exercise 07
+    # Exercise 06
     ${width}=      Get BoundingBox        ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}     width
     Hover           ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}
     Mouse Button    down
@@ -85,8 +96,10 @@ Change Important Number
     END
     Mouse Button     up
 
+# Exercise 07
 Submit Form
     Click       ${FORM_IFRAME} >>> button
 
+# Exercise 07
 Validate That Form Submit Succeeded
     Get Text    ${FORM_IFRAME} >>> h3   ==      ${SUBMIT_SUCCESSFUL_TEXT}
