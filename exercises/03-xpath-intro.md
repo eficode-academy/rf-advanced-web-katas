@@ -20,7 +20,7 @@ to forget to add unique `id` attributes to elements, so we need
 alternative locators for our elements.
 
 This is where XPaths step in. Sure enough, there are other locators
-with SeleniumLibrary than XPaths and IDs, but quite often using an XPath is the
+with SeleniumLibrary and Browser than XPaths and IDs, but quite often using an XPath is the
 only way to find a truly unique identifier for an element.
 
 A trick with XPaths is to get a locator which is accurate enough to get
@@ -38,10 +38,11 @@ Bad Flask App dropdown menu as `/html/body/section[1]/nav/div/a`, which
 will break from the slightest change to the structure and is also unnecessarily
 long. All elements should be behind `/html/body`, so your XPaths should
 **always** start `//` when testing websites.
-2. Ensure your locator matches **exactly** 1 element. SeleniumLibrary
-uses the first element that matches the a given XPath even if there are multiple
-matching XPaths. Therefore, even if your XPath is technically correct, a
-small change in the website can cause another element to be first instead.
+2. Ensure your locator matches **exactly** 1 element. The first element that matches
+the a given XPath is used even if there are multiple
+matching XPaths. In theory it's safe to use an XPath if your element is the first
+element matched, but a small change in the website can change the order and cause
+unexpected behaviour.
 3. Always **test your locator** in the console before adding it to your test
 case. You can `ctrl+F` in the `inspector` tab of the developer tools or you
 can use the `console` tab to use basic JavaScript queries to get your XPath,
