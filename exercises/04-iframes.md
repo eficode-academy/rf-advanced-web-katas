@@ -8,6 +8,9 @@
 
 ## Introduction
 
+**NOTE: `Browser` doesn't support selecting a frame separately with a keyword,
+so this exercise is still under work for `Browser` part.**
+
 Iframes are a way of displaying another website's contents
 within another website. A key point here is that it is indeed _another website_.
 This means that we cannot select elements from that website, while we're still
@@ -44,6 +47,9 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 - Implement a wrapper keyword for running other keywords inside an iframe.
 
 ### Step-by-step
+
+<details>
+  <summary>SeleniumLibrary</summary>
 
 **Write a keyword that runs any keyword in an iframe and deselects the frame.**
 
@@ -136,3 +142,10 @@ and keyword.
 >    [Teardown]
 >    [Return]
 > ```
+
+</details>
+
+<details>
+  <summary>Browser</summary>
+
+</details>
