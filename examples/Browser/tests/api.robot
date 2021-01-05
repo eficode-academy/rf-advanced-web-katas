@@ -18,7 +18,7 @@ Get First Form And Verify Poster's Identity
     [Tags]      get
     &{response}=        Http      /api/forms/1      GET        headers=${HEADERS}
     Should Be Equal         ${response.body.name}      John Doe
-    
+ 
 Post New Form And Verify Creation Succeeded
     [Tags]      post
     &{response}=        Http      /api/forms        POST       body=${NEW_FORM_DATA}    headers=${HEADERS}
