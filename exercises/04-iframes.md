@@ -154,4 +154,7 @@ and keyword.
 <details>
   <summary>Browser</summary>
 
+**TODO:** Browser library doesn't have support for selecting a frame separately. Redesign exercise
+for Browser library.
+
 </details>
