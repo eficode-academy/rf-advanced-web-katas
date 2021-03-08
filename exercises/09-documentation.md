@@ -35,6 +35,9 @@ running with `execute_javascript=${TRUE}` or with `${FALSE}`.
 
 ### Step-by-step
 
+<details>
+  <summary>Browser</summary>
+
 **Add meaningful documentation to your keywords.**
 
 We've only added a few keyword, but we already have some special clauses,
@@ -83,3 +86,46 @@ in particular, so we'll add those separately to our test case.
 - Remove the `wip` tag from your test suite.
 - Add `contacts` and `UI` as `Force Tags` to your `Settings` table.
 - Add `ABC-123` and `smoke` as tags to your test case.
+
+</details>
+
+<details>
+  <summary>Browser</summary>
+
+**Add meaningful documentation to your keywords.**
+
+We haven't really written complex code, but we've stilled introduced a
+special case where documentation can help. For example
+we could add a note that using `Change Important Number` from the UI is _slow_,
+but using the `Execute Javascript` doesn't update the UI, even though it works.
+
+- Add a notion to the documentation of `Change Important Number` that using the
+`execute_javascript` causes an issue with the UI, but not using it dramatically
+slows down the test.
+
+Now we have some pointers for our future selves if we have to get back to the
+keywords. There's no point in documentating obvious things, so we can leave
+rest of the keywords as they are.
+
+One final touch we should add to our test suite is to update the test tags.
+If this was a test with a real requirement linked to a requirements management
+tool, we should have the ticket id as a tag already. Well, it's not, so we can
+ignore that. However, we added a `wip` at the beginning of the training for our
+test suite. Now our test is finished, so we can safely take that away.
+
+For the sake of becoming used to tags, let's imagine this test is an actual
+requirement. Our test suite tests a business requirement `contacts` and they
+will test it with `UI`. Our test case tests a feature `ABC-123`. Also, our
+test case is a core part of Bad Flask App's functionality, so it should be a
+`smoke` test.
+
+Since all our test cases in this suite will have some categories in common,
+let's add that tag to all our test cases. We can do that by adding `Force Tags`
+to our `Settings` table. `ABC-123` and `smoke` are specific to our test case
+in particular, so we'll add those separately to our test case.
+
+- Remove the `wip` tag from your test suite.
+- Add `contacts` and `UI` as `Force Tags` to your `Settings` table.
+- Add `ABC-123` and `smoke` as tags to your test case.
+
+</details>

@@ -8,6 +8,9 @@
 
 ## Introduction
 
+**NOTE: `Browser` doesn't support selecting a frame separately with a keyword,
+so this exercise is still under work for `Browser` part.**
+
 Iframes are a way of displaying another website's contents
 within another website. A key point here is that it is indeed _another website_.
 This means that we cannot select elements from that website, while we're still
@@ -42,8 +45,15 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 ### Overview
 
 - Implement a wrapper keyword for running other keywords inside an iframe.
+  - The keyword takes 3 arguments: the iframe, the keyword, and the arguments for that keyword.
+  - It selects the iframe as its first step.
+  - It executes the given keyword as the second step.
+  - It deselects the frame as the keyword teardown.
 
 ### Step-by-step
+
+<details>
+  <summary>SeleniumLibrary</summary>
 
 **Write a keyword that runs any keyword in an iframe and deselects the frame.**
 
@@ -64,7 +74,7 @@ that the iframe we want to use _doesn't_ have the `hidden` class.
 
 Just like with checking that an element attribute contains some value, we can check if an element
 attribute doesn't contain some value. We can do this by using the `not()` wrapper around our `contains()`
-wrapper. Let's store our XPath into a variable again.
+wrapper, like this `//div[not(contains(@class,'hidden'))]/iframe`. Let's store our XPath into a variable again.
 
 - Create a variable for the XPath of the iframe.
 
@@ -95,10 +105,10 @@ Great, we now know that we need to specify our `frame`, `keyword` and `arguments
 and we now _how_ to specify them. Let's add those to our keyword.
 
 - Add `[Arguments]` to your `Run Inside Iframe` keyword and make it take three arguments: `frame`,
-`keyword`, and the values of `arguments` list.
+`keyword`, and the _values_ of `arguments` list.
 - Specify the `frame` variable as an argument for the `Select Frame` keyword.
 
-> :bulb: `@{values}` _must_ be the last argument for your keyword.
+> :bulb: `@{arguments}` _must_ be the last argument for your keyword.
 >
 > Keywords can also take arguments in dictionary format (`key1=value1`, `key2=value2`, etc.). We
 could handle those by using `&{kwargs}` format, but we're going to ignore that for now.
@@ -107,15 +117,17 @@ Now the keyword we want to run is a variable. We can't directly call `${keyword}
 to wrap that in a `Run Keyword` call, so let's add a call for our keyword between our frame
 selection and deselection.
 
-- Call `Run Keyword` to run your variable keyword between selecting and deselecting a frame.
+- Call `Run Keyword` to run your argument `keyword` between selecting and deselecting a frame.
 
 Our keyword will now select a frame, run a keyword, and finally deselect a frame. But what if
 our keyword fails before it reaches `Unselect Frame`? We would be stuck inside our iframe and
 our test would have no idea how to behave. after that. Just like test cases, keywords can also
-have a `Setup` and a `Teardown`. Just to be sure, we should change frame deselection into a keyword
-teardown.
+have a separate `Setup` and `Teardown` specified by `[Setup]` and `[Teardown]` respectively.
 
-- Add `[Teardown]` before `Unselect Frame`. Remember to have at least 2 spaces between your teardown
+Just to make sure our keyword always cleans up after itself, we should change frame deselection into
+a keyword teardown.
+
+- Add `[Teardown]` to `Unselect Frame`. Remember to have at least 2 spaces between your teardown
 and keyword.
 
 > We can also specify a `[Return]` value and a custom `[Timeout]` for your keywords, but we're not
@@ -136,3 +148,13 @@ and keyword.
 >    [Teardown]
 >    [Return]
 > ```
+
+</details>
+
+<details>
+  <summary>Browser</summary>
+
+**TODO:** Browser library doesn't have support for selecting a frame separately. Redesign exercise
+for Browser library.
+
+</details>

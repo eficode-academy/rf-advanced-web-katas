@@ -5,11 +5,13 @@ Welcome to Robot Framework advanced training!
 This material assumes you have some basic knowledge of Robot Framework,
 Python, and automated acceptance testing.
 
-This training is divided into 2 parts: REST API and SeleniumLibrary.
-In the first part (file 01), we're going to use the RESTInstance library
-or Robot Framework to write simple API tests against a mock-up interface. The exercises in this
-portion can be done in any order. In the second part (files 02-09), we're going to
-make a little deep-dive into SeleniumLibrary and learn how to handle several different errors
+This training is split into 2 halves: RESTinstance + SeleniumLibrary and Browser.
+Both halves use the same exercise files.
+
+Both halves are further divided into 2 parts: REST API and UI.
+In the first part (file01), we're going to write tests that use REST API against a mock-up
+interface. The exercises in this portion can be done in any order. In the second part (files 02-09),
+we're going to make a little deep-dive into web UI testing and learn how to handle several different errors
 and how to avoid common pitfalls. _The second portion should be done in order_ as the next
 exercise depends on the previous exercise.
 
@@ -28,14 +30,17 @@ If you want a little challenge, you can try to just read the general steps of th
 need more help, take a look at the step-by-step instructions. The step-by-step instructions also
 explain some steps about _why_ they are done as they are done in the exercise.
 
+The step-by-step instructions are divided into SeleniumLibrary and Browser sections separately.
+
 **Each exercise is summarized in bold text at the beginning.**
 
 All exercises have some explanation on why some things are done as
 they are in normal paragrahs.
 
 - All exercise steps are bulleted. The bulleted points summarize the previous
-paragraphs as small individual tasks. To finish the exercise, it's sufficient to read
-only the bulleted steps.
+paragraphs as small individual tasks. **To finish the exercise, it's sufficient to read
+only the bulleted steps.** All other text is just narrative and explanations as to why things are
+done as they are.
 
 > Quoted blocks indicate "nice to know" stuff and can be safely ignored.
 > They won't affect the outcome of the exercise, but generally include
@@ -52,12 +57,21 @@ installed. As of writing this documentation Robot Framework
 
 Open also the keyword documentations for
 
-- [RESTInstance](https://asyrjasalo.github.io/RESTinstance/)
-- [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
 - [BuiltIn](https://robotframework.org/robotframework/latest/libraries/BuiltIn.html)
 - [DateTime](https://robotframework.org/robotframework/latest/libraries/DateTime.html)
 
+And either
+
+- [Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
+
+Or
+
+- [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
+- [RESTInstance](https://asyrjasalo.github.io/RESTinstance/)
+
 ### Installing Prerequirements
+
+#### SeleniumLibrary
 
 In case you don't have SeleniumLibrary and RESTinstance libraries installed, run the
 following commands on the command line in your environment:
@@ -76,6 +90,10 @@ downloaded into the same directory where your Python installation is.
 
 - Run `which python3` to show the location of you Python installation.
 - Run `cp /path/to/your/chromedriver /path/to/your/bin`.
+
+#### Browser
+
+In case you don't have Browser library installed, see the [official installation instructions](https://github.com/MarketSquare/robotframework-browser#installation-instructions).
 
 ### Start Your Server
 
