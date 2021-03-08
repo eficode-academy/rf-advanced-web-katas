@@ -5,7 +5,7 @@ Welcome to Robot Framework advanced training!
 This material assumes you have some basic knowledge of Robot Framework,
 Python, and automated acceptance testing.
 
-This training is split into 2 halfs: RESTinstance + SeleniumLibrary and Browser.
+This training is split into 2 halves: RESTinstance + SeleniumLibrary and Browser.
 Both halfs use the same exercise files.
 
 Both halves are further divided into 2 parts: REST API and UI.
