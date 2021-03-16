@@ -33,7 +33,7 @@ usages of a similar XPath if we can check only one.
   - Second one calls your first keyword.
 - **Optional:** Create an embedded variable variant of your fill keywords.
 - **Optional:** Investigate what errors you get if you don't select the iframe beforehand.
-- **Optional:** Ivenstigate what errors you get if you don't show the form filling your form.
+- **Optional:** Investigate what errors you get if you don't show the form filling your form.
 
 ### Step-by-step
 
