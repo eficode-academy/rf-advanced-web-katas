@@ -9,47 +9,50 @@
 
 Ideally, web development and test automation goes hand in hand, so
 that the people who develop the websites, would also do (at least
-a bit of) test automation. However, more often than not this is not
-the case and that causes trouble to test automation developers.
-Websites are usually creates "UX first", which is good for the users,
+a bit of) test automation, or be aware of it. However, more often than not this is not
+the case and that causes trouble for test automation developers.
+Websites are often created with "UX first" approach, which is good for the users,
 but it typically means more work for the test automation developers.
 
-Nowadays, websites are created with modern frameworks, which generates
-nice looking websites from templates. Most often this causes developers
-to forget to add unique `id` attributes to elements, so we need
+Nowadays, websites are created with modern frameworks, which generate
+nice looking websites from templates. Pretty often developers
+forget to add unique `id` attributes to elements, so we need
 alternative locators for our elements.
 
-This is where XPaths step in. Sure enough, there are other locators
-with SeleniumLibrary and Browser than XPaths and IDs, but quite often using an XPath is the
-only way to find a truly unique identifier for an element.
+This is where XPaths step in. Sure enough, there are other locator strategies
+with SeleniumLibrary and Browser than XPaths and IDs (like CSS paths), but quite often using an XPath is the
+only way to find both a functional and unique identifier for an element.
 
-A trick with XPaths is to get a locator which is accurate enough to get
-your element, but not too accurate as to make the test case too fragile.
-If a website is prone to change, using bad XPaths is a good way to find
-ourself in a swamp of refactoring and debugging. A good mind set for XPaths
-is to keep them as short as possible. Shorter XPaths mean fewer places
-for it to break and less time wasted on unnecessary debugging.
+The trick to XPaths is to make a locator which is accurate enough to pinpoint
+your element, but not too exact as to make it fragile, and fast to break.
+If a website is likely to change, using bad XPath strategies is an easy way to find
+ourself in a swamp of refactoring and debugging. A good mindset for XPaths
+is to keep them short, but understandable. Shorter XPaths mean fewer places
+for it to break and less time wasted on unnecessary debugging. If they do break,
+as long as they still make sense, you can make replacement locators.
 
 A few general tips for good XPath usage:
 
-1. Don't use the browser's `Copy XPath` button. This will give you a way too
-obscure and accurate XPath. For example, Firefox gives the XPath for the
-Bad Flask App dropdown menu as `/html/body/section[1]/nav/div/a`, which
-will break from the slightest change to the structure and is also unnecessarily
-long. All elements should be behind `/html/body`, so your XPaths should
-**always** start `//` when testing websites.
+1. Don't use the browser's `Copy XPath` button. This will give you too
+obscure, segmented and precise XPath. For example, Firefox's XPath for the
+Bad Flask App's dropdown menu is `/html/body/section[1]/nav/div/a`, which is long,
+has 6 strictly ordered parts of generic type, and uses no unique attributes. Any
+changes to element types, the page's structure, or the order of those elements
+will break the locator. Also, since all elements should be behind `/html/body`, good
+XPaths should **always** simply start with `//` when testing websites.
 2. Ensure your locator matches **exactly** 1 element. The first element that matches
-the a given XPath is used even if there are multiple
-matching XPaths. In theory it's safe to use an XPath if your element is the first
+to a given XPath is used even if there are multiple
+matches found. In theory it's safe to use an XPath if your element is the first
 element matched, but a small change in the website can change the order and cause
 unexpected behaviour.
 3. Always **test your locator** in the console before adding it to your test
 case. You can `ctrl+F` in the `inspector` tab of the developer tools or you
 can use the `console` tab to use basic JavaScript queries to get your XPath,
 such as `$x("//path/to/my/element");`.
-4. Use variables whenever possible. Store your XPaths in variables, so you
-need to fix only 1 XPath if the test breaks and you don't need to go searching
-for all occurences of hard-coded locators in your tests.
+4. Use variables to store and use your XPaths in the tests. If one locator is used in many places, you
+will need to fix it once, and you don't need to look for all occurences of hard-coded
+values in your code. Additionally, the variable name can further clarify what
+the XPath was pointing to, so it is easier to fix it when it stops pointing anywhere.
 
 ## Exercise
 
@@ -74,22 +77,23 @@ covering the whole website. It opens at random, so there's no knowing whether it
 will open in our test case or not. While we're looking at the Bad Flask App, let's
 open our developer console by right-clicking anywhere on the screen and selecting `inspect`.
 It's a good idea to keep the developer console opened always when you're writing Selenium tests.
-We notice, that the dropdown doesn't have an `id` field that would allow us to
-easily access that element.
+We notice, that the page's elements don't have `id` fields that would allow us to
+easily access them.
 
-Let's start by finding suitable locators for our element. We notice that the dropdown is an
+Let's start by observing the page's elements and their attributes. We notice that the dropdown button is an
 `a` element, which has classes we could use, for example `dropdown-toggle`. However, there's a hidden
-element before our dropdown, so we can't use that directly. Instead of the `a`, we can also use its parent
-`div` element to handle the click. It has a class called `open` when the dropdown is opened and it's missing
-when it's closed. So, in other words we should click the `div` element _if_ it has a class called `open`.
+element before in the HTML, so we can't use that `a` directly. Instead, we can use its parent
+`div` element to handle the click. Also, it has a class called `open` when the dropdown is opened and it's
+missing when it's closed. So, in other words _if_ the `div` element has a class called `open`, we should click it.
 
-We don't want to add XPaths directly into our keyword, so let's add all static XPaths
-into a `Variables` table with a meaningful name. Following Robot Framework's best
-practices, we should give our variable a name that is in UPPER CASE.
+Still, the locator we got may sound a bit cryptic. Instead of adding it directly into our keyword, let's
+make a variable in the resource file. Following Robot Framework's best practices, we should give our
+variable a name that is in UPPER CASE. Similarly with all static, generic-sounding XPaths, we can continue
+adding them into a table of `Variables`, all with meaningful names.
 
 - Add `//div[contains(@class, 'open')]` into a variable with a meaningful name, such
 as `OPENED DROPDOWN`.
-- Create a keyword that click the `a` element under your variable.
+- Create a keyword that clicks the `a` element under your variable.
 - Create a conditional by using `Run Keyword And Return Status`, `Page Should Contain Element`,
 and `Run Keyword If` to close your potentially opened dropdown.
 
@@ -99,17 +103,18 @@ and `Run Keyword If` to close your potentially opened dropdown.
 > initially loaded. It loads the first time the element is clicked.
 >
 > In this case, we could've also used the `style="display: none;"` attribute of the first
-> `a` element to determine our dropdown element. Typically in XPaths, there's not a "one
-> right answer".
+> `a` element to determine our dropdown element. Another way would be to check if the `ul` with class
+> `dropdown-menu` is visible in the page, after checking that the page is fully loaded, to avoid
+> creating race conditions. Usually with XPaths, there is no "one true answer".
 
 ---
 
 **Open the form.**
 
-Ok, we're able to close the dropdown if it's opened. We still need to show our form.
+Now we're able to close the dropdown if it's opened. We still need to show our form.
 Again, we don't have an `id` for our element, but luckily the page has only one `button`,
 so our XPath is fairly straightforward: `//button`. Again, even though our XPath is short,
-let's add to our `Variables` table.
+it sounds too generic, so let's add it to our `Variables` table.
 
 - Add a variable for our `//button` XPath.
 - Create a keyword which clicks the `//button` element.
@@ -151,15 +156,16 @@ If you don't close the dropdown you might get an error which says something like
 ElementClickInterceptedException: Message: element click intercepted: Element <button id="showForm" style="width: 100px; margin: -100 auto 20 auto;">...</button> is not clickable at point (120, 206). Other element would receive the click: <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">...</ul>
 ```
 
-This means that you're trying to access an element that _behind_ another element
-and if we would try to click where the element is, top element on top would
-receive our click instead.
+This means that you're trying to access an element that is _behind_ another element.
+If you try to click the area where the element is, but another element is on top of it, that top
+element will receive our click instead, just as if a human was interacting with it. This remains true even
+if the top element is completely transparent.
 
-This is common when there are hover tooltips or menus. Some fields are hidden
+This is common with hover tooltips or menus. Some fields are hidden
 behind other elements and typically you need to close a menu or move your
 cursor somewhere else to make the hover go away. For example, some forms
-have a helpful tooltip, but then the tooltip covers the "Submit" button and
-your test execution fails due to that.
+show helpful tooltips, but when a tooltip covers the "Submit" button,
+your test execution will fail.
 
 </details>
 
