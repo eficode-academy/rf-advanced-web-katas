@@ -7,7 +7,7 @@ Library                         DateTime
 *** Variables ***
 ${SERVER}                       http://localhost:5000
 ${BROWSER}                      firefox
-${BUTTON}                       //button
+${SHOW FORM BUTTON}             //button
 ${DATEPICKER_NEXT_BUTTON}       //a[contains(@class,'ui-datepicker-next')]
 ${FORM_IFRAME}                  //div[not(contains(@class,'hidden'))]/iframe
 ${OPENED DROPDOWN}              //div[contains(@class, 'open')]
@@ -35,7 +35,7 @@ Close Dropdown If Opened
 
 # Exercise 03
 Show Form
-    Click Element       ${BUTTON}
+    Click Element       ${SHOW FORM BUTTON}
 
 # Exercise 04
 Run Inside Iframe
