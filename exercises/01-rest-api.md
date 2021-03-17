@@ -2,19 +2,19 @@
 
 ## Learning Goals
 
-- You know how to make basics of making REST API requests with Robot Framework.
+- You grasp the basics of making REST API requests with Robot Framework.
 
 ## Introduction
 
 REST API based testing or RPA can be done in multiple different ways in Robot Framework.
-You can of course do this with your own custom library using `requests`
+You can of course do this with your own custom library using Python's `requests`
 or similar, but Robot Framework also has a library for this already:
 [RESTinstance](https://asyrjasalo.github.io/RESTinstance/). The RESTinstance offers
-a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the
-`GET` and `POST` APIs for your website.
+a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the API of your website with
+`GET` and `POST` requests.
 
 Another way to do it by using the [`Http`](https://marketsquare.github.io/robotframework-browser/Browser.html#Http) keyword from the Browser library.
-The Browser library API handling is much more limited than RESTinstance, but if you only have some basic
+While the Browser library API handling is much more limited than RESTinstance, if you only have some basic
 requests you want to make, it works just fine.
 
 In the exercises we'll test the REST API of the Bad Flask App. The endpoints in the Bad Flask App
@@ -26,7 +26,7 @@ are:
 | `/api/forms` | `GET`, `POST`, `PUT` |
 | `/api/forms/<id>` | `GET`, `PUT` |
 
-All the responses are mocked, so don't be afraid to play around with the endpoints.
+All the responses are mocked, so feel free to play around with the endpoints.
 
 ## Exercise
 
@@ -50,7 +50,7 @@ should check the following:
 **Initialize your test suite with `REST` library.**
 
 In this exercise we're not going to write very sophisticated Robot Framework, meaning
-that we're going to do very simple test cases without doing a resource file separately.
+that we're going to do very simple test cases without putting keywords in a separate resource file.
 In our `tests` folder, we have a file called `api.robot`. Let's open that up.
 
 We're going to use the RESTinstance library, so we need to import `REST` into our `Settings`
@@ -68,15 +68,17 @@ so let's initialize the library import with that URL.
 
 **Authenticate to server and set headers.**
 
-Before we can query any data from Bad Flask App, we need to authenticate to the server.
+Before we can query any data from Bad Flask App, we need a way to authenticate to the server.
 We only want to authenticate once and use that as the authorization header. This means we
 should add this as our `Suite Setup` in our `Settings` table.
 
 - Add a keyword `Authenticate And Set Headers`.
 - Add your new keyword as the `Suite Setup`.
 
-The endpoint for authentication is `/api/auth` and it allows only `POST` requests. Inside our
-`Authenticate And Set Headers` keyword, we should call the `Post` keyword to the authentication
+The endpoint for authentication is `/api/auth` and it allows only `POST` requests. To understand it better you can use
+`curl` commandline tool to test that the endpoint answers and returns a token (as expected) with
+`curl -X POST http://localhost:5000/api/auth`. The corresponding action inside our
+`Authenticate And Set Headers` keyword is to call the `Post` keyword to the authentication
 endpoint to get the authentication token.
 
 - Use `Post` keyword inside your `Authenticate And Set Headers` with the `/api/auth` endpoint.
@@ -94,7 +96,7 @@ get just our token as a string. We should store that into a variable.
 - Use `Output` to store `response body` into a variable.
 
 The final thing is to set our headers for the rest of our requests. We'll use `Set Headers` to
-set our token as an authorization bearer header. `Set Headers` takes arguments as regular JSON,
+set our token as an authorization bearer header. `Set Headers` takes as argument a regular JSON string,
 se we can just give our token variable as a `Bearer` to an `Authorization` key.
 
 - Use `Set Headers` to give `{ "Authorization": "Bearer ${token}" }` as your headers inside your
@@ -111,6 +113,9 @@ se we can just give our token variable as a `Bearer` to an `Authorization` key.
 Let's create a new test case. We can use the `Get` keyword from the `REST` library directly
 on the `/api/forms/1` endpoint to get the data of the first user. We should get a JSON response
 with the first user's data.
+You can also test this endpoint with `curl`, but since it requires authorization,
+you will have to add the header to the command like this
+`curl -X GET -H "Authorization: Bearer NotAGoodToken" http://localhost:5000/api/forms/1`.
 
 - Create a new test case named `Get First Form And Verify Poster's Identity`.
 - Use `Get` to get the user from the endpoint `/api/forms/1`.
