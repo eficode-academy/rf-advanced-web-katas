@@ -28,22 +28,22 @@ exercise.
 A general overview of the exercise is given first, followed by more detailed step-by-step instructions.
 If you want a little challenge, you can try to just read the general steps of the exercise and if you
 need more help, take a look at the step-by-step instructions. The step-by-step instructions also
-explain some steps about _why_ they are done as they are done in the exercise.
+include explanations in some places about _why_ things are done as they are done in the exercise.
 
 The step-by-step instructions are divided into SeleniumLibrary and Browser sections separately.
 
 **Each exercise is summarized in bold text at the beginning.**
 
 All exercises have some explanation on why some things are done as
-they are in normal paragrahs.
+they are in normal paragraphs.
 
-- All exercise steps are bulleted. The bulleted points summarize the previous
-paragraphs as small individual tasks. **To finish the exercise, it's sufficient to read
-only the bulleted steps.** All other text is just narrative and explanations as to why things are
-done as they are.
+- All exercise steps are in bullet points. Each bullet points is an individual small task summary.
+Between the bullet points there are longer descriptive paragraphs.
+ **To complete the exercise, it's ok to skip those paragraphs.**
+Read the paragraphs for more explanations and the solution narrative, so you can understand and apply it in your work.
 
 > Quoted blocks indicate "nice to know" stuff and can be safely ignored.
-> They won't affect the outcome of the exercise, but generally include
+> They won't affect the outcome of the exercise, and will generally include
 > additional information the training doesn't handle.
 >
 > :bulb: If a quoted paragraph begins with a lightbulb, it tells that
@@ -51,9 +51,10 @@ done as they are.
 
 ## Prerequisites
 
-You should already have Python 3.x. pip, and Robot Framework 3.2
+You should already have Python 3.x. pip, and Robot Framework 3.2.2
 installed. As of writing this documentation Robot Framework
-3.2 is the latest version.
+3.2.2 is the latest version that works with all the following libraries.
+You can use Python's virtual environments.
 
 Open also the keyword documentations for
 
@@ -62,12 +63,12 @@ Open also the keyword documentations for
 
 And either
 
-- [Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
+- [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
+- [RESTInstance](https://asyrjasalo.github.io/RESTinstance/)
 
 Or
 
-- [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
-- [RESTInstance](https://asyrjasalo.github.io/RESTinstance/)
+- [Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
 
 ### Installing Prerequirements
 
@@ -91,11 +92,15 @@ downloaded into the same directory where your Python installation is.
 - Run `which python3` to show the location of you Python installation.
 - Run `cp /path/to/your/chromedriver /path/to/your/bin`.
 
+Alternatively, on Unix, you can create a new directory, copy webdrivers into it and run
+ `export PATH=$PATH:/directory-path`. You will either need to run this in every terminal you use,
+ or add it to your terminal config files.
+
 #### Browser
 
 In case you don't have Browser library installed, see the [official installation instructions](https://github.com/MarketSquare/robotframework-browser#installation-instructions).
 
-### Start Your Server
+### Start Your Server (any way you want)
 
 In all the following cases, the Bad Flask App starts running in `localhost:5000`.
 Open your browser to check that you can see the website running correctly.
@@ -131,7 +136,8 @@ $ pip3 install -r bad-flask-app/requirements.txt
 $ python3 bad-flask-app/app.py
 ```
 
-In this case you need a new terminal to run your tests.
+Started like this, the app will not daemonize like in previous examples,
+so you need to open a new terminal to run your tests.
 
 ## Open Exercises Directory
 
@@ -142,6 +148,7 @@ with all necessary tables. Your task is to fill these files during the exercises
 
 At any time during the training, you can run your tests with `robot -d output tests` (assuming
 that you're inside `exercises` directory). You can also add a `-i <tag>` to run only a specific test.
+If you don't want new test run results overwriting previous ones, use `-T` to add timestamps to file names.
 
 E.g
 
@@ -150,4 +157,5 @@ robot -d output tests
 robot -d output tests/form.robot
 robot -d output -i rest tests
 robot -d output -i ui tests/form.robot
+robot -T -d output tests
 ```
