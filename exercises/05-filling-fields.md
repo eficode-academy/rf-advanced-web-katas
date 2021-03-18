@@ -9,11 +9,11 @@
 
 ## Introduction
 
-XPaths should be as short as possible, and they should be stored in one place:
+XPaths should be composed of few parts, and it is good to store them in one place:
 under the `Variables` table. However, this isn't always possible. We often need to
 access an element with a changing value, for example, in the element's text. In
-these cases we need to have the XPath in the keyword in itself and this can make
-maintenance more difficult if many keywords have XPaths with similar parts, but
+these cases we may need to use the XPath directly in the keyword, increasing the
+maintenance difficulty if too many keywords have XPaths with similar parts, but
 still different enough to not allow to use a common variable.
 
 That is also the reason why we should focus on creating our keywords to be as reusable
@@ -42,11 +42,11 @@ usages of a similar XPath if we can check only one.
 
 **Define a modular keyword to fill your name, email, or message field.**
 
-We've finally reached a point where we can start to fill our form. The easiest
+We've finally reached a point where we can start filling out our form. The easiest
 fields to tackle are the name, email, and message fields. They're similar fields,
-so we should create a keyword that fills each field just by specifying which
+so we should aim to create a reusable keyword that can fill each field just by specifying which
 field we want to fill. We'll start by defining a keyword, which takes two arguments:
-the field we want to fill and the value we want to give that field.
+the field we want to fill, and the value we want to give that field.
 
 - Define a keyword `Fill Form Field`, which takes 2 arguments: `field` and `value`.
 
@@ -60,11 +60,11 @@ be your `value` argument.
 
 ---
 
-**Find a good XPath to match the name, email, and message fields.**
+**Find a good XPath pattern to match the name, email, and message fields.**
 
 Now that we have our initial keyword in place, let's take a look how we could best locate our
 fields. Unfortunately, as we look at the form source code, we see that
-the fields don't have any attributes that would really help us. Even worse, they're different
+the fields don't have any attributes that could really help us. Even worse, they're different
 types: name and email fields are `input` and the message field is `textarea`. Seems like the
 only element we can get a hand on is the `label` for each form field.
 
