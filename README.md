@@ -35,7 +35,7 @@ After this training, you should
 All exercise files are in the [exercises](./exercises) directory.
 
 Before starting your exercises, be sure to have your environment fully working by following
-[00-getting-started.md](exercices/00-getting-started.md).
+[00-getting-started.md](exercises/00-getting-started.md).
 
 - All API tests are combined in a single file ([01-rest-api.md](exercises/01-rest-api.md))
 - Introduction to Bad Flask App ([02-bad-flask-app-intro.md](exercises/02-bad-flask-app.md))
