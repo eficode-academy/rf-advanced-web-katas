@@ -117,7 +117,7 @@ Our arrow is a link (`a`) with a class called `ui-datepicker-next` (or `data-han
 click that element if it evaluates to `True`.
 
 - Add a variable `DATEPICKER_NEXT_BUTTON` to your `Variables` table and give it the value
-  `//a[contain(@class,'ui-datepicker-next')]`.
+  `//a[contains(@class,'ui-datepicker-next')]`.
 - Add a `Click Element` call for your newly created variable in your `Run Keyword If`.
 
 Finally, we're all set to click our wanted date. Tables are typically nasty in Robot Framework. Not
@@ -242,7 +242,7 @@ Our arrow is a link (`a`) with a class called `ui-datepicker-next` (or `data-han
 click that element if it evaluates to `True`.
 
 - Add a variable `DATEPICKER_NEXT_BUTTON` to your `Variables` table and give it the value
-  `//a[contain(@class,'ui-datepicker-next')]`.
+  `//a[contains(@class,'ui-datepicker-next')]`.
 - Add a `Click` call for your newly created variable in your previously created `Run Keyword If`.
 
 > :bulb: Remember that the form is inside an iframe.
