@@ -4,25 +4,25 @@
 
 - You know how you can handle iframes
 - Better understanding of `[Arguments]`, `[Setup]`, and `[Teardown]`
-- Understand the difference between `${variable}` and `@{variable}`
+- Understanding the difference between `${variable}` and `@{variable}`
 
 ## Introduction
 
 **NOTE: `Browser` doesn't support selecting a frame separately with a keyword,
 so this exercise is still under work for `Browser` part.**
 
-Iframes are a way of displaying another website's contents
-within another website. A key point here is that it is indeed _another website_.
+Iframes are a way of displaying one website's contents
+within another website. A key point here is that it is indeed _a different website_.
 This means that we cannot select elements from that website, while we're still
 working on the original website.
 
 The Bad Flask App uses iframes to present the form. Handling iframes is pretty straightforward
 in itself, but there are few things to consider:
 
-1. You must remember to deselect your frame when you're done using it
-2. If a website has lots of iframes and you need to jump from one frame to another, it's
-easy to get lost on which frame you've selected.
-3. Another way to get lost is to get your resource files messy if multiple keywords are
+1. You must remember to deselect your frame when you're done using it.
+2. If a website has a lot of iframes and you need to jump from one frame to another, it's
+easy to get lost in which frame you've selected at any given moment.
+3. Another way to get lost is to let your resource files get messy if multiple keywords are
 using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 
 > Here's a little tricky part where Chrome and Firefox differ: in Chrome, when
@@ -59,7 +59,7 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 
 In order to keep our resource file tidy, let's implement a keyword to work as a wrapper for
 our iframes. Then, we can simply call that keyword whenever we want to run something inside
-and iframe and be assured the frame won't be selected afterwards. For starters, we can define
+and iframe and rest assured the frame won't stay selected afterwards. For starters, we can define
 our keyword and simply make it call `Select Frame` and `Unselect Frame`.
 
 - Create a keyword called `Run Inside Iframe` and make it run `Select Frame` and `Unselect Frame`
@@ -74,19 +74,20 @@ that the iframe we want to use _doesn't_ have the `hidden` class.
 
 Just like with checking that an element attribute contains some value, we can check if an element
 attribute doesn't contain some value. We can do this by using the `not()` wrapper around our `contains()`
-wrapper, like this `//div[not(contains(@class,'hidden'))]/iframe`. Let's store our XPath into a variable again.
+wrapper, like this `//div[not(contains(@class,'hidden'))]/iframe`. Let's put this XPath in a variable again.
 
 - Create a variable for the XPath of the iframe.
 
 In most cases we might want to change iframes when we're testing. We want to be able to use our
 `Run Inside Iframe` keyword in all possible frames in our website, so we should specify the frame
-as an argument for our keyword. Furthermore, our keyword still doesn't really _do_ anything. We want
-it to be able to run _any_ keyword with _any_ arguments it might have.
+as an argument for our keyword.
 
-The keyword is farly easy to handle with a single variable. However, our issues begin when our
-keyword takes 0-n arguments and our keyword should be able to handle all situations.
+Still, our keyword still doesn't really _do_ anything yet. We want it to be able to run _any_ keyword
+with _any_ arguments it might have. If we were to pass to it one keyword without arguments, it would
+be easy. However, we want it to handle any keyword that takes 0-n arguments. Our `Run Inside Iframe`
+keyword should be able to handle all situations.
 
-In order to handle a varying amount of arguments we can use the `@{variable}` notation. Let's
+To handle a varying amount of arguments we can use the `@{variable}` notation. Let's
 consider the following list:
 
 ```robot
@@ -102,7 +103,7 @@ an argument, it assumes there is a value for that argument. However, if we provi
 _we don't need to give it a value_.
 
 Great, we now know that we need to specify our `frame`, `keyword` and `arguments` to our keyword
-and we now _how_ to specify them. Let's add those to our keyword.
+and we know _how_ to specify them. Let's add those to our keyword.
 
 - Add `[Arguments]` to your `Run Inside Iframe` keyword and make it take three arguments: `frame`,
 `keyword`, and the _values_ of `arguments` list.
