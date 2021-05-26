@@ -92,7 +92,7 @@ also match the path by separating each value with a space, so the body of the re
 get just our token as a string. We should store that into a variable. Storing return values into variables
 works very much the same way as in any programming language, meaning `<variable name>= <variable value>`.
 Although we need to follow proper Robot Framework syntax for setting variables as well, so setting a variable
-requires `${}` around the variable name. For example
+requires `${}` around the variable name and proper usage of whitespace. For example
 
 ```robot
 ${status}=    Output    response status
