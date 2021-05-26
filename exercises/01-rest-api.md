@@ -89,9 +89,19 @@ also match the path by separating each value with a space, so the body of the re
 `response body` (name inside the body would be `response body name`, etc.).
 
 `Output` also returns the value we search, so if we search for `response body` (or `$`) we'll
-get just our token as a string. We should store that into a variable.
+get just our token as a string. We should store that into a variable. Storing return values into variables
+works very much the same way as in any programming language, meaning `<variable name>= <variable value>`.
+Although we need to follow proper Robot Framework syntax for setting variables as well, so setting a variable
+requires `${}` around the variable name. For example
+
+```robot
+${status}=    Output    response status
+```
 
 - Use `Output` to store `response body` into a variable.
+
+> :bulb: The correct access token is indeed `NotAGoodToken`, so don't worry if your token looks "funny",
+> because it does.
 
 The final thing is to set our headers for the rest of our requests. We'll use `Set Headers` to
 set our token as an authorization bearer header. `Set Headers` takes arguments as regular JSON,
@@ -288,7 +298,6 @@ test suite.
 Before we can query any data from Bad Flask App, we need to authenticate to the server.
 We only want to authenticate once and use that as the authorization header. This means we
 should add this as our `Test Setup` in our `Settings` table.
-
 
 - Add a keyword `Authenticate And Set Headers`.
 - Add your new keyword as the `Test Setup`.
