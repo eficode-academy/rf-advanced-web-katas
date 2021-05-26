@@ -101,7 +101,7 @@ ${status}=    Output    response status
 - Use `Output` to store `response body` into a variable.
 
 > :bulb: The correct access token is indeed `NotAGoodToken`, so don't worry if your token looks "funny",
-> because it does.
+> - it is intentional.
 
 The final thing is to set our headers for the rest of our requests. We'll use `Set Headers` to
 set our token as an authorization bearer header. `Set Headers` takes arguments as regular JSON,
