@@ -11,6 +11,14 @@ This is the UI portion of the training. The overall goal for the rest of
 the exercices is to fill the form successfully. The exercises will not necessarily get
 more difficult as they go on, but will tackle completely different issues.
 
+In the following exercises, we're going to write all our keywords into `bad_flask_app.robot` file
+in the `resources` directory and our only test case into the `form.robot` file.
+
+> Remember that the `bad_flask_app.robot` file is in the `resources` folder, so the resource file
+> is imported with a relative path. Also, we've named our resource file based on the application
+> we're testing and our test suite file based on the type of actions we're going to do with the
+> application.
+
 ## Exercise
 
 ### Overview
@@ -27,14 +35,6 @@ more difficult as they go on, but will tackle completely different issues.
   <summary>SeleniumLibrary</summary>
 
 **Create your test case.**
-
-In the following exercises, we're going to write all our keywords into `bad_flask_app.robot` file
-in the `resources` directory and our only test case into the `form.robot` file.
-
-> Remember that the `bad_flask_app.robot` file is in the `resources` folder, so the resource file
-> is imported with a relative path. Also, we've named our resource file based on the application
-> we're testing and our test suite file based on the type of actions we're going to do with the
-> application.
 
 A test suite file is no use without any test cases. Each test case should have a descriptive name.
 Our goal is to submit the form successfully, so a name like `Form Filled With Valid Data Should
@@ -92,14 +92,6 @@ close the popup.
   <summary>Browser</summary>
 
 **Create your test case.**
-
-In the following exercises, we're going to write all our keywords into `bad_flask_app.robot` file
-in the `resources` directory and our only test case into the `form.robot` file.
-
-> Remember that the `bad_flask_app.robot` file is in the `resources` folder, so the resource file
-> is imported with a relative path. Also, we've named our resource file based on the application
-> we're testing and our test suite file based on the type of actions we're going to do with the
-> application.
 
 A test suite file is no use without any test cases. Each test case should have a descriptive name.
 Our goal is to submit the form successfully, so a name like `Form Filled With Valid Data Should
