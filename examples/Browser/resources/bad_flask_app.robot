@@ -24,7 +24,7 @@ ${DEFAULT_IMPORTANT_NUMBER}     15
 Authenticate And Set Headers
     [Documentation]     Must be called before any other API call as this sets the HEADERS variable.
     &{response}=        Http        /api/auth       POST
-    Set Test Variable      ${HEADERS}      { "Authorization": "Bearer ${response.body}" }
+    Set Suite Variable      ${HEADERS}      { "Authorization": "Bearer ${response.body}" }
 
 # Exercise 01 and 02
 Open Browser To Our Application
