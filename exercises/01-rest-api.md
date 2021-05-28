@@ -118,6 +118,152 @@ test suite.
 
 ---
 
+<details>
+  <summary>Authenticate and set headers</summary>
+
+Before we can query any data from Bad Flask App, we need to authenticate to the server.
+We only want to authenticate once and use that as the authorization header. This means we
+should add this as our `Suite Setup` in our `Settings` table.
+
+- Add a keyword `Authenticate And Set Headers`.
+- Add your new keyword as the `Suite Setup`.
+
+> :bulb: When doing exercises with `BROWSER` library, you need to use `Run keywords` as
+> your suite setup to run multiple keywords together. Combine multiple keywords using
+> `AND` (full upper-case, e.g. `Run Keywords    Log    1    AND    Log    2`).
+
+The endpoint for authentication is `/api/auth` and it allows only `POST` requests.
+
+<details>
+  <summary>RESTinstance</summary>
+
+Inside our `Authenticate And Set Headers` keyword, we should call the `Post` keyword to
+the authentication endpoint to get the authentication token.
+
+- Use `Post` keyword inside your `Authenticate And Set Headers` with the `/api/auth` endpoint.
+
+The response is a JSON and we should be able to get our data from that object. The easiest way
+to do this is to use the `Output` keyword, which logs the request and the response JSONs directly
+into the terminal. If we use just `Output` we notice that our token is inside the `body` of the
+`response`. We can use standard JSONPath notion `$` to match the base of the response body. We can
+also match the path by separating each value with a space, so the body of the response would be
+`response body` (name inside the body would be `response body name`, etc.).
+
+`Output` also returns the value we search, so if we search for `response body` (or `$`) we'll
+get just our token as a string. We should store that into a variable. Storing return values into variables
+works very much the same way as in any programming language, meaning `<variable name>= <variable value>`.
+Although we need to follow proper Robot Framework syntax for setting variables as well, so setting a variable
+requires `${}` around the variable name and proper usage of whitespace. For example
+
+```robot
+${status}=    Output    response status
+```
+
+- Use `Output` to store `response body` into a variable.
+
+The final thing is to set our headers for the rest of our requests. We'll use `Set Headers` to
+set our token as an authorization bearer header. `Set Headers` takes arguments as regular JSON,
+se we can just give our token variable as a `Bearer` to an `Authorization` key.
+
+- Use `Set Headers` to give `{ "Authorization": "Bearer ${token}" }` as your headers inside your
+`Authenticate And Set Headers` keyword.
+
+> Note, that `Set Headers` sets the headers for the _entire suite_, so you should avoid
+> using that inside your test cases directly if you want to affect all requests in other test cases.
+> You can add headers directly to request keywords by using `headers=` argument.
+
+</details>
+
+<details>
+  <summary>Browser</summary>
+
+Browser library has
+a `Http` keyword, which allows us to do basic API calls with a body and some headers. Inside our
+`Authenticate And Set Headers` keyword, we should call the `Http` keyword to the authentication endpoint
+by using `POST` as the method.
+
+- Use `Http` to call `/api/auth` and make a `POST` request without a body or headers. Store the return
+value as a dictionary variable (`&{response}`).
+
+`Http` returns JSON as a Python dictionary. The authentication token is the `body` of our response.
+By storing the return value directly as a dictionary object, we can use the much simpler dot notation
+for our dictionary `${dict.key.key.key.value}` instead of `${dict["key"]["key"]["key"]["value"]}`. We can
+store our headers as a suite variable, which we can then later use when making other `Http` requests for
+our other exercises. Set a suite variable `HEADERS` (upper case, since it's a suite variable) and give it the
+value `{"Authorization": "Bearer ${response.body}"}`.
+
+- Use the stored response to set a suite variable with the value `{"Authorization": "Bearer ${response.body}"}`.
+
+> :bulb: If you're getting an error `Resolving variable '${response.body}' failed: AttributeError: 'dict' object has no attribute 'body'` make sure you're storing our response as `&{response}` and **not** as
+> `${response}`.
+
+</details>
+
+> :bulb: The correct access token is indeed `NotAGoodToken`, so don't worry if your token looks "funny"
+> \- it is intentional.
+
+</details>
+
+---
+
+<details>
+  <summary>Get the first form and verify that its poster's name is <code>John Doe</code>.</summary>
+
+<details>
+  <summary>RESTinstance</summary>
+
+Let's create a new test case. We can use the `Get` keyword from the `REST` library directly
+on the `/api/forms/1` endpoint to get the data of the first user. We should get a JSON response
+with the first user's data.
+
+- Create a new test case named `Get First Form And Verify Poster's Identity`.
+- Use `Get` to get the user from the endpoint `/api/forms/1`.
+
+We can now assert that the queried data is what we expect it to be. We'll use the `Output`
+keyword again to verify our result. `Output` doesn't verify anything automatically, but
+we can query the `response body name` (or `$.name`) to get the name of the poster. When we store it in a
+variable, we can simply call `Should Be Equal` to verify that our response is what we expect it
+to be. In this case, it's `John Doe`.
+
+- Use `Output` to store `response body name` into a variable.
+- Use `Should Be Equal` to verify that your variable is equal to `John Doe`.
+
+We've already verified that our user is what we expect it to be. If we didn't want `Output`
+to flood our terminal we could redirect it to a file. Or, we could use `String` to compare
+our result without having to use a variable.
+
+> The assertion keywords are always effective on the _last_ query, so you don't need to
+> store the result in a variable nor do we need to query the user again to do our assertion.
+
+- Use `String` to verify `response body name` equals to `John Doe`.
+
+> You can also store the return value of `String` into a variable. In this case you need to
+> remember that it returns a _list_, and not a string. So for example the following snippet
+> would resolve in a test failure:
+>
+> ```robot
+> Get       /api/forms/1
+> ${a}=     Output      response body name
+> ${b}=     String      response body name
+> Should Be Equal         ${a}      ${b}
+> ```
+>
+> The output of the test would be
+>
+> ```text
+> Get First Form And Verify Poster's Identity                           .
+> "John Doe"
+> Get First Form And Verify Poster's Identity                           | FAIL |
+> John Doe != ['John Doe']
+> ```
+
+</details>
+
+
+
+</details>
+
+
 
 
 <details>
