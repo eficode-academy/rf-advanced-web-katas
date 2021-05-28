@@ -43,15 +43,89 @@ should check the following:
 ### Step-by-step
 
 <details>
+  <summary>Initialize you test suite</summary>
+
+In this exercise we're not going to write very sophisticated Robot Framework, meaning
+that we're going to do very simple test cases without doing a resource file separately.
+In our `tests` folder, we have a file called `api.robot`. Let's open that up.
+
+> The file resources `../resources/bad_flask_app.robot`. That import is only used with `Browser`
+> library. If you're the exercises with `RESTinstance`, the import can be safely ignored. Running the
+> suite with an empty resource file will log a warning, but will not affect the outcome of the exercise.
+
+<details>
+  <summary>RESTinstance</summary>
+
+We're going to use the RESTinstance library, so we need to import `REST` into our `Settings`
+table. RESTinstance requires a URL with the library import to initialize the library to do
+queries against that server. We'll test the REST API of the Bad Flask App.
+The server is running in `http://localhost:5000`, so let's initialize the library import with that URL.
+
+- Add a library import for `REST` in your `Settings` table.
+- Add `http://localhost:5000` as an argument for your library import.
+
+</details>
+
+<details>
+  <summary>Browser</summary>
+
+We're going to use the Browser library, so need to import it into our `Settings` table in our resource file.
+We'll test the REST API of the Bad Flask App. In order to do that, we're going to need a new browser.
+From the Browser library documentation we see that there's two possible keywords for this: `New Browser` and
+`New Page`. `New Browser` allows us to specify a browser and whether we want to use headless more or not
+along with a bunch of other configurations and `New Page` just opens a new tab on our browser to a URL we
+specify. Since we're just using REST API backend, we don't need to see a browser, so we can call `New Page`
+directly.
+
+> There's also `Open Browser`, but that's only intended to be used for quick debugging and not for production
+> use, so we're not going to use that here.
+
+- Add a library import for `Browser` in your `Settings` table to `bad_flask_app.robot` resource file.
+  - (Optional) Also add the import to your `api.robot` test suite file.
+
+Let's create ourselves our first keyword and let's call it `Open Browser To Our Application`. In here, we want
+to open our browser to Bad Flask App and verify the page is opened before continuing. We'll use `New Page` to
+open our browser in headless mode. The server is running in `http://localhost:5000`, so we'll give that
+as a parameter to our `New Page` call.
+
+- Create a new keyword `Open Browser To Our Application` to your resource file.
+- Add `New Page` with the parameter `http://localhost:5000` to your keyword.
+
+To verify the page load is complete, we can use `Get Title` to assert
+the website title is `Bad Flask App`. Browser library has builtin waiting for all it's keywords, so we don't
+need to wait for the page to load before asserting the title. Browser library support Python-like validations
+so we can use syntax like `Get Title    ==    Bad Flask App` directly.
+
+> As we're also going to use keywords from Browser library directly in our test suite file, it's best to
+> also import `Browser` there. It's not strictly necessary and the tests will work just as fine without it,
+> but it allows you to quickly see which libraries your files depend upon without trusting that "some" file
+> will resource it eventually.
+
+- Verify that the title is `Bad Flask App`.
+
+As we want our browser to open immediately as our tests begin, let's add it as our suite setup in our
+test suite.
+
+- Add `Open Browser To Our Application` as your `Suite Setup` in your test suite file.
+
+</details>
+
+> :bulb: If you're running your server with Docker, you might need to use the Docker-machine's
+> IP address instead of `localhost`. You can find the docker-machine IP address by using
+> `docker inspect <container_name>`.
+
+</details>
+
+
+
+
+
+<details>
   <summary>RESTinstance</summary>
 
 #### RESTinstance
 
 **Initialize your test suite with `REST` library.**
-
-In this exercise we're not going to write very sophisticated Robot Framework, meaning
-that we're going to do very simple test cases without doing a resource file separately.
-In our `tests` folder, we have a file called `api.robot`. Let's open that up.
 
 We're going to use the RESTinstance library, so we need to import `REST` into our `Settings`
 table. We'll test the REST API of the Bad Flask App. The server is running in `http://localhost:5000`,
@@ -243,15 +317,6 @@ variable and we need to verify the emails are not equal.
 #### Browser
 
 **Initialize your test suite with `Browser` library.**
-
-In this exercise we're not going to write very sophisticated Robot Framework, meaning
-that we're going to do very simple test cases without bothering with more abstraction layers
-to make the test suite more readable. We're going to use a resource file, which we are going to
-extend in the later exercises as well.
-
-In our `tests` folder, we have a file called `api.robot`. Let's open that up. We can see that it already
-resources `../resource/bad_flask_app.robot`, which is our resource file for all our test cases. Let's
-open that file as well.
 
 We're going to use the Browser library, so need to import it into our `Settings` table in our resource file.
 We'll test the REST API of the Bad Flask App. In order to do that, we're going to need a new browser.
