@@ -64,7 +64,7 @@ The server is running in `http://localhost:5000`, so let's initialize the librar
 - Add a library import for `REST` in your `Settings` table.
 - Add `http://localhost:5000` as an argument for your library import.
 
-</details>
+</details> <!-- RESTinstance -->
 
 <details>
   <summary>Browser</summary>
@@ -108,13 +108,13 @@ test suite.
 
 - Add `Open Browser To Our Application` as your `Suite Setup` in your test suite file.
 
-</details>
+</details> <!-- Browser -->
 
 > :bulb: If you're running your server with Docker, you might need to use the Docker-machine's
 > IP address instead of `localhost`. You can find the docker-machine IP address by using
 > `docker inspect <container_name>`.
 
-</details>
+</details> <!-- Initialize your test suite -->
 
 ---
 
@@ -172,7 +172,7 @@ se we can just give our token variable as a `Bearer` to an `Authorization` key.
 > using that inside your test cases directly if you want to affect all requests in other test cases.
 > You can add headers directly to request keywords by using `headers=` argument.
 
-</details>
+</details> <!-- RESTinstance -->
 
 <details>
   <summary>Browser</summary>
@@ -194,29 +194,32 @@ value `{"Authorization": "Bearer ${response.body}"}`.
 
 - Use the stored response to set a suite variable with the value `{"Authorization": "Bearer ${response.body}"}`.
 
-> :bulb: If you're getting an error `Resolving variable '${response.body}' failed: AttributeError: 'dict' object has no attribute 'body'` make sure you're storing our response as `&{response}` and **not** as
+> :bulb: If you're getting an error`Resolving variable '${response.body}' failed: AttributeError: 'dict' object has no attribute 'body'` make sure you're storing our response as `&{response}` and **not** as
 > `${response}`.
 
-</details>
+</details> <!-- Browser -->
 
 > :bulb: The correct access token is indeed `NotAGoodToken`, so don't worry if your token looks "funny"
 > \- it is intentional.
 
-</details>
+</details> <!-- Authenticate and set headers -->
 
 ---
 
 <details>
   <summary>Get the first form and verify that its poster's name is <code>John Doe</code>.</summary>
 
+Now we're ready to create our first test case. We need to use a `GET` request to get the first form.
+We can get it from the endpoint `/api/forms/1` and the response is a JSON with the first user's data.
+
+- Create a new test case named `Get First Form And Verify Poster's Identity`.
+
 <details>
   <summary>RESTinstance</summary>
 
-Let's create a new test case. We can use the `Get` keyword from the `REST` library directly
-on the `/api/forms/1` endpoint to get the data of the first user. We should get a JSON response
-with the first user's data.
+RESTinstance library keywords are named exactly like the HTTP request. This means you can use `Get`
+to make a `GET` request.
 
-- Create a new test case named `Get First Form And Verify Poster's Identity`.
 - Use `Get` to get the user from the endpoint `/api/forms/1`.
 
 We can now assert that the queried data is what we expect it to be. We'll use the `Output`
@@ -257,11 +260,46 @@ our result without having to use a variable.
 > John Doe != ['John Doe']
 > ```
 
+</details> <!-- RESTinstance -->
+
+<details>
+  <summary>Browser</summary>
+
+Browser uses the `Http` keyword for all HTTP requests. As the first argument we need the URL and as the second
+argument we need the HTTP request method (`GET`). We need to
+remember to add our headers separately to our `Http` call.
+
+- Use `Http` to get the user from the endpoint `/api/forms/1` with the `GET` method.
+- Use the `${HEADERS}` test variable as the request headers.
+- Store the response into a dictionary variable (`&{response}`).
+
+We can now assert that the queried data is what we expect it to be. We can simply use the built in
+`Should Be Equal` keyword to verify our `response.body` is `John Doe`.
+
+- Use `Should Be Equal` to verify that your `response.body` equals `John Doe`.
+
+</details>
+
+</details> <!-- Get first form and verify John Doe -->
+
+---
+
+<details>
+  <summary>Create a new form using <code>POST</code> and verify it succeeded.</summary>
+
+<details>
+  <summary>RESTinstance</summary>
 </details>
 
 
-
 </details>
+
+---
+
+
+
+
+
 
 
 
