@@ -13,6 +13,11 @@ or similar, but Robot Framework also has a library for this already:
 a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the
 `GET` and `POST` APIs for your website.
 
+> Although in these exercises we'll just validate requests
+> and responses directly, please bear in mind that RESTinstance can be also used to validate and store the JSON
+> schema, making it powerful when you don't need to validate exact response, but rather the _properties_
+> of the response.
+
 Another way to do it by using the [`Http`](https://marketsquare.github.io/robotframework-browser/Browser.html#Http) keyword from the Browser library.
 The Browser library API handling is much more limited than RESTinstance, but if you only have some basic
 requests you want to make, it works just fine.
