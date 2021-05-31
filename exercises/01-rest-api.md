@@ -45,6 +45,8 @@ should check the following:
 <details>
   <summary>Initialize you test suite</summary>
 
+<br/>
+
 In this exercise we're not going to write very sophisticated Robot Framework, meaning
 that we're going to do very simple test cases without doing a resource file separately.
 In our `tests` folder, we have a file called `api.robot`. Let's open that up.
@@ -120,6 +122,8 @@ test suite.
 
 <details>
   <summary>Authenticate and set headers</summary>
+
+<br/>
 
 Before we can query any data from Bad Flask App, we need to authenticate to the server.
 We only want to authenticate once and use that as the authorization header. This means we
@@ -209,6 +213,8 @@ value `{"Authorization": "Bearer ${response.body}"}`.
 <details>
   <summary>Get the first form and verify that its poster's name is <code>John Doe</code>.</summary>
 
+<br/>
+
 Now we're ready to create our first test case. We need to use a `GET` request to get the first form.
 We can get it from the endpoint `/api/forms/1` and the response is a JSON with the first user's data.
 
@@ -287,6 +293,8 @@ We can now assert that the queried data is what we expect it to be. We can simpl
 <details>
   <summary>Create a new form using <code>POST</code> and verify it succeeded.</summary>
 
+<br/>
+
 Again, let's create a new test case. This time, need to make a `POST` request to create a new
 form to our website and verify the form creation was successful. The endpoint to create a new form
 is `/api/forms`.
@@ -355,6 +363,8 @@ to verify our response code is `201` or we can use `Should Be True` to verify `r
 
 <details>
   <summary>Modify the form form's email address using <code>PUT</code> and verify it succeeded.</summary>
+
+<br/>
 
 It's time for our third test case. This time we're using the `PUT` method to modify the first form
 in the `/api/forms/1` endpoint.
