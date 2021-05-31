@@ -287,12 +287,69 @@ We can now assert that the queried data is what we expect it to be. We can simpl
 <details>
   <summary>Create a new form using <code>POST</code> and verify it succeeded.</summary>
 
+Again, let's create a new test case. This time, need to make a `POST` request to create a new
+form to our website and verify the form creation was successful. The endpoint to create a new form
+is `/api/forms`.
+
+- Create a new test case named `Post New Form And Verify Creation Succeeded`.
+
+For our test case, it's enough to specify our form with an `id` and `name`. The data is
+regular JSON and it's going to be static, so let's create a variable for that in the
+`Variables` table.
+
+- Create a variable `NEW_FORM_DATA` and make it a JSON with an `id` and `name` with values of your choice.
+
 <details>
   <summary>RESTinstance</summary>
-</details>
 
+As with `GET`, the RESTinstance keyword for `POST` is simply `Post`. We can use our `NEW_FORM_DATA` variable
+as the body for our `Post`.
 
-</details>
+- Use `Post` to the `/api/forms` endpoint.
+- Add `NEW_FORM_DATA` variable as a second argument to your `Post`.
+
+We still need to verify that our creation was successful. Again, we can use the `Output` to
+get our response and check the `response status` to see that it's `201`. However, this time
+the response code is an integer, so we need to use the `Should Be Equal As Integers` keyword.
+Similar to `String`, we can also directly evaluate the status code with the `Integer` keyword.
+
+> We could also use `${201}` in `Should Be Equal` to verify the response and `201` are equal.
+
+- Use `Output` to get the `response status` and store it in a variable.
+- Use `Should Be Equal As Integers` to verify your response is equal to `201`.
+- Use `Integer` to verify your `response status` is equal to `201`.
+
+</details> <!-- RESTinstance -->
+
+<details>
+  <summary>Browser</summary>
+
+As with `GET`, we'll use `Http` as our keyword, but this time we'll just use `POST` as
+the request method. We can add a body to our `Http` keyword the same way we add headers.
+Let's use our `NEW_FORM_DATA` as the body for our `POST` request.
+
+- Use `Http` to the `/api/forms` endpoint and use the `POST` method.
+- Use `HEADERS` test variable to set the headers for your request.
+- Add a `body` parameter for your `Http` keyword call and give it the value `NEW_FORM_DATA`.
+- Store the response into a dictionary variable (`&{response}`).
+
+We still need to verify that our creation was successful. Again, we've stored the response value
+to a dictionary. A successful post has the return code of `201`. The response also has an `ok` key,
+which is true if the status code is `200`-`299`. We can use either `Should Be Equal As Integers`
+to verify our response code is `201` or we can use `Should Be True` to verify `response.ok` is true.
+
+> We could also use `${201}` in `Should Be Equal` to verify the response and `201` are equal.
+
+- Use `Should Be Equal As Integers` to verify your response is equal to `201` or use
+`Should Be True` to verify `response.ok`.
+
+</details> <!-- Browser -->
+
+> :bulb: Make the JSON in a single line.
+>
+> :bulb: The `id` needs to be unique. The API has 2 forms with ids `1` and `2`.
+
+</details> <!-- POST exercise -->
 
 ---
 
