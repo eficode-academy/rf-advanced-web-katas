@@ -32,7 +32,7 @@ in the `resources` directory and our only test case into the `form.robot` file.
 ### Step-by-step
 
 <details>
-  <summary>Create your test case.</summary>
+  <summary>Create your test case and tag it as unfinished.</summary>
 
 <br />
 
