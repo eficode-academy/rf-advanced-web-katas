@@ -203,8 +203,8 @@ value `{"Authorization": "Bearer ${response.body}"}`.
 
 - Use the stored response to set a suite variable with the value `{"Authorization": "Bearer ${response.body}"}`.
 
-> :bulb: If you're getting an error`Resolving variable '${response.body}' failed: AttributeError: 'dict' object has no attribute 'body'` make sure you're storing our response as `&{response}` and **not** as
-> `${response}`.
+> :bulb: If you're getting an error`Resolving variable '${response.body}' failed: AttributeError: 'dict' object has no attribute 'body'`
+> make sure you're storing our response as `&{response}` and **not** as `${response}`.
 
 </details> <!-- Browser -->
 
