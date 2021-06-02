@@ -27,12 +27,12 @@ run it by using `Execute JavaScript`.
 ### Step-by-step
 
 <details>
-  <summary>SeleniumLibrary</summary>
+  <summary>Change "Important number" with <code>Execute Javascript</code></summary>
 
-**Change the "Important number" using `Execute Javascript`.**
+<br />
 
 Even though we've successfully filled our form, we notice that when we run the test, most of the execution
-time is used on `Change Important Number` execution. We should probably fix that. We could try to
+time is used on `Change Important Number` execution. We should fix that. We could try to
 optimize the clicking at a specific point, but we can also bypass this extremly long keyword by using
 `Execute Javascript`.
 
@@ -62,7 +62,7 @@ we use, so let's just the first option. We're actually going to use `Run Keyword
 - Add two steps before your for-loop starting `Run Keyword If` and `Return From Keyword If`. The condition
 for both keywords is `execute_javascript`.
 
-Executing JavaScript is all fun, when the elements have `id` attributes. In those cases, we can use
+Executing JavaScript is fun when the elements have `id` attributes. In those cases, we can use
 `document.getElementById("myId")` to find our elements. For example, we could change our datepicker logic
 to use that as well. However, our "Important number" doesn't have an `id`, so we're forced to use something
 else. Throughout this training, we've used XPaths. Using XPaths in JavaScript much more complex than what
@@ -85,6 +85,9 @@ We notice that the "Important number" element has an attribute called `value` an
 our `wanted_value` argument. So, full execution would be
 `document.evaluate(...).singleNodeValue.value = ${wanted_value};`.
 
+As we now have our `Execute Javascript` implementation ready, we can change the logic inside
+`Fill All Form Fields` keyword to change the important number with JavaScript.
+
 - Write `Execute Javascript` implementation using either the XPath or CSS selector to change the "Important
 number" value to `wanted_value`.
 - Add `${TRUE}` as a final argument when you call `Change Important Number` inside `Fill All Form Fields`.
@@ -94,120 +97,59 @@ number" value to `wanted_value`.
 > the command would normally return a value when running in the browser console,
 > e.g. `${element}=       Execute Javascript    return document.getElementById("myId");`
 
-**Submit your form and validate submission succeeded.**
+</details> <!-- Change important number -->
+
+---
+
+<details>
+  <summary>Submit form</summary>
+
+<br />
 
 When we run our test, we can see that the slider is automatically moved to the correct value. However, the
 label doesn't change. This might cause trouble, but we should test our solution if it works. The only
-way to test it is to submit our form and validate the outcome. The only button in our form is the
-submit button, so we can use our `BUTTON` variable to click this.
+way to test it is to submit our form and validate the outcome.
 
-Let's create a new keyword that we can call directly from our test suite. Since we're no longer inside our
-`Fill Form With Valid Data`, we need to remember to call `Run Inside Iframe` in our new keyword.
+Let's create a keyword, which submits the form and validates submission succeeded.
 
-- Create a keyword `Submit Form`, which clicks the submit button.
-- Add `Submit Form` call to your test suite.
+- Create a keyword called `Submit Form Successfully`.
 
-If our form was successfully filled, we should see `Submit successful!` at the top of the page. We should
-probably add a validation for our form, so let's add `Wait until Page Contains` to check that our submit
-succeeded. Again, we need to remember to call this inside our iframe.
+<details>
+  <summary>SeleniumLibrary</summary>
 
-- Create A Keyword `Validate That Form Submit Succeeded` and evaluate that we can see `Submit successful!` on
-the page.
-- Add `Validate That Form Submit Succeeded` to your test suite.
+We can submit the form directly with the SeleniumLibrary `Submit Form` keyword. This means that we're
+left with validating the submission succeeded.
+If our form was successfully filled, we should see `Submit successful!` at the top of the page.
+We can validte that with `Wait Until Page Contains` to check that our submit
+succeeded.
 
-As we notice, the non-updating UI is not causing any issues (for now), so we can move on.
+- Inside `Submit Form Successfully` call `Submit Form` inside an iframe.
+- Call `Wait Until Page Contains` inside an iframe to validate the page contans `Submit successful!`.
 
-</details>
+</details> <!-- SeleniumLibrary -->
 
 <details>
   <summary>Browser</summary>
 
-**Change the "Important number" using `Execute Javascript`.**
+We can submit the form by using the `Click` keyword. There's only one `button` in the whole form,
+so we can just simply use that as the locator.
 
-Even though we've successfully filled our form, we notice that when we run the test, most of the execution
-time is used on `Change Important Number` execution. We should probably fix that. We could try to
-optimize the clicking at a specific point, but we can also bypass this extremly long keyword by using
-`Execute Javascript`.
+Browser library has built in waiting and no separate validation keywords. Instead, you can use `Get Text`
+to validate the text automatically. Python validations such as `==`, `!=`, `contains`, and `not contains`
+are available for validation. The syntax is Pythonesque:
 
-Because "we can", doesn't necessarily mean "we should". Robot Framework is an acceptance testing framework
-and typically we want to simulate human behaviour as much as possible, so skipping some steps with
-`Execute Javascript` shouldn't be the first option to do something. However, sometimes it just makes more
-sense to call `Execute Javascript` than to spend a long time implementing a keyword that will be inefficient
-at best.
-
-We've already done our `Change Important Number`, so we can just modify that. We can give it a boolean
-argument to determine if we want to run `Execute Javascript` or not. In order to avoid breaking our
-test case, we'll give it a default value. Now, we'll want our argument to specify if we want to execute
-JavaScript, so a variable name like `execute_javascript` with a default value of `${FALSE}` should be good.
-
-- Add an argument `execute_javascript` to `Change Important Number` and give it a default value `${FALSE}`.
-
-Next, we want to run `Execute Javascript` if `execute_javascript` is `True` and skip the rest of the keyword.
-Here we have several different ways to do this. We could call `Run Keyword If` multiple times,
-use a combination of `Run Keyword If` and `Run Keywords` to combine them in a single if-statement, or create
-wrapper keyword which are called based on `execute_javascript` value. It doesn't really matter which option
-we use, so let's just the first option. We're actually going to use `Run Keyword If` once and then
-`Return From Keyword If` once.
-
-> Since we're evaluating a boolean variable, we don't need to specify the value of the boolean (
-`${execute_javascript}==${TRUE}`) and we can just use the variable on its own (`${execute_javascript}`).
-
-- Add two steps before your for-loop starting `Run Keyword If` and `Return From Keyword If`. The condition
-for both keywords is `execute_javascript`.
-
-Executing JavaScript is all fun, when the elements have `id` attributes. In those cases, we can use
-`document.getElementById("myId")` to find our elements. For example, we could change our datepicker logic
-to use that as well. However, our "Important number" doesn't have an `id`, so we're forced to use something
-else. Throughout this training, we've used XPaths. Using XPaths in JavaScript much more complex than what
-we've used in SeleniumLibrary keywords. We can use XPaths in JavaScript by using the following code:
-
-```js
-document.evaluate("//our/xpath", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+```robot
+Get Text    locator    ==    some text
 ```
 
-Compared to using `xpath://our/xpath`, that is a bit more difficult, right? We can use that by all means,
-but we can also use `document.querySelector()` The difference is, that `querySelector()` doesn't use
-XPaths. It uses CSS. So, in other words if we want to find `//parent/child[@attribute='value']` with
-`querySelector()`, our selector will be `parent child[attribute='value']`. We used the `name` attribute
-in the previous exercise as the locator for our "Important number". We can transform that into an XPath
-simply by using `//input[@name='important_number']`.
+If the submission was successful, we should see a `Submit successful!` text in a `h3` element. That means
+that we simply need to use `Get Text` from the header element and verify the text is what is expected.
 
-Doesn't matter if we use XPath or CSS, the function returns our element. Then we still need to change its
-attribute value. Changing an attribute value in JavaScript is as simple as `element.attribute=value`.
-We notice that the "Important number" element has an attribute called `value` and our new value is in
-our `wanted_value` argument. So, full execution would be
-`document.evaluate(...).singleNodeValue.value = ${wanted_value};`.
+- Use `Click` to click the `button` on the form.
+- Use `Get Text` to verify the `h3` has the text `Submit successful!`.
 
-- Write `Execute Javascript` implementation using either the XPath or CSS selector to change the "Important
-number" value to `wanted_value`.
-- Add `${TRUE}` as a final argument when you call `Change Important Number` inside `Fill All Form Fields`.
+</details> <!-- Browser -->
 
-> `Execute Javascript` can return values normally, but in order to get values
-> you need to explicitly tell the JavaScript command to `return` even though
-> the command would normally return a value when running in the browser console,
-> e.g. `${element}=       Execute Javascript    return document.getElementById("myId");`
+> :bulb: Remember that the form is inside an iframe
 
-**Submit your form and validate submission succeeded.**
-
-When we run our test, we can see that the slider is automatically moved to the correct value. However, the
-label doesn't change. This might cause trouble, but we should test our solution if it works. The only
-way to test it is to submit our form and validate the outcome. The only button in our form is the
-submit button, so we can use our `BUTTON` variable to click this.
-
-Let's create a new keyword that we can call directly from our test suite. Since we're no longer inside our
-`Fill Form With Valid Data`, we need to remember to call `Run Inside Iframe` in our new keyword.
-
-- Create a keyword `Submit Form`, which clicks the submit button.
-- Add `Submit Form` call to your test suite.
-
-If our form was successfully filled, we should see `Submit successful!` at the top of the page. We should
-probably add a validation for our form, so let's add `Wait until Page Contains` to check that our submit
-succeeded. Again, we need to remember to call this inside our iframe.
-
-- Create A Keyword `Validate That Form Submit Succeeded` and evaluate that we can see `Submit successful!` on
-the page.
-- Add `Validate That Form Submit Succeeded` to your test suite.
-
-As we notice, the non-updating UI is not causing any issues (for now), so we can move on.
-
-</details>
+</details> <!-- Submit form -->
