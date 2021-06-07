@@ -14,7 +14,7 @@ Before starting your exercises, be sure to have your environment fully working b
 [00-getting-started.md](./00-getting-started.md).
 
 - All API tests are combined in a single file ([01-rest-api.md](./01-rest-api.md))
-- Introduction to Bad Flask App ([02-bad-flask-app-intro.md](./02-bad-flask-app.md))
+- Introduction to Bad Flask App ([02-bad-flask-app-intro.md](./02-bad-flask-app-intro.md))
 - Introduction to XPaths ([03-xpath-intro.md](./03-xpath-intro.md))
 - Handling iframes ([04-iframes.md](./04-iframes.md))
 - More difficult XPaths ([05-filling-fields.md](./05-filling-fields.md))
