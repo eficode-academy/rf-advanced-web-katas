@@ -57,7 +57,7 @@ that we're going to do very simple test cases without doing a resource file sepa
 In our `tests` folder, we have a file called `api.robot`. Let's open that up.
 
 > The file resources `../resources/bad_flask_app.robot`. That import is only used with `Browser`
-> library. If you're the exercises with `RESTinstance`, the import can be safely ignored. Running the
+> library. If you're doing the exercises with `RESTinstance`, the import can be safely ignored. Running the
 > suite with an empty resource file will log a warning, but will not affect the outcome of the exercise.
 
 <details>
