@@ -8,8 +8,10 @@
 
 ## Introduction
 
-**NOTE: `Browser` doesn't support selecting a frame separately with a keyword,
-so this exercise is currently doable _only_ with `SelenliumLibrary`.**
+**NOTE: In this exercise we implement a keyword, which runs another keyword
+inside an iframe and has a teardown. `Browser` doesn't support selecting a
+frame separately with a keyword,
+so this exercise is currently available _only_ for `SelenliumLibrary`.**
 
 Iframes are a way of displaying another website's contents
 within another website. A key point here is that it is indeed _another website_.
