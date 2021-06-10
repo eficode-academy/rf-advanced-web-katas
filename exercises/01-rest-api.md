@@ -64,9 +64,10 @@ In our `tests` folder, we have a file called `api.robot`. Let's open that up.
   <summary>RESTinstance</summary>
 
 We're going to use the RESTinstance library, so we need to import `REST` into our `Settings`
-table. RESTinstance requires a URL with the library import to initialize the library to do
+table. RESTinstance sends requests directly into the target server, so it
+requires a URL with the library import to initialize the library to do
 queries against that server. We'll test the REST API of the Bad Flask App.
-The server is running in `http://localhost:5000`, so let's initialize the library import with that URL.
+The server is running at `http://localhost:5000`, so let's initialize the library import with that URL.
 
 - Add a library import for `REST` in your `Settings` table.
 - Add `http://localhost:5000` as an argument for your library import.
@@ -76,16 +77,20 @@ The server is running in `http://localhost:5000`, so let's initialize the librar
 <details>
   <summary>Browser</summary>
 
-We're going to use the Browser library, so need to import it into our `Settings` table in our resource file.
-We'll test the REST API of the Bad Flask App. In order to do that, we're going to need a new browser.
+We're going to use the Browser library, so we need to import it into our `Settings` table in our resource file.
+We'll test the REST API of the Bad Flask App. In order to do that, we're going to need a new browser, because
+this library uses the browser instance to execute API calls.
 From the Browser library documentation we see that there's two possible keywords for this: `New Browser` and
-`New Page`. `New Browser` allows us to specify a browser and whether we want to use headless more or not
-along with a bunch of other configurations and `New Page` just opens a new tab on our browser to a URL we
+`New Page`. `New Browser` allows us to specify a browser and whether we want to use headless or headful
+along with a bunch of other configurations. `New Page` just opens a new tab in our browser (or calls
+`New Browser` with default parameters if no browser is open) to a URL we
 specify. Since we're just using REST API backend, we don't need to see a browser, so we can call `New Page`
 directly.
 
 > There's also `Open Browser`, but that's only intended to be used for quick debugging and not for production
-> use, so we're not going to use that here.
+> use, so we're not going to use that here. `Open Browser` (by default) leaves the browser open on failure
+> and opens in headful mode, but it doesn't support really any configurations whereas `New Browser` supports
+> a wide variety of different configuration options.
 
 - Add a library import for `Browser` in your `Settings` table to `bad_flask_app.robot` resource file.
   - (Optional) Also add the import to your `api.robot` test suite file.
@@ -99,18 +104,21 @@ as a parameter to our `New Page` call.
 - Add `New Page` with the parameter `http://localhost:5000` to your keyword.
 
 To verify the page load is complete, we can use `Get Title` to assert
-the website title is `Bad Flask App`. Browser library has builtin waiting for all it's keywords, so we don't
-need to wait for the page to load before asserting the title. Browser library support Python-like validations
+the website title is `Bad Flask App`. Browser library has builtin waiting for all its keywords, so we don't
+need to wait for the page elements to load before asserting the title. Browser library support Python-like validations
 so we can use syntax like `Get Title    ==    Bad Flask App` directly.
 
-> As we're also going to use keywords from Browser library directly in our test suite file, it's best to
-> also import `Browser` there. It's not strictly necessary and the tests will work just as fine without it,
-> but it allows you to quickly see which libraries your files depend upon without trusting that "some" file
-> will resource it eventually.
+> As we're also going to use keywords from Browser library directly in our test suite file, it might
+> be useful to
+> also import `Browser` there. It's not strictly necessary and the tests will work just as fine without it.
+> However, it allows you to see the dependencies of your file directly, instead of having to rely on a potentially
+> very long dependency trail. Also, it helps prevent breaking
+> in case of refactoring where resource files and libraries are placed elsewhere.
 
 - Verify that the title is `Bad Flask App`.
 
-As we want our browser to open immediately as our tests begin, let's add it as our suite setup in our
+As we have no other actions to be done before our tests begin
+we want our browser to open immediately, let's add it as our suite setup in our
 test suite.
 
 - Add `Open Browser To Our Application` as your `Suite Setup` in your test suite file.
@@ -137,7 +145,8 @@ should add this as our `Suite Setup` in our `Settings` table.
 - Add a keyword `Authenticate And Set Headers`.
 - Add your new keyword as the `Suite Setup`.
 
-> :bulb: When doing exercises with `BROWSER` library, you need to use `Run keywords` as
+> :bulb: Suite setup supports only running a single keyword.
+> When doing exercises with `BROWSER` library, you need to use `Run keywords` as
 > your suite setup to run multiple keywords together. Combine multiple keywords using
 > `AND` (full upper-case, e.g. `Run Keywords    Log    1    AND    Log    2`).
 
@@ -228,7 +237,7 @@ We can get it from the endpoint `/api/forms/1` and the response is a JSON with t
 <details>
   <summary>RESTinstance</summary>
 
-RESTinstance library keywords are named exactly like the HTTP request. This means you can use `Get`
+RESTinstance library keywords are named exactly like the HTTP request methods. This means you can use `Get`
 to make a `GET` request.
 
 - Use `Get` to get the user from the endpoint `/api/forms/1`.
@@ -276,7 +285,7 @@ our result without having to use a variable.
 <details>
   <summary>Browser</summary>
 
-Browser uses the `Http` keyword for all HTTP requests. As the first argument we need the URL and as the second
+Browser uses the `Http` keyword for all HTTP request methods. As the first argument we need the URL and as the second
 argument we need the HTTP request method (`GET`). We need to
 remember to add our headers separately to our `Http` call.
 
@@ -318,6 +327,8 @@ regular JSON and it's going to be static, so let's create a variable for that in
 As with `GET`, the RESTinstance keyword for `POST` is simply `Post`. We can use our `NEW_FORM_DATA` variable
 as the body for our `Post`.
 
+> The keywords are not case sensitive, so `post`, `Post`, and `POST` work equally well.
+
 - Use `Post` to the `/api/forms` endpoint.
 - Add `NEW_FORM_DATA` variable as a second argument to your `Post`.
 
@@ -326,7 +337,7 @@ get our response and check the `response status` to see that it's `201`. However
 the response code is an integer, so we need to use the `Should Be Equal As Integers` keyword.
 Similar to `String`, we can also directly evaluate the status code with the `Integer` keyword.
 
-> We could also use `${201}` in `Should Be Equal` to verify the response and `201` are equal.
+> We could also use `${201}` in `Should Be Equal` to verify the response and `201` are equal integer values.
 
 - Use `Output` to get the `response status` and store it in a variable.
 - Use `Should Be Equal As Integers` to verify your response is equal to `201`.
