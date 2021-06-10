@@ -85,8 +85,9 @@ Since we're dealing with external libraries, we need to remember to import our l
 <details>
   <summary>SeleniumLibrary</summary>
 
-Bad Flask App is running in `localhost:5000`, so we need to open our browser there. SeleniumLirbary
-doesn't close the browser automatically, so we need to remember to close the browser in our suite teardown.
+Bad Flask App is running at `localhost:5000`, so we need to open our browser in that address. SeleniumLibrary
+doesn't close any open browser instances automatically, which can cause major performance and scaling issues.
+So we need to remember to close the browser in our suite teardown.
 
 - Use `Open Browser` to open a browser to Bad Flask App (`localhost:5000`) in your `Open Browser To Application` keyword.
 - Add `Close Browser` keyword call as your `Suite Teardown` in your test suite file.
@@ -106,12 +107,12 @@ Browser library automatically closes the browser after the test or suite has fin
 need to handle closing the browser separately. We can use `New Page` keyword to open the browser
 to Bad Flask App.
 
-- Call `New Page` to `Open Browser To Application` to open Bad Flask App (`localhost:5000`).
+- Call `New Page` in `Open Browser To Application` to open Bad Flask App (`localhost:5000`).
 
 </details> <!-- Browser -->
 
-> :bulb: If you're running your server with Docker, you might need to use the Docker-machine's
-> IP address instead of `localhost`. You can find the docker-machine IP address by using
+> :bulb: If you're running your server with Docker, you might need to use the Docker container's
+> IP address instead of `localhost`. You can find the IP address by using
 > `docker inspect <container_name>`.
 >
 > While debugging a test case, you might actually want to leave the browser open. You can use the
@@ -131,11 +132,11 @@ close the popup.
   <Summary>SelenuimLibrary</summary>
 
 By default SeleniumLibrary opens a browser in headful state. This is good while developing, but when running
-in CI, opening and closing browsers use a lot of time, so they could/should be run in headless state. This is
+in CI, opening and closing browser windows take a lot of time, so they could/should be run in headless state. This is
 easy to accomplish with the command line parameter `--variable BROWSER:headlessfirefox` (or `headlesschrome`,
 provided that you have a variable called `BROWSER`). Although using the command line parameter is preferred,
 it can also be parametrized in our `Open Browser To Application` by adding another parameter `headless` and
-give it a value of `${TRUE}` or `${FALSE}`.
+giving it a value of `${TRUE}` or `${FALSE}`.
 
 We can then concatenate strings and variables by using `Set Variable If`. Headful Firefox is `firefox` and headful
 Chrome is `chrome`. Similarily, headless Firefox is `headlessfirefox` and headless Chrome is `headlesschrome`.
