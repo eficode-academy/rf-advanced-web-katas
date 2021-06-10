@@ -106,7 +106,7 @@ number" value to `wanted_value`.
 
 <br />
 
-When we run our test, we can see that the slider is automatically moved to the correct value. However, the
+When we run our test, we can see that the slider is automatically moved to the correct position. However, the
 label doesn't change. This might cause trouble, but we should test our solution if it works. The only
 way to test it is to submit our form and validate the outcome.
 
@@ -118,9 +118,9 @@ Let's create a keyword, which submits the form and validates submission succeede
   <summary>SeleniumLibrary</summary>
 
 We can submit the form directly with the SeleniumLibrary `Submit Form` keyword. This means that we're
-left with validating the submission succeeded.
+left with validating that the submission succeeded.
 If our form was successfully filled, we should see `Submit successful!` at the top of the page.
-We can validte that with `Wait Until Page Contains` to check that our submit
+We can validate that with `Wait Until Page Contains` to check that our submission
 succeeded.
 
 - Inside `Submit Form Successfully` call `Submit Form` inside an iframe.
@@ -134,7 +134,7 @@ succeeded.
 We can submit the form by using the `Click` keyword. There's only one `button` in the whole form,
 so we can just simply use that as the locator.
 
-Browser library has built in waiting and no separate validation keywords. Instead, you can use `Get Text`
+Browser library has builtin waiting and no separate validation keywords. Instead, you can use `Get Text`
 to validate the text automatically. Python validations such as `==`, `!=`, `contains`, and `not contains`
 are available for validation. The syntax is Pythonesque:
 
