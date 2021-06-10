@@ -47,8 +47,8 @@ This time, we're not really typing anything, but we're
 selecting from a list of available values. Let's create a keyword that describes what we're
 doing, like `Select Date From Future`.
 
-We know in the end we'll want to add arguments for this, so without any detour let's add `days`
-as an argument straight away.
+We already know that this keyword will need at least one argument, so without any hard-coding
+detour let's add `days` as an argument now.
 
 > You could name it something like `Fill Date Field` or similar, but right now we're making a
 > distinction about the differences of the keywords. If you feel like you want `Fill Date` (or similar)
@@ -75,7 +75,8 @@ datepicker has an `id` attribute with the value `datepicker`.
 
 <br />
 
-Bad Flask App requires a date that is within the next two weeks, excluding today.
+Bad Flask App requires a date that is within the next two weeks, excluding today (i.e
+tomorrow to 14 days into the future).
 Therefore, we can't click the first date of the month our app happens to open and we can't press
 the next month bunch of times to get our date in distant future, like year 2200.
 
