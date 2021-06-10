@@ -20,35 +20,6 @@ It is a Python [Flask](https://flask.palletsprojects.com/en/1.1.x/) application,
 intentionally implemented poorly from a test automation point of view. The UI simulates typical
 issues test automation developers face when they write tests for modern websites.
 
-## How to Read Exercise Files
-
-All exercise files start with an introduction followed by the actual
-exercise.
-
-A general overview of the exercise is given first, followed by more detailed step-by-step instructions.
-If you want a little challenge, you can try to just read the general steps of the exercise and if you
-need more help, take a look at the step-by-step instructions. The step-by-step instructions also
-explain some steps about _why_ they are done as they are done in the exercise.
-
-The step-by-step instructions are divided into SeleniumLibrary and Browser sections separately.
-
-**Each exercise is summarized in bold text at the beginning.**
-
-All exercises have some explanation on why some things are done as
-they are in normal paragrahs.
-
-- All exercise steps are bulleted. The bulleted points summarize the previous
-paragraphs as small individual tasks. **To finish the exercise, it's sufficient to read
-only the bulleted steps.** All other text is just narrative and explanations as to why things are
-done as they are.
-
-> Quoted blocks indicate "nice to know" stuff and can be safely ignored.
-> They won't affect the outcome of the exercise, but generally include
-> additional information the training doesn't handle.
->
-> :bulb: If a quoted paragraph begins with a lightbulb, it tells that
-> it's a hint for the test step.
-
 ## Prerequisites
 
 You should already have Python 3.x. pip, and Robot Framework 3.2

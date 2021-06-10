@@ -4,8 +4,8 @@ Library             Browser
 
 Resource            ../resources/bad_flask_app.robot
 
-Suite Setup         Open Browser To Our Application     headless=${TRUE}
-Test Setup          Authenticate And Set Headers
+Suite Setup         Run Keywords    Open Browser To Our Application     headless=${TRUE}
+...                 AND             Authenticate And Set Headers
 
 Force Tags          api
 
@@ -18,7 +18,7 @@ Get First Form And Verify Poster's Identity
     [Tags]      get
     &{response}=        Http      /api/forms/1      GET        headers=${HEADERS}
     Should Be Equal         ${response.body.name}      John Doe
- 
+
 Post New Form And Verify Creation Succeeded
     [Tags]      post
     &{response}=        Http      /api/forms        POST       body=${NEW_FORM_DATA}    headers=${HEADERS}

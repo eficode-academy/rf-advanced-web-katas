@@ -3,13 +3,15 @@
 ## Learning Goals
 
 - You know how you can handle iframes
-- Better understanding of `[Arguments]`, `[Setup]`, and `[Teardown]`
+- Better understanding of keyword settings
 - Understand the difference between `${variable}` and `@{variable}`
 
 ## Introduction
 
-**NOTE: `Browser` doesn't support selecting a frame separately with a keyword,
-so this exercise is still under work for `Browser` part.**
+**NOTE: In this exercise we implement a keyword, which runs another keyword
+inside an iframe and has a teardown. `Browser` doesn't support selecting a
+frame separately with a keyword,
+so this exercise is currently available _only_ for `SelenliumLibrary`.**
 
 Iframes are a way of displaying another website's contents
 within another website. A key point here is that it is indeed _another website_.
@@ -53,9 +55,9 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 ### Step-by-step
 
 <details>
-  <summary>SeleniumLibrary</summary>
+  <summary>Create new keyword.</summary>
 
-**Write a keyword that runs any keyword in an iframe and deselects the frame.**
+<br />
 
 In order to keep our resource file tidy, let's implement a keyword to work as a wrapper for
 our iframes. Then, we can simply call that keyword whenever we want to run something inside
@@ -77,6 +79,15 @@ attribute doesn't contain some value. We can do this by using the `not()` wrappe
 wrapper, like this `//div[not(contains(@class,'hidden'))]/iframe`. Let's store our XPath into a variable again.
 
 - Create a variable for the XPath of the iframe.
+
+</details> <!-- Create new keyword -->
+
+---
+
+<details>
+  <summary>Add keyword arguments.</summary>
+
+<br />
 
 In most cases we might want to change iframes when we're testing. We want to be able to use our
 `Run Inside Iframe` keyword in all possible frames in our website, so we should specify the frame
@@ -119,10 +130,19 @@ selection and deselection.
 
 - Call `Run Keyword` to run your argument `keyword` between selecting and deselecting a frame.
 
+</details>
+
+---
+
+<details>
+  <summary>Add keyword teardown.</summary>
+
+<br />
+
 Our keyword will now select a frame, run a keyword, and finally deselect a frame. But what if
 our keyword fails before it reaches `Unselect Frame`? We would be stuck inside our iframe and
 our test would have no idea how to behave. after that. Just like test cases, keywords can also
-have a separate `Setup` and `Teardown` specified by `[Setup]` and `[Teardown]` respectively.
+have a separate and `Teardown` specified by `[Teardown]` (but **not** a `Setup`).
 
 Just to make sure our keyword always cleans up after itself, we should change frame deselection into
 a keyword teardown.
@@ -130,10 +150,10 @@ a keyword teardown.
 - Add `[Teardown]` to `Unselect Frame`. Remember to have at least 2 spaces between your teardown
 and keyword.
 
-> We can also specify a `[Return]` value and a custom `[Timeout]` for your keywords, but we're not
+> We can also specify `[Documentation]`, `[Return]` value, and a custom `[Timeout]` for your keywords, but we're not
 > going to into depth about those here.
 >
-> Even though Robot Framework supports writing keyword documentation, arguments, timeout, setup, teardown,
+> Even though Robot Framework supports writing keyword documentation, arguments, timeout, teardown,
 > and return value in any order we choose, it's a good idea to have those in an order that makes sense.
 >
 > E.g.
@@ -143,18 +163,9 @@ and keyword.
 >    [Documentation]
 >    [Arguments]
 >    [Timeout]
->    [Setup]
 >    # Actual keyword functionality
 >    [Teardown]
 >    [Return]
 > ```
-
-</details>
-
-<details>
-  <summary>Browser</summary>
-
-**TODO:** Browser library doesn't have support for selecting a frame separately. Redesign exercise
-for Browser library.
 
 </details>
