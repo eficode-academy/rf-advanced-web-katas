@@ -31,15 +31,15 @@ exercise.
 A general overview of the exercise is given first, followed by more detailed step-by-step instructions.
 If you want a little challenge, you can try to just read the general steps of the exercise and if you
 need more help, take a look at the step-by-step instructions. The detailed instructions are split into
-collapsable steps, which are then further divided into collapsable steps for SeleniumLibrary (+ RESTinstance)
+collapsible steps, which are then further divided into collipsable steps for SeleniumLibrary (+ RESTinstance)
 and Browser for library specific instructions. The step-by-step instructions also
-explain some steps about _why_ they are done as they are done in the exercise.
+explain in some steps about _why_ they are done as they are done in the exercise.
 
 If you need additional help, example solutions are available in the [examples](../examples) directory. The
 example solutions are by no means the only possible solution, but they follow the style of the exercises.
 
 <details>
-  <summary>The general step instructions are placed in collapsable blocks</summary>
+  <summary>The general step instructions are placed in collapsible blocks</summary>
 
 Followed by some narrative and some possible general steps that are common for both library approaches.
 

@@ -40,9 +40,10 @@ running with `execute_javascript=${TRUE}` or with `${FALSE}`.
 
 <br />
 
-Keyword and test case documentation shouldn't just state the obvious. However,
-special requirements and nontrivial cases should be documented. The keywords
-in this training are pretty small and self-explanatory, but there's at least one
+Keyword and test case documentation shouldn't be added just state the obvious. However,
+in case of special requirements and nontrivial cases, there should be documentated explanation.
+The keywords
+in this training are pretty concise and self-explanatory, but there's at least one
 place we could add documentation:
 we could add a note that using `Change Important Number` from the UI is _slow_,
 but using the `Execute Javascript` doesn't update the UI, even though it works.
