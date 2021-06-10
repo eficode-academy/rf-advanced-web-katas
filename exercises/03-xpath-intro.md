@@ -132,7 +132,7 @@ To check if the element is visible, we can use `Get Element State` and check the
 ---
 
 <details>
-  <summary>Open the form and set test setup.</summary>
+  <summary>Open the form and define test setup.</summary>
 
 <br />
 
@@ -151,7 +151,7 @@ keyword from the BuiltIn library directly. Using `Run Keywords` is a way to grou
 keywords into a single step if needed. We can link different keywords with `AND` after
 each keyword and its parameters.
 
-- Add `Test Setup` to your `Settings` table and call both new keywords.
+- Add `Test Setup` to your `Settings` table and call `Close Dropdown If Opened` and `Show Form`.
 
 > It's possible that your line becomes quite long when you call multiple keywords.
 > You can always split your keywords into multiple lines using `...` at the beginning
