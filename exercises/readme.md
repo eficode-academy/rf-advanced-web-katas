@@ -29,7 +29,7 @@ All exercise files (01-09) start with an introduction followed by the actual
 exercise.
 
 A general overview of the exercise is given first, followed by more detailed step-by-step instructions.
-If you want a little challenge, you can try to just read the general steps of the exercise and if you
+If you want to challenge yourself more, you can try to just read the general steps of the exercise and if you
 need more help, take a look at the step-by-step instructions. The detailed instructions are split into
 collapsible steps, which are then further divided into collipsable steps for SeleniumLibrary (+ RESTinstance)
 and Browser for library specific instructions. The step-by-step instructions also
