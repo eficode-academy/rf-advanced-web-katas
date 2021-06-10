@@ -40,7 +40,7 @@ running with `execute_javascript=${TRUE}` or with `${FALSE}`.
 
 <br />
 
-Keyword and test case documentation shouldn't be added just state the obvious. However,
+Keyword and test case documentation shouldn't be added just to state the obvious. However,
 in case of special requirements and nontrivial cases, there should be documentated explanation.
 The keywords
 in this training are pretty concise and self-explanatory, but there's at least one
