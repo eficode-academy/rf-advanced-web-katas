@@ -28,7 +28,7 @@ usages of a similar XPath if we can check only one.
 `Name`, `Email`, or `Message` field of the form.
   - Keyword should take the `field` name and the `value` you want to input as arguments.
 - Find an XPath, which finds the `Name`, `Email`, and `Message` fields.
-- Implement an additional keyword to fill all your form fields
+- Implement an additional keyword to fill in all your form fields
 - **Optional:** Create an embedded variable variant of your fill keywords.
 - **Optional:** Investigate what errors you get if you don't select the iframe beforehand.
 - **Optional:** Investigate what errors you get if you don't show the form filling your form.
@@ -53,7 +53,7 @@ the field we want to fill and the value we want to give that field.
 ---
 
 <details>
-  <summary>Find a good locator to match name, email, and message field.</summary>
+  <summary>Find a good locator strategy to match name, email, and message field.</summary>
 
 <br />
 
@@ -116,7 +116,7 @@ and our label. We're all set to combine our XPaths and input a value into our fo
 - Set the first argument for `Input Text` as `//label[contains(text(), "${field}")]/${INPUT_FIELD}`.
 - Set the second argument to `${value}`.
 
-We're now able to fill our fields! Except that the _form is inside an iframe_. This means that we need to
+We're now able to fill in our fields! Except that the _form is inside an iframe_. This means that we need to
 select the frame before we can input anything. In the last exercise we defined `Run Inside Iframe`, which we
 can use to fill our form inside our `Fill Form Field`.
 
@@ -124,7 +124,8 @@ can use to fill our form inside our `Fill Form Field`.
 form iframe.
 
 > Performance-wise it's recommended to write a wrapper keyword to call `Run Inside Iframe` only once,
-> since we're operating inside the same frame for a while.
+> since we're operating inside the same frame for a while. Moreover, repeatedly selecting and deselecting
+> the frame takes time. Feel free to make an additional wrapper keyword if you like.
 
 </details> <!-- SeleniumLibrary -->
 
@@ -248,3 +249,7 @@ This means your element is hidden or blocked and you cannot do the operation
 you're trying to do. This is very common when a page has multiple tabs, but
 all tabs are loaded into the DOM. Your test finds the element, but it's
 on another tab, thus, not interactable.
+
+It could be also caused by JavaScript blocking some elements until the page
+has loaded. This can be avoided by using `Wait Until Element Is Enabled`
+(in SeleniumLibrary).
