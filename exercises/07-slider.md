@@ -196,7 +196,7 @@ arguments.
 > :bulb: Using `3*pixel` already skips some numbers on some resolutions. It should hit `15`, but if
 > it doesn't, change your parameter value to something it does hit. The suitable value range is 10-90.
 >
-> When you run this in your test, you should see weird jagged spikes to the center of the element
+> When you run this in your test, you should see the slider make weird lurching jumps to the center of the element
 > every now and then. That's because `Drag And Drop By Offset` grabs the element from its center
 > and moves it to the pixels we determined. However, our slider element doesn't actually move at all, but
 > the selector moves inside the element. This is why the selector always goes to the middle of the element
