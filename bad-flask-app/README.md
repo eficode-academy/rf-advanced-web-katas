@@ -4,7 +4,7 @@ A Flask application intentionally designed to be poor in a test automation point
 
 All changes to the app should be built with Docker and pushed to `pleksi/bad-flask-app`.
 
-# Running
+## Running
 
 Run with
 
