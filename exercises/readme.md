@@ -46,7 +46,7 @@ Followed by some narrative and some possible general steps that are common for b
 </details>
 
 All exercises have some explanation on why some things are done as
-they are in normal paragrahs.
+they are in normal paragraphs.
 
 - All exercise steps are bulleted. The bulleted points summarize the previous
 paragraphs as small individual tasks. **To finish the exercise, it's sufficient to read
