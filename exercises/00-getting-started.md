@@ -51,9 +51,9 @@ Read the paragraphs for more explanations and the solution narrative, so you can
 
 ## Prerequisites
 
-You should already have Python 3.x. pip, and Robot Framework 3.2.2
+You should already have Python 3.x. pip, and Robot Framework 4.1.1
 installed. As of writing this documentation Robot Framework
-3.2.2 is the latest version that works with all the following libraries.
+4.1.1 is the latest version that works with all the following libraries.
 You can use Python's virtual environments.
 
 Open also the keyword documentations for
@@ -100,7 +100,7 @@ Alternatively, on Unix, you can create a new directory, copy webdrivers into it 
 
 In case you don't have Browser library installed, see the [official installation instructions](https://github.com/MarketSquare/robotframework-browser#installation-instructions).
 
-### Start Your Server (any way you want)
+### Start Your Server (pick one)
 
 In all the following cases, the Bad Flask App starts running in `localhost:5000`.
 Open your browser to check that you can see the website running correctly.
