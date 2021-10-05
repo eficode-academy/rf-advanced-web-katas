@@ -7,7 +7,7 @@ test cases.
 
 ## Introduction
 
-This is the UI portion of the training. The final goal for the rest of
+This is the UI portion of the training. The goal for the rest of
 the exercices is to fill out the form successfully. The exercises will not necessarily get
 more difficult, but will tackle completely different issues.
 
