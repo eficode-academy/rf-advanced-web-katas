@@ -94,7 +94,7 @@ downloaded into the same directory where your Python installation is.
 
 Alternatively, on Unix, you can create a new directory, copy webdrivers into it and run
  `export PATH=$PATH:/directory-path`. You will either need to run this in every terminal you use,
- or add it to your terminal config files.
+ or add it to your terminal configuration.
 
 #### Browser
 
