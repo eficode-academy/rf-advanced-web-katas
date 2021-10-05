@@ -20,7 +20,7 @@ forget to add unique `id` attributes to elements, so we need
 alternative locators for our elements.
 
 This is where XPaths step in. Sure enough, there are other locator strategies
-with SeleniumLibrary and Browser than XPaths and IDs (like CSS paths), but quite often using an XPath is the
+with SeleniumLibrary and Browser than XPaths and IDs (like CSS paths), but when using an XPath is the
 only way to find both a functional and unique identifier for an element.
 
 The trick to XPaths is to make a locator which is accurate enough to pinpoint
