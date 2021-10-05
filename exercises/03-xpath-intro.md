@@ -24,7 +24,7 @@ with SeleniumLibrary and Browser than XPaths and IDs (like CSS paths), but when 
 only way to find both a functional and unique identifier for an element.
 
 The trick to XPaths is to make a locator which is accurate enough to pinpoint
-your element, but not too exact as to make it fragile, and fast to break.
+your element, but not too exact as to make it fragile, and thus fast to break unnecessarily.
 If a website is likely to change, using bad XPath strategies is an easy way to find
 ourself in a swamp of refactoring and debugging. A good mindset for XPaths
 is to keep them short, but understandable. Shorter XPaths mean fewer places
