@@ -14,7 +14,7 @@ so this exercise is still under work for `Browser` part.**
 Iframes are a way of displaying one website's contents
 within another website. A key point here is that it is indeed _a different website_.
 This means that we cannot select elements from that website, while we're still
-working on the original website.
+working inside the original website.
 
 The Bad Flask App uses iframes to present the form. Handling iframes is pretty straightforward
 in itself, but there are few things to consider:
