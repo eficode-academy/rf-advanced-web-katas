@@ -7,7 +7,7 @@
 ## Introduction
 
 REST API based testing or RPA can be done in multiple different ways in Robot Framework.
-You can of course do this with your own custom library using Python's `requests`
+You can of course do this with your own custom Robot Framework library using 3rd-party [`requests`](https://docs.python-requests.org/en/latest/) library
 or similar, but Robot Framework also has a library for this already:
 [RESTinstance](https://asyrjasalo.github.io/RESTinstance/). The RESTinstance offers
 a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the API of your website with
