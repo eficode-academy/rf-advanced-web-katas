@@ -86,7 +86,7 @@ element before in the HTML, so we can't use that `a` directly. Instead, we can u
 `div` element to handle the click. Also, it has a class called `open` when the dropdown is opened and it's
 missing when it's closed. So, in other words _if_ the `div` element has a class called `open`, we should click it.
 
-Still, the locator we got may sound a bit cryptic. Instead of adding it directly into our keyword, let's
+Still, the locator we got may look a bit cryptic. Instead of adding it directly into our keyword, let's
 make a variable in the resource file. Following Robot Framework's best practices, we should give our
 variable a name that is in UPPER CASE. Similarly with all static, generic-sounding XPaths, we can continue
 adding them into a table of `Variables`, all with meaningful names.
