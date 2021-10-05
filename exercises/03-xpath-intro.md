@@ -39,7 +39,7 @@ Bad Flask App's dropdown menu is `/html/body/section[1]/nav/div/a`, which is lon
 has 6 strictly ordered parts of generic type, and uses no unique attributes. Any
 changes to element types, the page's structure, or the order of those elements
 will break the locator. Also, since all elements should be behind `/html/body`, good
-XPaths should **always** simply start with `//` when testing websites.
+XPaths should **always** simply start with `//` when testing websites, as the operator searches from anywhere in the HTML document.
 2. Ensure your locator matches **exactly** 1 element. The first element that matches
 to a given XPath is used even if there are multiple
 matches found. In theory it's safe to use an XPath if your element is the first
