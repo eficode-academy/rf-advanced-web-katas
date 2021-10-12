@@ -9,7 +9,7 @@ It's possible to take 2 routes for this training: SeleniumLibrary and Browser Li
 For SeleniumLibrary you need
 
 - A working browser + driver combination (e.g. Chrome and
-[chromedriver](https://chromedriver.chromium.org/downloads))
+[chromedriver](https://chromedriver.chromium.org/downloads) or Firefox and [geckodriver](https://github.com/mozilla/geckodriver/releases/))
 
 For Browser you need Python 3.7 or newer
 
@@ -26,7 +26,7 @@ After this training, you should
 5. Understand how to create modular keywords
 6. Understand to create and import your own custom libraries
 7. Know how to use for-loops
-8. Understand when it's better to **not** follow human behaviour
+8. Understand when it's better **not** to follow the human behaviour
 9. How to create meaningful documentation
 10. Understand and troubleshoot different errors in web testing
 
@@ -35,14 +35,14 @@ After this training, you should
 All exercise files are in the [exercises](./exercises) directory.
 
 Before starting your exercises, be sure to have your environment fully working by following
-[00-getting-started.md](exercises/00-getting-started.md).
+[00-getting-started.md](exercices/00-getting-started.md).
 
 - All API tests are combined in a single file ([01-rest-api.md](exercises/01-rest-api.md))
 - Introduction to Bad Flask App ([02-bad-flask-app-intro.md](exercises/02-bad-flask-app.md))
 - Introduction to XPaths ([03-xpath-intro.md](exercises/03-xpath-intro.md))
 - Handling iframes ([04-iframes.md](exercises/04-iframes.md))
-- More difficult XPaths ([05-filling-fields.md](exercises/05-filling-fields.md))
-- Extend your libraries with Python ([06-datepicker.md](exercises/06-datepicker.md))
+- Using complex XPaths ([05-filling-fields.md](exercises/05-filling-fields.md))
+- Extending your libraries with Python ([06-datepicker.md](exercises/06-datepicker.md))
 - Handling for-loops ([07-slider.md](exercises/07-slider.md))
-- Make life easier with `Execute Javascript` ([08-execute-javascript.md](exercises/08-execute-javascript.md))
+- Making life easier with `Execute Javascript` ([08-execute-javascript.md](exercises/08-execute-javascript.md))
 - Writing meaningful documentation ([09-documentation.md](exercises/09-documentation.md))
