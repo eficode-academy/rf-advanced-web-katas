@@ -87,8 +87,7 @@ Change Important Number
     ...                 the UI doesn't update with the value.
     [Arguments]     ${wanted_value}     ${execute_javascript}=${FALSE}
     # Exercise 08
-    Run Keyword If      ${execute_javascript}
-    ...         Execute Javascript      document.querySelector("input[name='important_number']").value = ${wanted_value}
+    Run keyword if    ${execute_javascript}    Change slider value with JS    ${wanted_value}
     Return From Keyword If      ${execute_javascript}
     # Exercise 07
     ${width}=      Get BoundingBox        ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}     width
@@ -104,6 +103,13 @@ Change Important Number
     Mouse Button     up
 
 # Exercise 08
+Change slider value with JS
+    [Arguments]    ${wanted_value}
+    ${ref}=    Get Element    xpath=${IFRAME} >>> xpath=${SLIDER}
+    Get Property    ${ref}    value    ==    0
+    Execute JavaScript    (elem) => elem.value = "${wanted_value}"    ${ref}
+    Get Property    ${ref}    value    ==    ${wanted_value}
+
 Submit Form
     Click       ${FORM_IFRAME} >>> button
 
