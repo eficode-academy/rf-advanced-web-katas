@@ -4,7 +4,7 @@
 
 - You know how to use for-loops
 - You understand how and why to specify locator type to UI keywords
-- You have understanding how to implement user behaviour
+- You grasp how to implement user behaviour
 
 ## Introduction
 

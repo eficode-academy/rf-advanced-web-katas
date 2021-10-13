@@ -3,8 +3,8 @@
 ## Learning Goals
 
 - You know how you can handle iframes
-- Better understanding of keyword settings
-- Understand the difference between `${variable}` and `@{variable}`
+- You gain better understanding of keyword settings
+- You understand the difference between `${variable}` and `@{variable}`
 
 ## Introduction
 
