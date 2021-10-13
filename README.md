@@ -42,7 +42,7 @@ Before starting your exercises, be sure to have your environment fully working b
 - Introduction to XPaths ([03-xpath-intro.md](exercises/03-xpath-intro.md))
 - Handling iframes ([04-iframes.md](exercises/04-iframes.md))
 - Using complex XPaths ([05-filling-fields.md](exercises/05-filling-fields.md))
-- Extending your libraries with Python ([06-datepicker.md](exercises/06-datepicker.md))
+- Using support RF libraries ([06-datepicker.md](exercises/06-datepicker.md))
 - Handling for-loops ([07-slider.md](exercises/07-slider.md))
 - Making life easier with `Execute Javascript` ([08-execute-javascript.md](exercises/08-execute-javascript.md))
 - Writing meaningful documentation ([09-documentation.md](exercises/09-documentation.md))
