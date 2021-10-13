@@ -9,9 +9,9 @@
 
 Ideally, web development and test automation goes hand in hand, so
 that the people who develop the websites, would also do (at least
-a bit of) test automation. However, more often than not this is not
-the case and that causes trouble to test automation developers.
-Websites are usually creates "UX first", which is good for the users,
+a bit of) test automation, or be aware of it. However, more often than not this is not
+the case and that causes trouble for test automation developers.
+Websites are often created with frameworks generating pretty frontends, which is good for the users,
 but it typically means more work for the test automation developers.
 
 Nowadays, websites are created with modern frameworks, which generates
@@ -19,25 +19,27 @@ nice looking websites from templates. Most often this causes developers
 to forget to add unique `id` attributes to elements, so we need
 alternative locators for our elements.
 
-This is where XPaths step in. Sure enough, there are other locators
-with SeleniumLibrary and Browser than XPaths and IDs, but quite often using an XPath is the
-only way to find a truly unique identifier for an element.
+Aside from `id`s, there are other locator strategies working with both SeleniumLibrary and Browser
+like name attributes, class names, and CSS paths, but it can also happen that using an XPath is the
+only way to find both a functional and unique identifier for an element.
 
-A trick with XPaths is to get a locator which is accurate enough to get
-your element, but not too accurate as to make the test case too fragile.
-If a website is prone to change, using bad XPaths is a good way to find
-ourself in a swamp of refactoring and debugging. A good mind set for XPaths
-is to keep them as short as possible. Shorter XPaths mean fewer places
-for it to break and less time wasted on unnecessary debugging.
+The trick to XPaths is to make a locator which is accurate enough to pinpoint
+your element, but not too exact as to make it fragile, and thus fast to break unnecessarily.
+If a website is likely to change, using bad XPath strategies is an easy way to find
+ourself in a swamp of refactoring and debugging. A good mindset for XPaths
+is to keep them short, but understandable. XPaths composed of fewer segments mean fewer places
+for it to break and less time wasted on unnecessary debugging. If they do break,
+as long as they still make sense, you can make replacement locators.
 
 A few general tips for good XPath usage:
 
-1. Don't use the browser's `Copy XPath` button. This will give you a way too
-obscure and accurate XPath. For example, Firefox gives the XPath for the
-Bad Flask App dropdown menu as `/html/body/section[1]/nav/div/a`, which
-will break from the slightest change to the structure and is also unnecessarily
-long. All elements should be behind `/html/body`, so your XPaths should
-**always** start `//` when testing websites.
+1. Don't use the browser's `Copy XPath` button. This will give you too
+obscure, segmented and precise XPath. For example, Firefox's XPath for the
+Bad Flask App's dropdown menu is `/html/body/section[1]/nav/div/a`, which is long,
+has 6 segments of generic type, all directly related, and uses no unique attributes. Any
+changes to element types, the page's structure, or the order of those elements
+will break the locator. Also, since all elements should be behind `/html/body`, good
+XPaths should **always** simply start with `//` when testing websites, as the operator searches from anywhere in the HTML document.
 2. Ensure your locator matches **exactly** 1 element. The first element that matches
 the a given XPath is used even if there are multiple
 matching XPaths. In theory it's safe to use an XPath if your element is the first
@@ -47,19 +49,18 @@ unexpected behaviour.
 case. You can `ctrl+F` in the `inspector` tab of the developer tools or you
 can use the `console` tab to use basic JavaScript queries to get your XPath,
 such as `$x("//path/to/my/element");`.
-4. Use variables whenever possible. Store your XPaths in variables, so you
-need to fix only 1 XPath if the test breaks and you don't need to go searching
-for all occurences of hard-coded locators in your tests.
+4. If you have same locators used in multiple places, store them in variables, and use variables in tests instead. When the locator breaks, you won't need to look for all occurences of hard-coded values in your code. Additionally, the variable name can further clarify what
+the XPath was pointing to, so it is easier to fix it when it stops pointing anywhere.
 
 ## Exercise
 
 ### Overview
 
-- Close the dropdown _if it's opened_ in the test setup.
-- Open the form in the test setup.
+- Close the dropdown _if it's opened_ as part of the test setup.
+- Open the form, also as part of the test setup.
   - Test should pass with or without the dropdown initially opened.
-- **Optional:** Investigate what might happen if you don't close the dropdown beforehand.
-What errors do you find?
+- **Optional:** Investigate what happens if you don't close the dropdown beforehand.
+What errors do you see?
 
 ### Step-by-step
 

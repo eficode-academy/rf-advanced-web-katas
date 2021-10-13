@@ -33,7 +33,7 @@ If you want an extra challenge, you can try to just read the general steps of th
 need more help, take a look at the step-by-step instructions. The detailed instructions are split into
 collapsible steps, which are then further divided into collipsable steps for SeleniumLibrary (+ RESTinstance)
 and Browser for library specific instructions. The step-by-step instructions also
-explain in some steps about _why_ they are done as they are done in the exercise.
+include explanations in some places about _why_ things are done as they are done in the exercise.
 
 If you need additional help, example solutions are available in the [examples](../examples) directory. The
 example solutions are by no means the only possible solution, but they follow the style of the exercises.
@@ -47,10 +47,9 @@ Followed by some narrative and some possible general steps that are common for b
 
 Exarcises have no validation scripts, instead they offer explanations to support your search for suitable solutions.
 
-- All exercise steps are bulleted. The bulleted points summarize the previous
-paragraphs as small individual tasks. **To finish the exercise, it should be sufficient to read
-only the bulleted steps.** All other text is just narrative and explanations as to why things are
-done as they are.
+- All exercise steps are in bullet points. Each bullet point is an individual small task summary. Between the bullet points there are longer descriptive paragraphs.
+ **To complete the exercise, it's ok to skip those paragraphs.**
+The paragraphs offer reasoning, clarifying solutions, so you can understand and apply it in your work.
 
 > Quoted blocks indicate "nice to know" stuff and can be safely ignored.
 > They won't affect the outcome of the exercise, but generally include

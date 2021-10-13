@@ -2,16 +2,16 @@
 
 ## Learning Goals
 
-- You know how to make basics of making REST API requests with Robot Framework.
+- You know the basics of making REST API requests with Robot Framework.
 
 ## Introduction
 
 REST API based testing or RPA can be done in multiple different ways in Robot Framework.
-You can of course do this with your own custom library using `requests`
+You can of course do this with your own custom Robot Framework library using 3rd-party [`requests`](https://docs.python-requests.org/en/latest/) library
 or similar, but Robot Framework also has a library for this already:
 [RESTinstance](https://asyrjasalo.github.io/RESTinstance/). The RESTinstance offers
-a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the
-`GET` and `POST` APIs for your website.
+a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the API of your website with
+`GET` and `POST` requests.
 
 > Although in these exercises we'll just validate requests
 > and responses directly, please bear in mind that RESTinstance can be also used to validate and store the JSON
@@ -19,7 +19,7 @@ a simple syntax for your REST API based use cases. Simple keywords like `Get` an
 > of the response.
 
 Another way to do it by using the [`Http`](https://marketsquare.github.io/robotframework-browser/Browser.html#Http) keyword from the Browser library.
-The Browser library API handling is much more limited than RESTinstance, but if you only have some basic
+While the Browser library API handling is much more limited than RESTinstance, if you only have some basic
 requests you want to make, it works just fine.
 
 In the exercises we'll test the REST API of the Bad Flask App. The endpoints in the Bad Flask App
@@ -31,15 +31,15 @@ are:
 | `/api/forms` | `GET`, `POST`, `PUT` |
 | `/api/forms/<id>` | `GET`, `PUT` |
 
-All the responses are mocked, so don't be afraid to play around with the endpoints.
+All the responses are mocked (no data is really changed), so feel free to play around with the endpoints.
 
 ## Exercise
 
 ### Overview
 
-- Get authentication token and set it as a header in suite setup.
+- Get the authentication token and set it as a header in suite setup.
 - Create 3 separate test cases, which use `Get`, `Post`, and `Put`. Your tests
-should check the following:
+should contain steps checking that:
   - The name of the first form submitter (`/api/forms/1`) is `John Doe`.
   - It's possible to submit a new form. Request body needs to be a JSON string. Response code for a
   successful POST is `201`.
@@ -52,8 +52,8 @@ should check the following:
 
 <br/>
 
-In this exercise we're not going to write very sophisticated Robot Framework, meaning
-that we're going to do very simple test cases without doing a resource file separately.
+In this exercise we're not going to write very sophisticated Robot Framework code, meaning
+that we're going to do very simple test cases without putting keywords in a separate resource file.
 In our `tests` folder, we have a file called `api.robot`. Let's open that up.
 
 > The file resources `../resources/bad_flask_app.robot`. That import is only used with `Browser`
