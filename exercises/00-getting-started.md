@@ -2,27 +2,26 @@
 
 Welcome to Robot Framework advanced training!
 
-This material assumes you have some basic knowledge of Robot Framework,
-Python, and automated acceptance testing.
+This material assumes you have some basic knowledge of Robot Framework, and automated acceptance testing.
 
 This training has 2 corresponding halves: RESTinstance + SeleniumLibrary, and Browser.
 Both halves use the same exercise files.
 
 Both halves are further divided into 2 parts: REST API and UI.
-In the first part (file01), we're going to write tests that use REST API against a mock-up
+In the first part (file 01), we're going to write tests that use REST API against a mock-up
 interface. The exercises in this portion can be done in any order. In the second part (files 02-09),
 we're going to make a little deep-dive into web UI testing and learn how to handle several different errors
-and how to avoid common pitfalls. _The second portion should be done in order_ as the next
-exercise depends on the previous exercise.
+and how to avoid common pitfalls. _The second portion should be done in order_ as each next
+exercise depends on the previous one.
 
 All tests are written for the Bad Flask App.
 It is a Python [Flask](https://flask.palletsprojects.com/en/1.1.x/) application,
 intentionally implemented poorly from a test automation point of view. The UI contains commonly used
-elements that test automation developers struggle with when they write tests for modern websites.
+elements that test automation developers struggle with when they write tests.
 
 ## Prerequisites
 
-You should already have Python 3.x. pip, and Robot Framework 4.1.1
+You should already have Python 3.x with pip, and Robot Framework 4.1.1
 installed. As of writing this documentation Robot Framework
 4.1.1 is the latest version that works with all the following libraries.
 You can use Python's virtual environments.
@@ -34,12 +33,12 @@ To find suitable keywords fast, keep open the official reference pages for
 
 And either
 
-- [Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
-
-Or
-
 - [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
 - [RESTInstance](https://asyrjasalo.github.io/RESTinstance/)
+
+or
+
+- [Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
 
 ### Installing Prerequisites
 
@@ -97,7 +96,7 @@ $ docker build -t bad-flask-app bad-flask-app
 $ docker run -d -p 5000:5000 bad-flask-app
 ```
 
-#### By running the Flask app without using Docker
+#### By running the Flask app without Docker
 
 ```bash
 $ pip3 install -r bad-flask-app/requirements.txt

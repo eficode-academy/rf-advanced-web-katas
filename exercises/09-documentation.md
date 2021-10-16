@@ -6,23 +6,23 @@
 
 ## Introduction
 
-Congratulations! Our test now fills the form successfully! However, a few
-more steps will make future-you a lot happier: documentation.
+Congratulations! The test now fills out the form successfully! However, a few
+more steps will make your future self a lot happier: good documentation.
 
-We've added a bunch of new keywords. Our test suite and resource
-files are certainly small, so reading through the file is fairly easy.
+We've added a bunch of new keywords. So far, the test suite and resource
+files are still small, so reading through the file is fairly easy.
 However, as with all software projects, our files are likely to grow,
 people will leave and new people will jump in and to make their job easier,
-it's good to add documentation for all our keywords. Also, it's good
-for us as well, since when the test is done we will probably move on
-to more tests, probably even on another platform. Then, after a few weeks
+it's good to add documentation for all our keywords. It's also good
+for us, since when the test is done we will probably move on
+to other tests, maybe even on another platform. Then, after a few weeks
 or months an architectural change in the service breaks our test and we
 need to fix it. It's easier to refresh our memory if we've added
 documentation to our keywords.
 
-Keywords should be named after a fashion that already gives a good idea
-what the keyword does. Therefore, documentation should be added to things
-that we think will be relevant in the future, such as special clauses,
+Keywords should be named in a way that already gives a good idea of
+what the keyword does. Therefore, documentation should be added just to things
+that we think are not obvious, and will be relevant in the future, such as special clauses,
 restrictions, possible return values, expected arguments, etc.
 
 ## Exercise
@@ -44,7 +44,7 @@ Keyword and test case documentation shouldn't be added just to state the obvious
 in case of special requirements and nontrivial cases, there should be documented explanation.
 The keywords
 in this training are pretty concise and self-explanatory, but there's at least one
-place we could add documentation:
+place we could add documentation in:
 we could add a note that using `Change Important Number` from the UI is _slow_,
 but using the `Execute Javascript` doesn't update the UI, even though it works.
 
@@ -63,11 +63,11 @@ slows down the test.
 
 One final touch we should add to our test suite is to update the test tags.
 If this was a test with a real requirement linked to a requirements management
-tool, we should have the ticket id as a tag already. Well, it's not, so we can
-ignore that. However, we added a `wip` at the beginning of the training for our
-test suite. Now our test is finished, so we can safely take that away.
+tool, we should have the ticket id as a tag already. In this workshop, it's not, so we
+ignore that now. However, we added a `wip` at the beginning of the training to our
+test suite. Now our test is finished, so we should remove it.
 
-For the sake of becoming used to tags, let's imagine this test is an actual
+For the sake of getting used to tags, let's imagine this test is for an existing
 requirement. Our test suite tests a business requirement `contacts` and they
 will test it with `UI`. Our test case tests a feature `ABC-123`. Also, our
 test case is a core part of Bad Flask App's functionality, so it should be a

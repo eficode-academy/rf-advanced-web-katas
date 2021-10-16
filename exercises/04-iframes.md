@@ -9,8 +9,7 @@
 ## Introduction
 
 **NOTE: In this exercise we implement a keyword, which runs another keyword
-inside an iframe and has a teardown. `Browser` doesn't support selecting a
-frame separately with a keyword,
+inside an iframe and has a teardown. `Browser` deals with iframes in a completely different way (by combining locators with `>>>`),
 so this exercise is currently available _only_ for `SelenliumLibrary`.**
 
 Iframes are a way of displaying one website's contents

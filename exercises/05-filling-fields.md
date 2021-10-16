@@ -80,12 +80,12 @@ in our `Variables` table.
 - Create a variable called `INPUT_FIELD` into your `Variables` table and give it the value
 `following-sibling::*[self::input or self::textarea]`.
 
-> You can use `preceding-sibling` to get an element _before_ some other element.
+> You can use `preceding-sibling` to get a element _before_ some other element. Both elements have to be direct `children` of the same `parent` element."
 >
 > :bulb: Remember to **test your XPath** in the browser. Without the `following-sibling` your XPath
 > should match 6 fields, which are all the fields in the form.
 
-Ok, we are now able to select all `input` and `textarea` fields of our form. Now we can start
+Ok, we are now able to select all `input` and `textarea` fields in the form. Now we can start
 to make our XPaths unique using the `label`. The label has a `:` and some extra spaces we don't
 want to match in our XPath, so we'll use `contains()` again. This time we're not checking
 the value of an attribute, so we can't use `contains(@attribute, 'value')`. Instead, we're matching

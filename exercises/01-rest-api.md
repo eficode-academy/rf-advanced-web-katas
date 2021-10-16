@@ -9,8 +9,8 @@
 REST API based testing or RPA can be done in multiple different ways in Robot Framework.
 You can of course do this with your own custom Robot Framework library using 3rd-party [`requests`](https://docs.python-requests.org/en/latest/) library
 or similar, but Robot Framework also has a library for this already:
-[RESTinstance](https://asyrjasalo.github.io/RESTinstance/). The RESTinstance offers
-a simple syntax for your REST API based use cases. Simple keywords like `Get` and `Post` call the API of your website with
+[RESTinstance](https://asyrjasalo.github.io/RESTinstance/). It offers
+a simple syntax for your REST API based use cases. For example keywords like `Get` and `Post` call the API of your choice with
 `GET` and `POST` requests.
 
 > Although in these exercises we'll just validate requests
@@ -41,8 +41,8 @@ All the responses are mocked (no data is really changed), so feel free to play a
 ### Overview
 
 - Get the authentication token and set it as a header in suite setup.
-- Create 3 separate test cases, which use `Get`, `Post`, and `Put`. Your tests
-should contain steps checking that:
+- Create 3 separate test cases, which use `Get`, `Post`, and `Put`. Those tests
+should be implemented to check the following functions, one per test:
   - The name of the first form submitter (`/api/forms/1`) is `John Doe`.
   - It's possible to submit a new form. Request body needs to be a JSON string. Response code for a
   successful POST is `201`.
@@ -235,6 +235,9 @@ value `{"Authorization": "Bearer ${response.body}"}`.
 Now we're ready to create our first test case. We need to use a `GET` request to get the first form.
 We can get it from the endpoint `/api/forms/1` and the response is a JSON with the first user's data.
 
+> :bulb: It is possible to test this endpoint with `curl`, but since it requires authorization,
+> you will have to add the header to the command too: `curl -X GET -H "Authorization: Bearer NotAGoodToken" http://localhost:5000/api/forms/1`.
+
 - Create a new test case named `Get First Form And Verify Poster's Identity`.
 
 <details>
@@ -315,9 +318,6 @@ We can now assert that the queried data is what we expect it to be. We can simpl
 Again, let's create a new test case. This time, need to make a `POST` request to create a new
 form to our website and verify the form creation was successful. The endpoint to create a new form
 is `/api/forms`.
-
-> :bulb: It is possible to test this endpoint with `curl`, but since it requires authorization,
-> you will have to add the header to the command too: `curl -X GET -H "Authorization: Bearer NotAGoodToken" http://localhost:5000/api/forms/1`.
 
 - Create a new test case named `Post New Form And Verify Creation Succeeded`.
 

@@ -40,7 +40,7 @@ to find a keyword, which allows you to add a certain amount of days into another
 <br />
 
 Next, we're going to handle selecting a date for our `Date` field. It's a read-only field,
-so we're not able to to simply type in our wanted date. Clicking a date in a datepacker
+so we're not able to to simply type in our wanted date. Clicking a date in a datepicker
 is very easy to do for a human, but there are several things to consider when automating it.
 
 This time, we're not really typing anything, but we're
