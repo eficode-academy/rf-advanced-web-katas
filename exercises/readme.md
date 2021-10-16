@@ -14,7 +14,7 @@ Before starting your exercises, be sure to have your environment fully working b
 [00-getting-started.md](./00-getting-started.md).
 
 - All API tests are combined in a single file ([01-rest-api.md](./01-rest-api.md))
-- Introduction to Bad Flask App ([02-bad-flask-app-intro.md](./02-bad-flask-app.md))
+- Introduction to Bad Flask App ([02-bad-flask-app-intro.md](./02-bad-flask-app-intro.md))
 - Introduction to XPaths ([03-xpath-intro.md](./03-xpath-intro.md))
 - Handling iframes ([04-iframes.md](./04-iframes.md))
 - Using complex XPaths ([05-filling-fields.md](./05-filling-fields.md))
@@ -31,7 +31,7 @@ exercise.
 A general overview of the exercise is given first, followed by more detailed step-by-step instructions.
 If you want an extra challenge, you can try to just read the general steps of the exercise and if you
 need more help, take a look at the step-by-step instructions. The detailed instructions are split into
-collapsible steps, which are then further divided into collipsable steps for SeleniumLibrary (+ RESTinstance)
+collapsible steps, which are then further divided into collapsible steps for SeleniumLibrary (+ RESTinstance)
 and Browser for library specific instructions. The step-by-step instructions also
 include explanations in some places about _why_ things are done as they are done in the exercise.
 
@@ -45,7 +45,7 @@ Followed by some narrative and some possible general steps that are common for b
 
 </details>
 
-Exarcises have no validation scripts, instead they offer explanations to support your search for suitable solutions.
+Exercises have no validation scripts, instead they offer explanations to support your search for suitable solutions.
 
 - All exercise steps are in bullet points. Each bullet point is an individual small task summary. Between the bullet points there are longer descriptive paragraphs.
  **To complete the exercise, it's ok to skip those paragraphs.**
@@ -55,5 +55,5 @@ The paragraphs offer reasoning, clarifying solutions, so you can understand and 
 > They won't affect the outcome of the exercise, but generally include
 > additional information the training doesn't handle.
 >
-> :bulb: If a quoted paragraph begins with a lightbulb, it tells that
+> :bulb: If a quoted paragraph begins with a light bulb, it tells that
 > it's a hint for the test step.

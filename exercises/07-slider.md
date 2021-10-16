@@ -60,7 +60,7 @@ that point or click and hold the selector and drag it left or right to some valu
 is pretty easy for a person, but in order to calculate how many pixels we should click in some direction
 programmatically is difficult. Especially when it comes to different screen resolutions and window
 sizes it's often almost impossible to write a script that can click the correct pixel immediately. Also,
-handling pixel accuracy is always a tradeoff between development speed, accuracy, resilience and support
+handling pixel accuracy is always a trade-off between development speed, accuracy, resilience and support
 between different resolutions and window sizes.
 
 <details>

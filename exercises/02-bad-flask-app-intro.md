@@ -7,12 +7,12 @@ test cases.
 
 ## Introduction
 
-This is the UI portion of the training. The overall goal for the rest of
-the exercices is to fill the form successfully. The exercises will not necessarily get
+This is the UI portion of the training. The goal for the rest of
+the exercises is to fill out the form successfully. The exercises will not necessarily get
 more difficult, but will tackle completely different issues.
 
-In the following exercises, we're going to write all our keywords into `bad_flask_app.robot` file
-in the `resources` directory and our only test case into the `form.robot` file.
+In the following exercises, we're going to write all our keywords in `bad_flask_app.robot` file
+in the `resources` directory and our test case in the `form.robot` file.
 
 > Remember that the `bad_flask_app.robot` file is in the `resources` folder, so the resource file
 > is imported with a relative path. Also, we've named our resource file based on the application
@@ -36,10 +36,10 @@ in the `resources` directory and our only test case into the `form.robot` file.
 
 <br />
 
-A test suite file is no use without any test cases. Each test case should have a descriptive name.
+A test suite file is not useful without any test cases. Moreover, each test case should have a descriptive name.
 Our goal is to submit the form successfully, so a name like `Form Filled With Valid Data Should
 Submit Successfully` is a good name. A test case should also have at least one step. For now, you
-can add `No Operation` call to your test case, just to make sure it runs.
+can add `No Operation` call to your test case, just to make sure it is being executed.
 
 - Create a test case called `Form Filled With Valid Data Should Submit Successfully` to your test suite.
 - Add `No Operation` call into your case.
@@ -129,7 +129,7 @@ close the popup.
   <summary>Optional: Parametrize opening browser to headless or headful mode.</summary>
 
 <details>
-  <Summary>SelenuimLibrary</summary>
+  <Summary>SeleniumLibrary</summary>
 
 By default SeleniumLibrary opens a browser in headful state. This is good while developing, but when running
 in CI, opening and closing browser windows take a lot of time, so they could/should be run in headless state. This is
@@ -139,7 +139,7 @@ it can also be parametrized in our `Open Browser To Application` by adding anoth
 giving it a value of `${TRUE}` or `${FALSE}`.
 
 We can then concatenate strings and variables by using `Set Variable If`. Headful Firefox is `firefox` and headful
-Chrome is `chrome`. Similarily, headless Firefox is `headlessfirefox` and headless Chrome is `headlesschrome`.
+Chrome is `chrome`. Similarly, headless Firefox is `headlessfirefox` and headless Chrome is `headlesschrome`.
 We only need to check if our `headless` variable is `${TRUE}` and add `headless` before our browser variable.
 We can give `Set Variable If` a value for the `else` bracket right away as the third argument.
 For example `${chosen_browser}=    Set Variable If    ${headless}    headless${BROWSER}    ${BROWSER}`.

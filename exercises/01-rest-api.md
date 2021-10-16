@@ -33,6 +33,9 @@ are:
 
 All the responses are mocked (no data is really changed), so feel free to play around with the endpoints.
 
+> :bulb: You can use `curl` commandline tool to test that the endpoints answer and return something.
+> For example, the command to interact with first endpoint is `curl -X POST http://localhost:5000/api/auth`.
+
 ## Exercise
 
 ### Overview
@@ -138,7 +141,7 @@ test suite.
 
 <br/>
 
-Before we can query any data from Bad Flask App, we need to authenticate to the server.
+Before we can query any data from Bad Flask App, we need a way to authenticate to the server.
 We only want to authenticate once and use that as the authorization header. This means we
 should add this as our `Suite Setup` in our `Settings` table.
 
@@ -180,7 +183,7 @@ ${status}=    Output    response status
 - Use `Output` to store `response body` into a variable.
 
 The final thing is to set our headers for the rest of our requests. We'll use `Set Headers` to
-set our token as an authorization bearer header. `Set Headers` takes arguments as regular JSON,
+set our token as an authorization bearer header. `Set Headers` takes as argument a regular JSON string,
 se we can just give our token variable as a `Bearer` to an `Authorization` key.
 
 - Use `Set Headers` to give `{ "Authorization": "Bearer ${token}" }` as your headers inside your
@@ -312,6 +315,9 @@ We can now assert that the queried data is what we expect it to be. We can simpl
 Again, let's create a new test case. This time, need to make a `POST` request to create a new
 form to our website and verify the form creation was successful. The endpoint to create a new form
 is `/api/forms`.
+
+> :bulb: It is possible to test this endpoint with `curl`, but since it requires authorization,
+> you will have to add the header to the command too: `curl -X GET -H "Authorization: Bearer NotAGoodToken" http://localhost:5000/api/forms/1`.
 
 - Create a new test case named `Post New Form And Verify Creation Succeeded`.
 

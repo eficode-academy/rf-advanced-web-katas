@@ -9,7 +9,7 @@
 Congratulations! Our test now fills the form successfully! However, a few
 more steps will make future-you a lot happier: documentation.
 
-We've added a buch of new keywords. Our test suite and resource
+We've added a bunch of new keywords. Our test suite and resource
 files are certainly small, so reading through the file is fairly easy.
 However, as with all software projects, our files are likely to grow,
 people will leave and new people will jump in and to make their job easier,
@@ -36,12 +36,12 @@ running with `execute_javascript=${TRUE}` or with `${FALSE}`.
 ### Step-by-step
 
 <details>
-  <summary>Add meaningul documentation.</summary>
+  <summary>Add meaningful documentation.</summary>
 
 <br />
 
 Keyword and test case documentation shouldn't be added just to state the obvious. However,
-in case of special requirements and nontrivial cases, there should be documentated explanation.
+in case of special requirements and nontrivial cases, there should be documented explanation.
 The keywords
 in this training are pretty concise and self-explanatory, but there's at least one
 place we could add documentation:

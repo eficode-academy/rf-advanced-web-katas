@@ -41,7 +41,7 @@ Or
 - [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
 - [RESTInstance](https://asyrjasalo.github.io/RESTinstance/)
 
-### Installing Prerequirements
+### Installing Prerequisites
 
 #### SeleniumLibrary
 
