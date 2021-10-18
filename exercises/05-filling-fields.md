@@ -80,7 +80,7 @@ in our `Variables` table.
 - Create a variable called `INPUT_FIELD` into your `Variables` table and give it the value
 `following-sibling::*[self::input or self::textarea]`.
 
-> You can use `preceding-sibling` to get a element _before_ some other element. Both elements have to be direct `children` of the same `parent` element."
+> You can use `preceding-sibling` to get an element _before_ some other element. Both elements have to be direct `children` of the same `parent` element."
 >
 > :bulb: Remember to **test your XPath** in the browser. Without the `following-sibling` your XPath
 > should match 6 fields, which are all the fields in the form.

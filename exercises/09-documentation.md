@@ -63,7 +63,7 @@ slows down the test.
 
 One final touch we should add to our test suite is to update the test tags.
 If this was a test with a real requirement linked to a requirements management
-tool, we should have the ticket id as a tag already. In this workshop, it's not, so we
+tool, we should have the ticket id as a tag already. In this training, it's not, so we
 ignore that now. However, we added a `wip` at the beginning of the training to our
 test suite. Now our test is finished, so we should remove it.
 

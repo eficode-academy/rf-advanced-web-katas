@@ -117,12 +117,21 @@ locator in other keywords, even without the need to specify the iframe.
 With this direct reference to the slider, JS function needed is a simple change of the `value` property.
 Example function syntax: `(element) => element.property = "new value"`.
 
-- Get and store slider's reference, and use it to assign `wanted_value` to slider's `value` property.
+- Use `Get Element` to get a reference to the slider element
+- Use `Execute Javascript` to assign `wanted_value` to the slider's `value` property using the reference element.
 
-Keyword should also check that the value stored by the slider indeed changed.
+Our keyword should also check that the value stored by the slider indeed changed.
 This can be done by confirming the value before the change is `0`, and after is
 equal to the `wanted value`. Browser's keywords have built-in checking, so
 there's no need to store the numbers and compare them as integers. The value is stored inside slider's properly, so you can use the `Get Property` keyword.
+
+Browser library has builtin waiting and no separate validation keywords. Instead, you can use `Get Text`
+to validate the text automatically. Python validations such as `==`, `!=`, `contains`, and `not contains`
+are available for validation. The syntax is Python-esque:
+
+```robot
+Get Text    locator    ==    some text
+```
 
 - Implement checks with `Get Property` to ensure the value has been changed.
 
@@ -169,14 +178,6 @@ succeeded.
 
 We can submit the form by using the `Click` keyword. There's only one `button` in the whole form,
 so we can just simply use that as the locator.
-
-Browser library has builtin waiting and no separate validation keywords. Instead, you can use `Get Text`
-to validate the text automatically. Python validations such as `==`, `!=`, `contains`, and `not contains`
-are available for validation. The syntax is Python-esque:
-
-```robot
-Get Text    locator    ==    some text
-```
 
 If the submission was successful, we should see a `Submit successful!` text in a `h3` element. That means
 that we simply need to use `Get Text` from the header element and verify the text is what is expected.

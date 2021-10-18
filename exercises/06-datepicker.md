@@ -4,7 +4,7 @@
 
 - You know how to handle dates and times
 - You know how to handle Python objects in Robot Framework
-- You are awareness of different Robot Framework libraries
+- You are aware of different Robot Framework libraries
 
 ## Introduction
 

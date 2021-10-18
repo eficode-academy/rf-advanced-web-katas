@@ -49,7 +49,7 @@ case. You can `ctrl+F` in the `inspector` tab of the developer tools or you
 can use the `console` tab to use basic JavaScript queries to get your XPath,
 such as `$x("//path/to/my/element");`.
 4. If you have same locators used in multiple places, store them in variables, and use variables in tests instead. When the locator breaks, you won't need to look for all occurrences of hard-coded values in your code. Additionally, the variable name can further clarify what
-the XPath was pointing to, so it is easier to fix it when it stops pointing anywhere.
+the XPath was pointing to, so it is easier to fix it when it stops working.
 
 ## Exercise
 

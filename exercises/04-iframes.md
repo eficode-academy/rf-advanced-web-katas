@@ -97,7 +97,7 @@ with _any_ arguments it might have. If we were to pass to it one keyword without
 be easy. However, we want it to handle any keyword that takes 0-n arguments. Our `Run Inside Iframe`
 keyword should be able to handle all situations.
 
-To handle a varying amount of arguments we can use the `@{variable}` notation. Let's
+To handle a varying amount of arguments we can use [the `@{variable}` notation](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#variable-number-of-arguments-with-user-keywords). Let's
 consider the following list:
 
 ```robot

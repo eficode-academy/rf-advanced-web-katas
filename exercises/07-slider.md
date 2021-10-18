@@ -60,7 +60,7 @@ that point, and click and hold the selector to drag it left or right to reach so
 is pretty easy for a human, but to automate it, we would need to calculate how many pixels we should click in some direction, and if it was wrong, correct it.
 
 When we consider there's different screen resolutions and window
-sizes, we realize it's hard to impossible to write a script that can click the correct pixel on first try, and succeed every time. Also,
+sizes, we realize it's hard or even impossible to write a script that can click the correct pixel on first try, and succeed every time. Also,
 handling pixel accuracy is always a trade-off between development speed, accuracy, resilience and support
 between different resolutions and window sizes.
 
