@@ -5,4 +5,4 @@ selenium-screenshot-*
 .DS_Store
 .idea
 **/geckodriver.log
-
+*venv/*
