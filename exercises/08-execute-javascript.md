@@ -13,12 +13,11 @@ Executing JavaScript in web testing is a handy (but a little hacky)
 way to manipulate objects and events. For example, we can
 change, add, or remove attributes. We can also input or modify values of certain
 fields directly, which would be impossible without deliberately imitating manual input, such as mouse movements.
-So, in general we can bypass some of the programmatically
-tricky user flow to make test development a little bit more tolerable, or test
-execution significantly faster.
+So, in general we can bypass parts of the programmatically tricky user flow to make test development
+a bit more tolerable, or test execution significantly faster.
 
 Although "we can", to replace human-like behaviour with hacks like JavaScript
-shouldn't be the default way to do things. Robot Framework is an acceptance testing framework
+shouldn't be the default way to do things. Robot Framework is an acceptance testing framework,
 and typically we want to simulate human behaviour as much as possible.
 However, sometimes it just makes more sense to use it, than to spend a long time
 implementing a keyword that will be inefficient at best, and inaccurate or
@@ -51,7 +50,7 @@ JavaScript, so a variable name like `execute_javascript` with a default value of
 - Add an argument `execute_javascript` to `Change Important Number` and give it a default value `${FALSE}`.
 
 Next, we want to run `Execute Javascript` if `execute_javascript` is `True` and skip the rest of the keyword.
-Here we have several different ways to do this. We could call `Run Keyword If` multiple times,
+Here we have multiple different ways to do this. We could call `Run Keyword If` multiple times,
 use a combination of `Run Keyword If` and `Run Keywords` to combine them in a single if-statement, or create
 wrapper keyword which are called based on `execute_javascript` value. It doesn't really matter which option
 we use, so let's just the first option. We're actually going to use `Run Keyword If` once and then

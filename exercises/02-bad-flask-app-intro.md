@@ -2,7 +2,7 @@
 
 ## Learning Goals
 
-- You understand general good steps to do at the beginning of developing
+- You understand general good steps to take at the beginning of developing
 test cases.
 
 ## Introduction
@@ -62,7 +62,7 @@ is commonly used to indicate this.
 
 <br />
 
-Our goal is to fill the form in a website. Opening a browser is a relatively time consuming task
+Our goal is to fill the form in a website. Opening a browser is a relatively time-consuming task,
 and it's not really part of our test, so we should add that to our `Suite Setup` in the `Settings`
 table of our test suite file. In order to avoid having too much detail in our test suite, we can
 add that call to our resource file.
@@ -93,7 +93,7 @@ So we need to remember to close the browser in our suite teardown.
 - Add `Close Browser` keyword call as your `Suite Teardown` in your test suite file.
 
 > We're going to write only a single test throughout this training, so a `Test Setup` and a
-`Test Teardown` would've been perfectly fine in _this_ particular case as well. However, it's best
+`Test Teardown` would've been perfectly fine in _this_ particular case as well. However, it's a best
 practice to open and close a browser only once during your test suite, so they're better to be put
 in `Suite Setup` and `Suite Teardown`. This way we ensure the browser is opened and closed only
 once, if we decided to expand our test suite.
@@ -131,7 +131,7 @@ close the popup.
 <details>
   <Summary>SeleniumLibrary</summary>
 
-By default SeleniumLibrary opens a browser in headful state. This is good while developing, but when running
+By default, SeleniumLibrary opens a browser in headful state. This is good while developing, but when running
 in CI, opening and closing browser windows take a lot of time, so they could/should be run in headless state. This is
 easy to accomplish with the command line parameter `--variable BROWSER:headlessfirefox` (or `headlesschrome`,
 provided that you have a variable called `BROWSER`). Although using the command line parameter is preferred,
@@ -154,7 +154,7 @@ on the value of `headless`
 <details>
   <summary>Browser</summary>
 
-By default Browser library opens browsers in a headless state. We need to specifically open it in a
+By default, Browser library opens browsers in a headless state. We need to specifically open it in a
 headful state if we want to see what is happening during the test. It's not necessary for the final
 test, but it makes debugging a lot easier to see what the tests are doing. `New Page` calls `New Browser`
 with default parameters if called without `New Browser`. This means we need to separately call
@@ -162,7 +162,7 @@ with default parameters if called without `New Browser`. This means we need to s
 
 Let's take that one step further. Especially if the same keyword is being called by both UI and API tests
 we don't really want to see the browser open during the API tests. We can parametrize opening in headless
-state and have it open headless by default and we can then just use `headless=${FALSE}` in our `Suite Setup`
+state and have it open headless by default, and we can then just use `headless=${FALSE}` in our `Suite Setup`
 while we're debugging.
 
 - Add `headless` parameter to `Open Browser To Our Application` keyword and give it `${TRUE}` as a default

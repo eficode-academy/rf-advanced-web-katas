@@ -11,7 +11,7 @@ For SeleniumLibrary you need
 - A working browser + driver combination (e.g. Chrome and
 [chromedriver](https://chromedriver.chromium.org/downloads) or Firefox and [geckodriver](https://github.com/mozilla/geckodriver/releases/))
 
-For Browser you need Python 3.7 or newer
+For Browser library, you need Python 3.7 or newer
 
 - See detailed installation instructions for Browser from the [official installation instructions](https://github.com/MarketSquare/robotframework-browser#installation-instructions)
 
@@ -24,7 +24,7 @@ After this training, you should
 3. Know how to navigate and avoid common pitfalls with XPaths
 4. Know how to handle iframes
 5. Understand how to create modular keywords
-6. Understand to create and import your own custom libraries
+6. Understand how to create and import your own custom libraries
 7. Know how to use for-loops
 8. Understand when it's better **not** to follow the human behaviour
 9. How to create meaningful documentation
