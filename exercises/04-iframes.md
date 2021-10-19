@@ -45,7 +45,7 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 
 ### Overview
 
-- Implement a wrapper keyword for running other keywords inside an iframe.
+- Implement a wrapper keyword `Run Inside Iframe` for running other keywords inside an iframe.
   - The keyword takes 3 arguments: the iframe, the keyword, and the arguments for that keyword.
   - It selects the iframe as its first step.
   - It executes the given keyword as the second step.
@@ -54,17 +54,15 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 ### Step-by-step
 
 <details>
-  <summary>Create new keyword.</summary>
+  <summary>Implement the <code>Run Inside Iframe</code> keyword</summary>
 
 <br />
 
 In order to keep our resource file tidy, let's implement a keyword to work as a wrapper for
 our iframes. Then, we can simply call that keyword whenever we want to run something inside
-and iframe and rest assured the frame won't stay selected afterwards. For starters, we can define
-our keyword and simply make it call `Select Frame` and `Unselect Frame`.
+and iframe and rest assured the iframe won't stay selected afterwards. For starters, we can make it call `Select Frame` and `Unselect Frame`.
 
-- Create a keyword called `Run Inside Iframe` and make it run `Select Frame` and `Unselect Frame`
-in succession.
+- Make the `Run Inside Iframe` keyword run `Select Frame` and `Unselect Frame` in succession.
 
 So far, our keyword doesn't really do anything. First, we need to know the frame we want to select
 and pass it as an argument to our keyword. The iframe does have an `id` this time, but it not
@@ -77,14 +75,14 @@ Just like with checking that an element attribute contains some value, we can ch
 attribute doesn't contain some value. We can do this by using the `not()` wrapper around our `contains()`
 wrapper, like this `//div[not(contains(@class,'hidden'))]/iframe`. Let's put this XPath in a variable again.
 
-- Create a variable for the XPath of the iframe.
+- Create a variable for the XPath of the visible iframe.
 
-</details> <!-- Create new keyword -->
+</details> <!-- Implement the Run Inside Iframe keyword -->
 
 ---
 
 <details>
-  <summary>Add keyword arguments.</summary>
+  <summary>Add keyword arguments</summary>
 
 <br />
 
@@ -130,12 +128,12 @@ selection and deselection.
 
 - Call `Run Keyword` to run your argument `keyword` between selecting and deselecting a frame.
 
-</details>
+</details> <!-- Add keyword arguments -->
 
 ---
 
 <details>
-  <summary>Add keyword teardown.</summary>
+  <summary>Add keyword teardown</summary>
 
 <br />
 

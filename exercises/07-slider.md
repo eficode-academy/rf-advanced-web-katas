@@ -17,40 +17,39 @@ In this exercise, we're going to move our slider by using Robot Framework's for-
 
 ### Overview
 
-- Implement a keyword that moves iteratively the "Important number" slider to any desired value.
+- Implement the keyword that moves iteratively the "Important number" slider to any desired value.
   - Find the size of the slider element.
   - Create a loop, iterating through the slider's width from left to right.
   - Use `Exit For Loop If` as soon as the loop reaches the wanted value.
   - Otherwise, keep moving the slider, bit by bit, to the right.
-- Add `Change Important Number` call to your `Fill All Form Fields` keyword, and set it to go to 15.
+- Add `Change Important Number` call to the keyword filling the form, and set it to go to 15.
 
 ### Step-by-step
 
 <details>
-  <summary>Create a new keyword to slide the slider.</summary>
+  <summary>Begin implementing the <code>Change Important Number</code> keyword to slide the slider</summary>
 
 <br />
 
-Let's begin by adding a keyword `Change Important Number`. We want to be able
+In `Change Important Number`, we want to be able
 to change our important number to any number we want, so our keyword will need an argument `wanted_value`.
-We know we'll call this keyword from our `Fill All Form Fields` keyword, so let's just add a call for our
+We know we'll call this keyword from the keyword filling the form, so let's just add a call for our
 new keyword there straight away. Also, instead of making a detour of hard-coding a value in first use, let's create
 a `DEFAULT_IMPORTANT_NUMBER` variable
 immediately and give it the value `15`.
 
-- Create a new keyword called `Change Important Number`.
-- Add an argument called `wanted_value` for your keyword.
-- Call `Change Important Number` in your `Fill All Form Fields` keyword
+- In `Change Important Number`, add an argument called `wanted_value` for your keyword.
+- Call `Change Important Number` in your keyword filling the form
 - Add an argument called `important_number` to your `Fill All Form Fields`
 - Add `DEFAULT_IMPORTANT_NUMBER` variable with the value `15`.
 - Give `important_number` a default value of `DEFAULT_IMPORTANT_NUMBER`.
 
-</details> <!-- Define keyword -->
+</details> <!-- Begin implementing -->
 
 ---
 
 <details>
-  <summary>Find element size.</summary>
+  <summary>Find element size</summary>
 
 <br />
 

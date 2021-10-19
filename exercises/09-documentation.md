@@ -52,6 +52,10 @@ but using the `Execute Javascript` doesn't update the UI, even though it works.
 `execute_javascript` causes an issue with the UI, but not using it dramatically
 slows down the test.
 
+Note also that if you have implemented a SeleniumLibrary wrapper to deal with your form fields inside one
+call to select the frame, you might want to also document all those keywords with a warning that they all
+need to be called at the time the Iframe is pre-selected, or they will fail.
+
 </details>
 
 ---

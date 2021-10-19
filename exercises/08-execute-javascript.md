@@ -139,7 +139,7 @@ Get Text    locator    ==    some text
 As we now have our JavaScript implementation ready, we can modify the logic inside
 `Fill All Form Fields` keyword to change the important number with JavaScript.
 
-- Add `${TRUE}` as a final argument when you call `Change Important Number` inside `Fill All Form Fields`.
+- Add `${TRUE}` as a final argument when you call `Change Important Number` inside the keyword filling the form.
 
 </details> <!-- Change important number -->
 
@@ -189,3 +189,8 @@ that we simply need to use `Get Text` from the header element and verify the tex
 > :bulb: Remember that the form is inside an iframe
 
 </details> <!-- Submit form -->
+
+> :bulb: Note that the dummy keyword
+> `Replace this with an actual implementation` has been 
+> removed from all execution. It is not needed anymore, so delete it. Rather than keep unused 
+> code around, we want the resource files to be neat and contain the relevant stuff.

@@ -24,10 +24,10 @@ usages of a similar XPath if we can check only one.
 
 ### Overview
 
-- Implement a modular keyword `Fill Form Field` which fills the
+- Implement the keyword `Fill Form Field` with flexible logic to fill in the
 `Name`, `Email`, or `Message` field of the form.
   - Keyword should take the `field` name and the `value` you want to input as arguments.
-- Find an XPath, which finds the `Name`, `Email`, and `Message` fields.
+- Find an XPath, that can match the `Name`, `Email`, and `Message` fields.
 - Implement an additional keyword to fill in all your form fields
 - **Optional:** Create an embedded variable variant of your fill keywords.
 - **Optional:** Investigate what errors you get if you don't select the iframe beforehand.
@@ -36,24 +36,24 @@ usages of a similar XPath if we can check only one.
 ### Step-by-step
 
 <details>
-  <summary>Define your keyword.</summary>
+  <summary>Begin implementing the <code>Fill Form Field</code> keyword</summary>
 
 <br />
 
 We've finally reached a point where we can start filling out our form. The easiest
 fields to tackle are the name, email, and message fields. They're similar fields,
-so we should aim to create a reusable keyword that can fill each field just by specifying which
-field we want to fill. We'll start by defining a keyword, which takes two arguments:
+so we should aim to create a reusable mechanism that can fill each field in, just by specifying which
+field we want to fill. We'll start by adding two arguments to `Fill Form Field` keyword:
 the field we want to fill, and the value we want to give that field.
 
-- Define a keyword `Fill Form Field`, which takes 2 arguments: `field` and `value`.
+- Modify the `Fill Form Field` keyword to take 2 arguments: `field` and `value`.
 
 </details>
 
 ---
 
 <details>
-  <summary>Find a good locator strategy to match name, email, and message field.</summary>
+  <summary>Find a good locator strategy to match name, email, and message field</summary>
 
 <br />
 
@@ -124,8 +124,8 @@ can use to fill our form inside our `Fill Form Field`.
 form iframe.
 
 > Performance-wise it's recommended to write a wrapper keyword to call `Run Inside Iframe` only once,
-> since we're operating inside the same frame for a while. Moreover, repeatedly selecting and deselecting
-> the frame takes time. Feel free to make an additional wrapper keyword if you like.
+> since we're doing more than one thing inside the same frame. Repeatedly selecting and deselecting
+> the frame takes time.
 
 </details> <!-- SeleniumLibrary -->
 
@@ -156,18 +156,15 @@ click a button with the locator `my-button` inside an iframe with the locator `m
 ---
 
 <details>
-  <summary>Write a keyword to fill all form fields</summary>
+  <summary>Implement the <code>Fill Form With Valid Data</code> keyword to fill all form fields</summary>
 
 <br />
 
 Now that we have our modular keyword we can use to fill any of our fields, we can
-implement a new keyword, which calls our modular keyword several times for different
-fields. And then we finally have something we can call in our test case, so we can replace
-our initial `No Operation` call in our test case.
+implement the next keyword, which calls our modular keyword several times for different
+fields.
 
-- Create a new keyword called `Fill All Form Fields`.
-- Inside `Fill All Form Fields` call `Fill Form Field` once for `Name`, `E-mail`, and `Message` each.
-- Replace `No Operation` to `Fill All Form Fields` in your test suite file.
+- Inside `Fill Form With Valid Data` call `Fill Form Field` once for `Name`, `E-mail`, and `Message` each.
 
 We can now hard-code our values for the three first fields. However, wouldn't it be cool if we
 could give the keyword arguments and still call it from the test suite without arguments? We can do
@@ -183,15 +180,32 @@ we just defined.
 - Add three variables: `DEFAULT_NAME`, `DEFAULT_EMAIL`, and `DEFAULT_MESSAGE` to your `Variables` table
 and give them some values (e.g `John Doe`, `john.doe@example.com`, `Hello, my name is John Doe.`
 respectively).
-- Add three arguments for your `Fill All Form Fields` named `name`, `email`, and `message` and give them
+- Add three arguments for your `Fill Form With Valid Data` named `name`, `email`, and `message` and give them
 the default values based on your newly created variables.
 
-</details> <!-- Fill all form fields -->
+
+<details>
+  <summary>Optional: SeleniumLibrary</summary>
+
+The keyword to fill out the first 3 fields has been implemented and works, but it is not the most efficient.
+We can optimize the execution, using an elegant and modular logic.
+
+To speed up the tests, add a wrapper keyword. That keyword would be called with `Run Inside Iframe`
+in `Fill Form With Valid Data`, so that the keywords called inside that wrapper keyword, like `Fill Form Field`,
+can be changed to act without selecting and deselecting the iframe.
+
+- Add a new keyword called `Fill All Form Fields`, and move there steps previously implemented in `Fill Form With Valid Data`.
+- Call the new keyword with `Run Inside Iframe` in `Fill Form With Valid Data`.
+- Adjust other keywords accordingly.
+
+</details> <!-- SeleniumLibrary -->
+
+</details> <!-- Implement the keyword to fill all form fields -->
 
 ---
 
 <details>
-  <summary>Optional: Create an embedded variable version of your keyword.</summary>
+  <summary>Optional: Create an embedded variable version of your keyword</summary>
 
 <br />
 
@@ -224,8 +238,8 @@ get an error when running our test case:
 > case with `As A Regular User I should Be Able To Login With Valid Credentials`,
 > `As A Customer I Should Be Able To View My Orders`, etc.
 
-- Add a keyword that takes embedded arguments instead of normal ones to fill your form.
-- Modify your `Fill All Form Fields` to use the embedded arguments or call your embedded
+- Implement the `Input "${value}" Into ${field} Field` keyword to work like the previous one to fill in fields in your form.
+- Modify your `Fill Form With Valid Data` to use the embedded arguments or call your embedded
 arguments form the test case directly (you can modify them back after testing if you want,
 it doesn't affect the outcome of the training).
 - (Optional) Change your test suite to call the embedded argument keywords directly.

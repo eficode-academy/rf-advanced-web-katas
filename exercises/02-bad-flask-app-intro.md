@@ -11,8 +11,8 @@ This is the UI portion of the training. The goal for the rest of
 the exercises is to fill out the form successfully. The exercises will not necessarily get
 more difficult, but will tackle completely different issues.
 
-In the following exercises, we're going to write all our keywords in `bad_flask_app.robot` file
-in the `resources` directory and our test case in the `form.robot` file.
+In the following exercises, we're going to implement all keywords listed in `bad_flask_app.robot` file
+in the `resources` directory, all tied to the test case in the `form.robot` file.
 
 > Remember that the `bad_flask_app.robot` file is in the `resources` folder, so the resource file
 > is imported with a relative path. Also, we've named our resource file based on the application
@@ -23,53 +23,53 @@ in the `resources` directory and our test case in the `form.robot` file.
 
 ### Overview
 
-- Create a new test case called `Form Filled With Valid Data Should Submit Successfully`.
-- Tag your test case to mark it as unfinished.
-- Implement suite setup (and teardown).
-- Have your test pass by running only setup (and teardown).
+- Review the test case `Form Filled With Valid Data Should Submit Successfully`.
+- Tag the test case to mark it as unfinished.
+- Import the library of your choice to do the rest of the exercises with.
+- Implement the suite setup keyword (and add a suite teardown).
+- Have your test pass including the setup (and teardown).
 - **Optional:** Parametrize opening browser in headless/headful mode
 
 ### Step-by-step
 
 <details>
-  <summary>Create your test case and tag it as unfinished.</summary>
+  <summary>Review the test case and tag it as unfinished</summary>
 
 <br />
 
 A test suite file is not useful without any test cases. Moreover, each test case should have a descriptive name.
 Our goal is to submit the form successfully, so a name like `Form Filled With Valid Data Should
-Submit Successfully` is a good name. A test case should also have at least one step. For now, you
-can add `No Operation` call to your test case, just to make sure it is being executed.
+Submit Successfully` is a good name. A test case should also have at least one step. The provided skeleton contains 3 steps, all of which are just calling the dummy keyword.
 
-- Create a test case called `Form Filled With Valid Data Should Submit Successfully` to your test suite.
-- Add `No Operation` call into your case.
+- Read the steps of test case `Form Filled With Valid Data Should Submit Successfully`, and locate them in resource file.
 
 It's a good practice to separate ready tests from unfinished ones, so that CI won't run your unfinished
 tests. Tags are the best way to do this. Your CI run should have some `--exclude` (or `-e`) flag to
 exclude unfinished tests. The tag name can be whatever is clear enough, but `wip` (work in progress)
 is commonly used to indicate this.
 
-- Add a `wip` tag to your test case.
+- Add a `wip` tag to the test case.
 
 > :bulb: Test case specific tags need be defined with a `[Tags]` at the beginning of your test case.
 
-</details> <!-- Create your test case -->
+</details> <!-- Review the test case and tag it as unfinished -->
 
 ---
 
 <details>
-  <summary>Implement setup and teardown.</summary>
+  <summary>Import the library, use it to implement the suite setup (and teardown)</summary>
 
 <br />
 
-Our goal is to fill the form in a website. Opening a browser is a relatively time-consuming task,
-and it's not really part of our test, so we should add that to our `Suite Setup` in the `Settings`
-table of our test suite file. In order to avoid having too much detail in our test suite, we can
-add that call to our resource file.
+Our goal is to fill out the form in a website. Opening a browser is a relatively time-consuming task,
+and it's not really part of our test, so we should add do it as part of the  `Suite Setup`, so it will run once per test suite.
+The `Suite Setup` resides in the `Settings`
+table of our test suite file. In order to avoid having too much detail in our test suite file,
+the implementation of the setup keyword is done in the resource file.
+The variable storing the default browser has also been already added there.
 
-- Create a keyword called `Open Browser To Application` to your resource file.
-- Set `Open Browser To Application` as your `Suite Setup` in your test suite file.
-- Add a `BROWSER` variable into your resource file and give it a value your environment supports.
+- Find the keyword called `Open Browser To Application` in your resource file.
+- Find the `BROWSER` variable into your resource file and ensure it has the value your environment supports.
 
 Since we're dealing with external libraries, we need to remember to import our library into our resource file
 
@@ -85,7 +85,7 @@ Since we're dealing with external libraries, we need to remember to import our l
 <details>
   <summary>SeleniumLibrary</summary>
 
-Bad Flask App is running at `localhost:5000`, so we need to open our browser in that address. SeleniumLibrary
+Bad Flask App is running at `localhost:5000`, so we need to open our browser in that address. Note that SeleniumLibrary
 doesn't close any open browser instances automatically, which can cause major performance and scaling issues.
 So we need to remember to close the browser in our suite teardown.
 
@@ -105,7 +105,7 @@ once, if we decided to expand our test suite.
 
 Browser library automatically closes the browser after the test or suite has finished, to we don't
 need to handle closing the browser separately. We can use `New Page` keyword to open the browser
-to Bad Flask App.
+to Bad Flask App, like before with the `api.robot` tests.
 
 - Call `New Page` in `Open Browser To Application` to open Bad Flask App (`localhost:5000`).
 
@@ -121,12 +121,12 @@ library for this purpose. This will give you a popup when you reach the
 keyword and nothing will happen in the test case until you manually
 close the popup.
 
-</details> <!-- Implement setup and teardown. -->
+</details> <!-- Import the library, use it to implement the suite setup (and teardown) -->
 
 ---
 
 <details>
-  <summary>Optional: Parametrize opening browser to headless or headful mode.</summary>
+  <summary>Optional: Parametrize opening browser to headless or headful mode</summary>
 
 <details>
   <Summary>SeleniumLibrary</summary>
@@ -156,11 +156,12 @@ on the value of `headless`
 
 By default, Browser library opens browsers in a headless state. We need to specifically open it in a
 headful state if we want to see what is happening during the test. It's not necessary for the final
-test, but it makes debugging a lot easier to see what the tests are doing. `New Page` calls `New Browser`
-with default parameters if called without `New Browser`. This means we need to separately call
+test, but it makes debugging a lot easier to see what the tests are doing. If you use `New Page` alone,
+without first calling `New Browser`, the latter keyword will be called for you,
+with default parameters. This means, that if we want to change those defaults, we need to first explicitly call
 `New Browser` with `headless=${FALSE}` before calling `New Page`.
 
-Let's take that one step further. Especially if the same keyword is being called by both UI and API tests
+Let's take that one step further. Currently, the same keyword is being called by both UI and API tests, but
 we don't really want to see the browser open during the API tests. We can parametrize opening in headless
 state and have it open headless by default, and we can then just use `headless=${FALSE}` in our `Suite Setup`
 while we're debugging.

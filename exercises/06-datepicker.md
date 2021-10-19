@@ -23,19 +23,19 @@ we're going to use is [Datetime](https://robotframework.org/robotframework/lates
 
 ### Overview
 
-- Define a keyword called `Select Date From Future`, which takes the amount of `days` we
-want to pick into the future as an argument.
-- Have your keyword select a date within 2 weeks and click that element.
+- Implement the keyword `Select Date From Future` to take as an argument the amount of `days` we
+want to pick into the future.
+- Have your keyword select a date within 2 weeks and click it.
   - Use the [Datetime library documentation](https://robotframework.org/robotframework/latest/libraries/DateTime.html)
 to find a keyword, which allows you to add a certain amount of days into another date.
   - The keyword should use the current date as a reference point.
   - The keyword should handle the situation that we need to click to next month and/or year.
-- Add `Select Date From Future` keyword call to your `Fill All Form Fields` keyword.
+- Add `Select Date From Future` keyword call to the keyword filling the form.
 
 ### Step-by-step
 
 <details>
-  <summary>Create a new keyword.</summary>
+  <summary>Implement the keyword `Select Date From Future`</summary>
 
 <br />
 
@@ -44,8 +44,7 @@ so we're not able to simply type in our wanted date. Clicking a date in a datepi
 is very easy to do for a human, but there are several things to consider when automating it.
 
 This time, we're not really typing anything, but we're
-selecting from a list of available values. Let's create a keyword that describes what we're
-doing, like `Select Date From Future`.
+selecting from a list of available values, so to represent it we use a name `Select Date From Future`.
 
 We already know that this keyword will need at least one argument, so without any hard-coding
 detour let's add `days` as an argument now.
@@ -57,8 +56,7 @@ detour let's add `days` as an argument now.
 > You could also implement this with embedded arguments with something like `Select A Date ${days} Days
 > In The Future`.
 
-- Create a keyword called `Select Date From Future`.
-- Give the keyword the amount of `days` we want to go into the future as an argument.
+- Give the `Select Date From Future` keyword the amount of `days` we want to go into the future as an argument.
 
 First things first:
 we need to open our datepicker. We can do that by clicking the date field. Lucky for us, the
@@ -66,7 +64,7 @@ datepicker has an `id` attribute with the value `datepicker`.
 
 - Make the keyword click the `datepicker` element.
 
-</details> <!-- Define keyword -->
+</details> <!-- Implement the keyword `Select Date From Future` -->
 
 ---
 
@@ -164,17 +162,17 @@ the date as text. Just like with accessing the year and month, we can select `da
 ---
 
 <details>
-  <summary>Add your keyword to <code>Fill All Form Fields</code></summary>
+  <summary>Add <code>Select Date From Future</code> keyword call to the keyword filling the form</summary>
 
 <br />
 
-While we're still at it. Let's do one more quick step to get rid of our hard-coded `3` in our
-`Fill All Form Fields` keyword. Let's add that as a new `DEFAULT_DAYS` variable and have the keyword
+While we're still at it. Let's do one more quick step to get rid of our hard-coded `3` in our (only) use of the
+`Select Date From Future` keyword. Let's add that as a new `DEFAULT_DAYS` variable and have the keyword
 use that as a default value for its own `days` argument.
 
 - Add `DEFAULT_DAYS` variable into your `Variables` table with the value `3`.
-- Give `Fill All Form Fields` a new argument `days` and give it `DEFAULT_DAYS` as a default value.
-- Add your `Select Date From Future` call to `Fill All Form Fields` keyword with the argument `days`
+- Give the keyword filling the form a new argument `days` and give it `DEFAULT_DAYS` as a default value.
+- Add your `Select Date From Future` call to the keyword filling the form with the argument `days`
 to make it go 3 days into the future by default.
 
-</details> <!-- Add to fill all form fields -->
+</details> <!-- Add Select Date From Future keyword call to the keyword filling the form -->

@@ -41,8 +41,7 @@ All the responses are mocked (no data is really changed), so feel free to play a
 ### Overview
 
 - Get the authentication token and set it as a header in suite setup.
-- Create 3 separate test cases, which use `Get`, `Post`, and `Put`. Those tests
-should be implemented to check the following functions, one per test:
+- Implement 3 test cases already listed in the `api.robot` file, each checking one of the following:
   - The name of the first form submitter (`/api/forms/1`) is `John Doe`.
   - It's possible to submit a new form. Request body needs to be a JSON string. Response code for a
   successful POST is `201`.
@@ -57,11 +56,10 @@ should be implemented to check the following functions, one per test:
 
 In this exercise we're not going to write very sophisticated Robot Framework code, meaning
 that we're going to do very simple test cases without putting keywords in a separate resource file.
-In our `tests` folder, we have a file called `api.robot`. Let's open that up.
+In our `tests` folder, we have a file called `api.robot`. The file contains already names of 3 test cases and one keyword. All of them contain only one keyword, which does nothing. It is there to avoid error messages about missing keyword and test implementation steps.
 
-> The file resources `../resources/bad_flask_app.robot`. That import is only used with `Browser`
-> library. If you're doing the exercises with `RESTinstance`, the import can be safely ignored. Running the
-> suite with an empty resource file will log a warning, but will not affect the outcome of the exercise.
+> The dummy keyword `Replace this with an actual implementation` is implemented in the resource file,
+> which is imported in the 3rd line.
 
 <details>
   <summary>RESTinstance</summary>
@@ -98,12 +96,12 @@ directly.
 - Add a library import for `Browser` in your `Settings` table to `bad_flask_app.robot` resource file.
   - (Optional) Also add the import to your `api.robot` test suite file.
 
-Let's create ourselves our first keyword and let's call it `Open Browser To Our Application`. In here, we want
+In the resource file there's already an unimplemented keyword `Open Browser To Our Application`, let's use it. We want it
 to open our browser to Bad Flask App and verify the page is opened before continuing. We'll use `New Page` to
 open our browser in headless mode. The server is running in `http://localhost:5000`, so we'll give that
 as a parameter to our `New Page` call.
 
-- Create a new keyword `Open Browser To Our Application` to your resource file.
+- Open the resource file and find the `Open Browser To Our Application` keyword.
 - Add `New Page` with the parameter `http://localhost:5000` to your keyword.
 
 To verify the page load is complete, we can use `Get Title` to assert
@@ -124,7 +122,7 @@ As we have no other actions to be done before our tests begin
 we want our browser to open immediately, let's add it as our suite setup in our
 test suite.
 
-- Add `Open Browser To Our Application` as your `Suite Setup` in your test suite file.
+- Include `Open Browser To Our Application` in your `Suite Setup` in your test suite file.
 
 </details> <!-- Browser -->
 
@@ -145,8 +143,8 @@ Before we can query any data from Bad Flask App, we need a way to authenticate t
 We only want to authenticate once and use that as the authorization header. This means we
 should add this as our `Suite Setup` in our `Settings` table.
 
-- Add a keyword `Authenticate And Set Headers`.
-- Add your new keyword as the `Suite Setup`.
+- Implement the keyword `Authenticate And Set Headers`.
+- Set that keyword as the `Suite Setup`.
 
 > :bulb: Suite setup supports only running a single keyword.
 > When doing exercises with `BROWSER` library, you need to use `Run keywords` as
@@ -228,7 +226,7 @@ value `{"Authorization": "Bearer ${response.body}"}`.
 ---
 
 <details>
-  <summary>Get the first form and verify that its poster's name is <code>John Doe</code>.</summary>
+  <summary>Get the first form and verify that its poster's name is <code>John Doe</code></summary>
 
 <br/>
 
@@ -238,7 +236,7 @@ We can get it from the endpoint `/api/forms/1` and the response is a JSON with t
 > :bulb: It is possible to test this endpoint with `curl`, but since it requires authorization,
 > you will have to add the header to the command too: `curl -X GET -H "Authorization: Bearer NotAGoodToken" http://localhost:5000/api/forms/1`.
 
-- Create a new test case named `Get First Form And Verify Poster's Identity`.
+- Implement the test case named `Get First Form And Verify Poster's Identity`.
 
 <details>
   <summary>RESTinstance</summary>
@@ -311,26 +309,23 @@ We can now assert that the queried data is what we expect it to be. We can simpl
 ---
 
 <details>
-  <summary>Create a new form using <code>POST</code> and verify it succeeded.</summary>
+  <summary>Create a new form using <code>POST</code> and verify it succeeded</summary>
 
 <br/>
 
-Again, let's create a new test case. This time, need to make a `POST` request to create a new
+Again, let's implement the next test case. This time, need to make a `POST` request to create a new
 form to our website and verify the form creation was successful. The endpoint to create a new form
 is `/api/forms`.
 
-- Create a new test case named `Post New Form And Verify Creation Succeeded`.
+- Implement the test case named `Post New Form And Verify Creation Succeeded`.
 
 For our test case, it's enough to specify our form with an `id` and `name`. The data is
-regular JSON, and it's going to be static, so let's create a variable for that in the
-`Variables` table.
-
-- Create a variable `NEW_FORM_DATA` and make it a JSON with an `id` and `name` with values of your choice.
+regular JSON, and it's going to be static. A variable suggestion `NEW_FORM_DATA` has been included in the test file.
 
 <details>
   <summary>RESTinstance</summary>
 
-As with `GET`, the RESTinstance keyword for `POST` is simply `Post`. We can use our `NEW_FORM_DATA` variable
+As with `GET`, the RESTinstance keyword for `POST` is simply `Post`. We can use the `NEW_FORM_DATA` variable
 as the body for our `Post`.
 
 > The keywords are not case-sensitive, so `post`, `Post`, and `POST` work equally well.
@@ -356,7 +351,7 @@ Similar to `String`, we can also directly evaluate the status code with the `Int
 
 As with `GET`, we'll use `Http` as our keyword, but this time we'll just use `POST` as
 the request method. We can add a body to our `Http` keyword the same way we add headers.
-Let's use our `NEW_FORM_DATA` as the body for our `POST` request.
+Let's use the `NEW_FORM_DATA` as the body for our `POST` request.
 
 - Use `Http` to the `/api/forms` endpoint and use the `POST` method.
 - Use `HEADERS` test variable to set the headers for your request.
@@ -375,7 +370,7 @@ to verify our response code is `201` or we can use `Should Be True` to verify `r
 
 </details> <!-- Browser -->
 
-> :bulb: Make the JSON in a single line.
+> :bulb: It is easier to store whole JSON as a single line.
 >
 > :bulb: The `id` needs to be unique. The API has 2 forms with ids `1` and `2`.
 
@@ -384,7 +379,7 @@ to verify our response code is `201` or we can use `Should Be True` to verify `r
 ---
 
 <details>
-  <summary>Modify the form form's email address using <code>PUT</code> and verify it succeeded.</summary>
+  <summary>Modify the form form's email address using <code>PUT</code> and verify it succeeded</summary>
 
 <br/>
 
@@ -394,9 +389,9 @@ in the `/api/forms/1` endpoint.
 > We could also use `/api/forms` and specify an `id` in our payload. Either way we do, `id` is
 > mandatory in either of them. If specified in both, the `id` specified by the URL is used.
 
-- Create a new test case named `Modify Form's Email Address And Verify It Succeeded`.
+- Implement the test case named `Modify Form's Email Address And Verify It Succeeded`.
 
-We'll only modify the user's email address, so let's create a variable called `NEW_EMAIL` into our `Variables`
+We'll only modify the user's email address, so let's create a variable called `NEW_EMAIL` in our `Variables`
 table. It doesn't really matter what the new email is as long as it's different from the old email. So for example
 `firstname.lastname@example.com` works in this situation.
 
@@ -425,6 +420,10 @@ variable, and we need to verify the emails are not equal.
 
 > :bulb: It doesn't matter if you use `String` or `Output`, but you _must_ use the same
 > after `Get` and after `Put`.
+
+After implementing the test cases, all mentions of the dummy keyword
+`Replace this with an actual implementation` should be gone, and the resource import
+can be removed from the `Settings`. Try it and check that the tests still pass.
 
 </details> <!-- RESTinstance -->
 

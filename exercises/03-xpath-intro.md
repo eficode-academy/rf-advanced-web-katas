@@ -55,8 +55,8 @@ the XPath was pointing to, so it is easier to fix it when it stops working.
 
 ### Overview
 
-- Close the dropdown _if it's opened_ as part of the test setup.
-- Open the form, also as part of the test setup.
+- Implement the logic to close the dropdown _if it's opened_ as part of the test setup.
+- Implement the keyword to open the form, also as part of the test setup.
   - Test should pass with or without the dropdown initially opened.
 - **Optional:** Investigate what happens if you don't close the dropdown beforehand.
 What errors do you see?
@@ -64,7 +64,7 @@ What errors do you see?
 ### Step-by-step
 
 <details>
-  <summary>Close the dropdown if it's open.</summary>
+  <summary>Implement the logic to close the dropdown if it's open.</summary>
 
 <br />
 
@@ -72,7 +72,7 @@ As we land on Bad Flask App, we _might_ see a huge dropdown opened
 covering the whole website. It opens at random, so there's no knowing whether it
 will open in our test case or not. While we're looking at the Bad Flask App, let's
 open our developer console by right-clicking anywhere on the screen and selecting `inspect`.
-It's a good idea to keep the developer console always opened when you're writing Selenium tests.
+It's a good idea to keep the developer console always opened when you're writing web tests.
 We notice, that the dropdown doesn't have an `id` field that would allow us to
 easily access that element.
 
@@ -87,14 +87,14 @@ variable an UPPER CASE name. As we write more code, we can add next XPaths into 
 
 - Add `//div[contains(@class, 'open')]` into a variable with a meaningful name, such
 as `OPENED DROPDOWN`.
-- Create a keyword called `Close Dropdown If Opened` that clicks the element `OPENED DROPDOWN`.
+- Implement the keyword called `Close Dropdown If Opened` that clicks the element `OPENED DROPDOWN`.
 
 <details>
   <summary>SeleniumLibrary</summary>
 
 To check if the element is visible we need to first get the element status, then combine that with
 `Run Keyword If`. We can ge the element status with `Run Keyword And Return Status` combined with
-`Page Should Contain Element`
+`Page Should Contain Element`.
 
 - Use `Run Keyword And Return Status` and `Page Should Contain Element` to check if the dropdown is opened.
 Store the result in a variable.
@@ -127,12 +127,12 @@ To check if the element is visible, we can use `Get Element State` and check the
 > `dropdown-menu` is visible in the page, after checking that the page is fully loaded, to avoid
 > creating race conditions. Often with XPaths, there is more than "one true answer".
 
-</details> <!-- Close the dropdown -->
+</details> <!-- Implement the logic to close the dropdown if it's open. -->
 
 ---
 
 <details>
-  <summary>Open the form and define test setup.</summary>
+  <summary>Implement the keyword to open the form, also as part of the test setup.</summary>
 
 <br />
 
@@ -142,7 +142,7 @@ so our XPath is fairly straightforward: `//button`. Again, even though our XPath
 it sounds too general, so better add it to the `Variables` table.
 
 - Add a variable for our `//button` XPath.
-- Create a keyword called `Show Form` which clicks the `//button` element.
+- Implement the keyword called `Show Form` which clicks the `//button` element.
 
 Now we have two new keywords: one that closes the dropdown if it is opened and one
 that clicks the "Show Form" button. Let's add this to our `Test Setup`. We could
@@ -171,7 +171,7 @@ We can still validate our test behaves as expected by running `robot -d output t
 Our test should open the browser to Bad Flask App, check if the dropdown is opened and close it
 when possible, click the "Show Form" button, and finally close the browser.
 
-</details> <!-- Open the form. -->
+</details> <!-- Implement the keyword to open the form, also as part of the test setup. -->
 
 ---
 

@@ -4,8 +4,8 @@ All exercises are in the given files. Start with file [00-getting-started.md](./
 and work your way through each exercise file.
 
 The exercise architecture is already setup with the directories in this directory with all necessary
-links to each file already configured. The exercises will explain all necessary references to external
-libraries.
+links to each file already configured. The test files and the main resource file contain the scaffolding of unimplemented keywords. The exercises will explain all necessary references to external
+libraries, and how to implement the keywords in order to pass the tests.
 
 Remember that the root directory has the [XPath cheatsheet](../xpath-cheatsheet.md) if you're struggling
 with XPath syntax.
