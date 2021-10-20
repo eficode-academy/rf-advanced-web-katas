@@ -108,7 +108,7 @@ as a parameter to our `New Page` call.
 
 To verify the page load is complete, we can use `Get Title` to assert
 the website title is `Bad Flask App`. Browser library has builtin waiting for all its keywords, so we don't
-need to wait for the page elements to load before asserting the title. Browser library support Python-like validations
+need to wait for the page elements to load before asserting the title. Browser library support Python-like validations,
 so we can use syntax like `Get Title    ==    Bad Flask App` directly.
 
 > As we're also going to use keywords from Browser library directly in our test suite file, it might
@@ -163,7 +163,7 @@ the authentication endpoint to get the authentication token.
 
 - Use `Post` keyword inside your `Authenticate And Set Headers` with the `/api/auth` endpoint.
 
-The response is a JSON and we should be able to get our data from that object. The easiest way
+The response is a JSON, and we should be able to get our data from that object. The easiest way
 to do this is to use the `Output` keyword, which logs the request and the response JSONs directly
 into the terminal. If we use just `Output` we notice that our token is inside the `body` of the
 `response`. We can use standard JSONPath notion `$` to match the base of the response body. We can
@@ -322,7 +322,7 @@ is `/api/forms`.
 - Create a new test case named `Post New Form And Verify Creation Succeeded`.
 
 For our test case, it's enough to specify our form with an `id` and `name`. The data is
-regular JSON and it's going to be static, so let's create a variable for that in the
+regular JSON, and it's going to be static, so let's create a variable for that in the
 `Variables` table.
 
 - Create a variable `NEW_FORM_DATA` and make it a JSON with an `id` and `name` with values of your choice.
@@ -333,7 +333,7 @@ regular JSON and it's going to be static, so let's create a variable for that in
 As with `GET`, the RESTinstance keyword for `POST` is simply `Post`. We can use our `NEW_FORM_DATA` variable
 as the body for our `Post`.
 
-> The keywords are not case sensitive, so `post`, `Post`, and `POST` work equally well.
+> The keywords are not case-sensitive, so `post`, `Post`, and `POST` work equally well.
 
 - Use `Post` to the `/api/forms` endpoint.
 - Add `NEW_FORM_DATA` variable as a second argument to your `Post`.
@@ -418,7 +418,7 @@ we'll need a JSON payload for our `Put` to change the email address.
 
 Bad Flask App sends the "modified" form as a response. We can use the response directly
 to check if the email is different. We need to store the `response body email` again into a
-variable and we need to verify the emails are not equal.
+variable, and we need to verify the emails are not equal.
 
 - Use `String` our `Output` to get the the `response body email` and store it in `new` variable.
 - Use `Should Not Be Equal` to verify that `old` and `new` are not the same.
@@ -453,7 +453,7 @@ variable with the same name and just overwrite it when we get the `PUT` response
 
 Bad Flask App sends the "modified" form as a response. We can use the response directly
 to check if the email is different. We need to store the `response.body.email` again into a
-variable and we need to verify the emails are not equal.
+variable, and we need to verify the emails are not equal.
 
 - Use `Set Variable` to store `response.body.email` into a variable calle `new`.
 - Use `Should Not Be Equal` to verify that `old` and `new` are not the same.

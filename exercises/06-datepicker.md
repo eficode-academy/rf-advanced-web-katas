@@ -40,7 +40,7 @@ to find a keyword, which allows you to add a certain amount of days into another
 <br />
 
 Next, we're going to handle selecting a date for our `Date` field. It's a read-only field,
-so we're not able to to simply type in our wanted date. Clicking a date in a datepicker
+so we're not able to simply type in our wanted date. Clicking a date in a datepicker
 is very easy to do for a human, but there are several things to consider when automating it.
 
 This time, we're not really typing anything, but we're
@@ -75,9 +75,9 @@ datepicker has an `id` attribute with the value `datepicker`.
 
 <br />
 
-Bad Flask App requires a date that is within the next two weeks, excluding today (i.e
+Bad Flask App requires a date that is within the next two weeks, excluding today (i.e.
 tomorrow to 14 days into the future).
-Therefore, we can't click the first date of the month our app happens to open and we can't press
+Therefore, we can't click the first date of the month our app happens to open, and we can't press
 the next month bunch of times to get our date in distant future, like year 2200.
 
 Taking these things into consideration, we know that we might need to click to the next
@@ -88,7 +88,7 @@ In order to select a specific date from the future, we're going to need a few ex
 first, we need today's date. Second, we need to get the date `days` amount of days into the future.
 Third, we need to check if our future date is in the next month or not. These steps can be fairly easily
 done with the `DateTime` library. We can get the current date directly with the `Get Current Date`
-keyword and we can get a date from the future using the `Add Time To Date` keyword. We also need to
+keyword, and we can get a date from the future using the `Add Time To Date` keyword. We also need to
 specify that we're adding days with our keyword, so essentially our argument will be `${days} days`.
 The only thing we need to note is that both of the `DateTime` library keywords return a string by default.
 We need to specify their `result_format` to `datetime` in order to manipulate our dates as dates.
@@ -122,13 +122,13 @@ by calling `${current_date.month}`.
 We can check if the month of the current date is _less_ than the month in the future date. However,
 that in itself is not enough, since then we'll get in trouble in January when 1 is not more than 12.
 That's why we need to check that either the month or the year must be greater in our future date to
-have it behave properly. Again, it's a simple Python evaluation so we can use `condition1 or condition2`
+have it behave properly. Again, it's a simple Python evaluation, so we can use `condition1 or condition2`
 just we would use in Python.
 
 - Add a `Run Keyword If` call to your keyword and check if the `month` or `year` of our `current_date`
 are less than in our `future_date`.
 
-So far we've opened our datepicker and we've determined if we should go to the next month or not. We
+So far we've opened our datepicker, and we've determined if we should go to the next month or not. We
 still need to find the locator for our next month button (the little arrow on the top right of the datepicker).
 Like just about all datepickers, it doesn't have `id` attributes, so we'll use XPaths once again.
 Our arrow is a link (`a`) with a class called `ui-datepicker-next` (or `data-handler='next'` or

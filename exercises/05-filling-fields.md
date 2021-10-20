@@ -80,7 +80,7 @@ in our `Variables` table.
 - Create a variable called `INPUT_FIELD` into your `Variables` table and give it the value
 `following-sibling::*[self::input or self::textarea]`.
 
-> You can use `preceding-sibling` to get an element _before_ some other element. Both elements have to be direct `children` of the same `parent` element."
+> You can use `preceding-sibling` to get an element _before_ some other element. Both elements have to be direct `children` of the same `parent` element.
 >
 > :bulb: Remember to **test your XPath** in the browser. Without the `following-sibling` your XPath
 > should match 6 fields, which are all the fields in the form.
@@ -172,7 +172,7 @@ our initial `No Operation` call in our test case.
 We can now hard-code our values for the three first fields. However, wouldn't it be cool if we
 could give the keyword arguments and still call it from the test suite without arguments? We can do
 that by using default values for arguments. Default values are given in a similar fashion to Python, by
-using `${argument}=value` in our `[Arguments]`. Default values can be hardcoded or they can be other
+using `${argument}=value` in our `[Arguments]`. Default values can be hardcoded, or they can be other
 variables we've defined in our `Variables` table or set as test/suite variables during our test case.
 
 Let's add some default values for our `Name`, `E-mail`, and `Message` fields by new variables for each.
@@ -196,7 +196,7 @@ the default values based on your newly created variables.
 <br />
 
 We already have a working solution for filling our fields. There is, however, an alternative
-solution, that has no other function than changing the keyword semantics a bit and it can
+solution, that has no other function than changing the keyword semantics a bit, and it can
 make reading the test case more natural.
 
 Embedded arguments in a keyword allow the test case keywords to be read more fluently. For example,
@@ -245,10 +245,10 @@ see something like this:
 ElementNotInteractableException: Message: element not interactable
 ```
 
-This means your element is hidden or blocked and you cannot do the operation
+This means your element is hidden or blocked, and you cannot do the operation
 you're trying to do. This is very common when a page has multiple tabs, but
 all tabs are loaded into the DOM. Your test finds the element, but it's
-on another tab, thus, not interactable.
+on another tab, thus, not cannot be interacted with.
 
 It could be also caused by JavaScript blocking some elements until the page
 has loaded. This can be avoided by using `Wait Until Element Is Enabled`

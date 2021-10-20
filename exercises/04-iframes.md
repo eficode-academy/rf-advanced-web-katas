@@ -21,7 +21,7 @@ The Bad Flask App uses iframes to present the form. Handling iframes is pretty s
 in itself, but there are few things to consider:
 
 1. You must remember to deselect your frame when you're done using it.
-2. If a website has a lot of iframes and you need to jump from one frame to another, it's
+2. If a website has a lot of iframes, and you need to jump from one frame to another, it's
 easy to get lost in which frame you've selected at any given moment.
 3. Another way to get lost is to let your resource files get messy if multiple keywords are
 using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
@@ -31,7 +31,7 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
 > Chrome automatically selects the iframe in the console tab. However, Firefox
 > doesn't do this and if you're testing your locators in Firefox console, you
 > might end up not seeing any results. On Firefox, you need to click one of the
-> little icons on the top right corner of the developer console to bring you the
+> little icons in the top right corner of the developer console to bring you the
 > iframe selector. Here you can select your frame and then do your queries.
 >
 > In Chrome, it's nice that you can just test your
@@ -107,12 +107,12 @@ ${my_list}=     Create List     Mickey      Mouse       Donald      Duck
 When we use `${my_list}`, we are referring to the list _object_, meaning `["Mickey",
 "Mouse", "Donald", "Duck"]`. However, when we use `@{my_list}`, we are referring to the list
 _values_, meaning `Mickey`, `Mouse`, `Donald`, and `Duck` individually.
-The best part of using `@{my_list}` is that it works even if the list is empty and it works with
+The best part of using `@{my_list}` is that it works even if the list is empty, and it works with
 a list with any amount of values as well. For example, if our keyword takes `${my_list}` as
 an argument, it assumes there is a value for that argument. However, if we provide `@{my_list}`,
 _we don't need to give it a value_.
 
-Great, we now know that we need to specify our `frame`, `keyword` and `arguments` to our keyword
+Great, we now know that we need to specify our `frame`, `keyword` and `arguments` to our keyword,
 and we know _how_ to specify them. Let's add those to our keyword.
 
 - Add `[Arguments]` to your `Run Inside Iframe` keyword and make it take three arguments: `frame`,

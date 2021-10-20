@@ -16,7 +16,7 @@ people will leave and new people will jump in and to make their job easier,
 it's good to add documentation for all our keywords. It's also good
 for us, since when the test is done we will probably move on
 to other tests, maybe even on another platform. Then, after a few weeks
-or months an architectural change in the service breaks our test and we
+or months an architectural change in the service breaks our test, and we
 need to fix it. It's easier to refresh our memory if we've added
 documentation to our keywords.
 
@@ -62,12 +62,12 @@ slows down the test.
 <br />
 
 One final touch we should add to our test suite is to update the test tags.
-If this was a test with a real requirement linked to a requirements management
+If this was a test with a real requirement linked to a requirement management
 tool, we should have the ticket id as a tag already. In this training, it's not, so we
 ignore that now. However, we added a `wip` at the beginning of the training to our
 test suite. Now our test is finished, so we should remove it.
 
-For the sake of getting used to tags, let's imagine this test is for an existing
+For the sake of getting used to the tags, let's imagine this test is for an existing
 requirement. Our test suite tests a business requirement `contacts` and they
 will test it with `UI`. Our test case tests a feature `ABC-123`. Also, our
 test case is a core part of Bad Flask App's functionality, so it should be a

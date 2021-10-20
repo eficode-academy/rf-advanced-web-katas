@@ -36,16 +36,16 @@ A few general tips for good XPath usage:
 obscure, segmented and precise XPath. For example, Firefox's XPath for the
 Bad Flask App's dropdown menu is `/html/body/section[1]/nav/div/a`, which is long,
 has 6 segments, all are of generic type, all directly related, and none have unique attributes. Any
-changes to element types, the page's structure, or the order of those elements
+changes to the element types, the page's structure, or the order of those elements
 will break the locator. Also, since all elements should be behind `/html/body`, good
 XPaths should **always** simply start with `//` when testing websites, as the operator searches from anywhere in the HTML document.
 2. Ensure your locator matches **exactly** 1 element. The first element that matches
-the a given XPath is used even if there are multiple
-matching XPaths. In theory it's safe to use an XPath if your element is the first
+a given XPath is used even if there are multiple
+matching XPaths. In theory, it's safe to use an XPath if your element is the first
 element matched, but a small change in the website can change the order and cause
 unexpected behaviour.
-3. Always **test your locator** in the console before adding it to your test
-case. You can `ctrl+F` in the `inspector` tab of the developer tools or you
+3. Remember to always **test your locator** in the console before adding it to your test
+case. You can `ctrl+F` in the `inspector` tab of the developer tools, or you
 can use the `console` tab to use basic JavaScript queries to get your XPath,
 such as `$x("//path/to/my/element");`.
 4. If you have same locators used in multiple places, store them in variables, and use variables in tests instead. When the locator breaks, you won't need to look for all occurrences of hard-coded values in your code. Additionally, the variable name can further clarify what
@@ -72,7 +72,7 @@ As we land on Bad Flask App, we _might_ see a huge dropdown opened
 covering the whole website. It opens at random, so there's no knowing whether it
 will open in our test case or not. While we're looking at the Bad Flask App, let's
 open our developer console by right-clicking anywhere on the screen and selecting `inspect`.
-It's a good idea to keep the developer console opened always when you're writing Selenium tests.
+It's a good idea to keep the developer console always opened when you're writing Selenium tests.
 We notice, that the dropdown doesn't have an `id` field that would allow us to
 easily access that element.
 
@@ -146,7 +146,7 @@ it sounds too general, so better add it to the `Variables` table.
 
 Now we have two new keywords: one that closes the dropdown if it is opened and one
 that clicks the "Show Form" button. Let's add this to our `Test Setup`. We could
-write a wrapper keyword that calls both our new keywords or we can use the `Run Keywords`
+write a wrapper keyword that calls both our new keywords, or we can use the `Run Keywords`
 keyword from the BuiltIn library directly. Using `Run Keywords` is a way to group
 keywords into a single step if needed. We can link different keywords with `AND` after
 each keyword and its parameters.
@@ -187,11 +187,11 @@ ElementClickInterceptedException: Message: element click intercepted: Element <b
 
 This means that you're trying to access an element that is _behind_ another element.
 If you try to click the area where the element is, but another element is on top of it, that top
-element will receive our click instead, just as if a human was interacting with it. This remains true even
+element will receive our click instead, just as if a human was interacting with it. This occurs even
 if the top element is completely transparent.
 
 This is common with hover tooltips or menus. Some fields are hidden
-behind other elements and typically you need to close a menu or move your
+behind other elements, and typically you need to close a menu or move your
 cursor somewhere else to make the hover go away. For example, some forms
 show helpful tooltips, but when a tooltip covers the "Submit" button,
 your test execution will fail.

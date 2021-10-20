@@ -10,7 +10,7 @@ Both halves use the same exercise files.
 Both halves are further divided into 2 parts: REST API and UI.
 In the first part (file 01), we're going to write tests that use REST API against a mock-up
 interface. The exercises in this portion can be done in any order. In the second part (files 02-09),
-we're going to make a little deep-dive into web UI testing and learn how to handle several different errors
+we're going to make a little deep-dive into web UI testing and learn how to handle multiple different errors
 and how to avoid common pitfalls. _The second portion should be done in order_ as each next
 exercise depends on the previous one.
 

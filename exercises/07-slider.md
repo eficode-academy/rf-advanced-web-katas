@@ -158,7 +158,7 @@ the `Get Text` keyword from the SeleniumLibrary.
 
 When we have our text value, we should check if we're already at the wanted value (our `wanted_value` argument)
 and come out of the loop if so. We can break out of a loop early by using `Exit For Loop If`. The evaluation
-is standard Python evaluation so you can use `value1 == value2` to check if the two values are the same.
+is standard Python evaluation, so you can use `value1 == value2` to check if the two values are the same.
 
 - Use `Exit For Loop If` to break out of the loop if `current_value` is equal to `wanted_value`.
 
@@ -166,7 +166,7 @@ Great, we will now exit the for-loop once we reach our `wanted_value`. Now, we s
 actual slider handling. We're dragging the slider from left to right. The coordinates `(0, 0)` are at
 the center of the element and positive axis are right and up. So, the left edge is at `-width/2`.
 From there, we want to move right a certain amount of pixels. Browser library is actually pretty fast,
-so we can loop every pixel and it still doesn't take too long.
+so we can loop every pixel, and it still doesn't take too long.
 
 > This part is slightly specific to this particular slider as well, since the ball-shaped selector is not
 > a separate element, but rather a part of the slider. That's why we always need to count the pixel we want to
@@ -198,7 +198,7 @@ arguments.
 > it doesn't, either lower the skip, or change 15 to something it does hit. The new value must be in 10-90.
 >
 > When you run this in your test, you can see the slider make weird lurching jumps to the center of the element
-> every now and then. That's because `Drag And Drop By Offset` grabs the element from its center
+> sometimes. That's because `Drag And Drop By Offset` grabs the element from its center
 > and moves it to the position we give it. The slider itself doesn't actually move at all, just
 > the selector moves inside it. This grabbing is why the selector always moves to the middle of the element, each iteration of our loop.
 
