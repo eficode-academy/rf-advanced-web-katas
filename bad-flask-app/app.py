@@ -1,6 +1,7 @@
 import random
 from copy import deepcopy
-from flask import Flask, render_template, request, flash, Session, jsonify, make_response
+from flask import Flask, render_template, request, flash, jsonify, make_response
+from flask_session import Session
 from flask_restful import Resource, Api
 
 app = Flask(__name__, template_folder='templates')

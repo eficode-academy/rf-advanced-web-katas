@@ -6,3 +6,4 @@ selenium-screenshot-*
 .idea
 **/geckodriver.log
 *venv/*
+venv/
