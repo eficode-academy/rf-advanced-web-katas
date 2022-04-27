@@ -1,6 +1,6 @@
 *** Settings ***
 Resource            ../resources/bad_flask_app.robot
-Library             SeleniumLibrary
+# Library             SeleniumLibrary
 
 Suite Setup         Open Browser To Our Application
 Suite Teardown      Close Browser

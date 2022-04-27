@@ -6,7 +6,7 @@ Library                         DateTime
 
 *** Variables ***
 ${SERVER}                       http://localhost:5000
-${BROWSER}                      firefox
+${BROWSER}                      chrome
 ${SHOW FORM BUTTON}             //button
 ${DATEPICKER_NEXT_BUTTON}       //a[contains(@class,'ui-datepicker-next')]
 ${FORM_IFRAME}                  //div[not(contains(@class,'hidden'))]/iframe
@@ -105,7 +105,7 @@ Change Important Number
 
 # Exercise 08
 Submit Form
-    Run Inside Iframe  ${FORM_IFRAME}   Click Element           ${BUTTON}
+    Run Inside Iframe  ${FORM_IFRAME}   Click Element           ${SHOW FORM BUTTON}
 
 # Exercise 08
 Validate That Form Submit Succeeded
