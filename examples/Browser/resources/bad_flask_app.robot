@@ -40,7 +40,7 @@ Close Dropdown If Opened
 
 # Exercise 03
 Show Form
-    ${visible}=     Get Element State       ${FORM_IFRAME}      visible
+    ${visible}=     Get Element States       ${FORM_IFRAME}      contains   visible
     Run Keyword If      not ${visible}      Click           button
 
 # Exercise 05
