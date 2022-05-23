@@ -1,5 +1,5 @@
 *** Settings ***
-Library         Browser
+Library         Browser     strict=${FALSE}
 Library         DateTime
 
 *** Variables ***
@@ -35,13 +35,13 @@ Open Browser To Our Application
 
 # Exercise 03
 Close Dropdown If Opened
-    ${visible}=     Get Element State       .dropdown-menu>li>a     visible
-    Run Keyword If      ${visible}      Click       ${OPENED DROPDOWN}
+    ${states}=     Get Element States       .dropdown-menu>li>a
+    IF      'visible' in @{states}      Click       ${OPENED DROPDOWN}
 
 # Exercise 03
 Show Form
-    ${visible}=     Get Element State       ${FORM_IFRAME}      visible
-    Run Keyword If      not ${visible}      Click           button
+    ${states}=     Get Element States       ${FORM_IFRAME}
+    IF      'visible' not in @{states}      Click           button
 
 # Exercise 05
 Fill All Form Fields
@@ -54,7 +54,7 @@ Fill All Form Fields
     Fill Form Field     E-mail      ${email}
     Fill Form Field     Message     ${message}
     Select Date From Future         ${days}
-    Change Important Number         ${important_number}     ${FALSE}
+    Change Important Number         ${important_number}
 
 # Exercise 05
 Fill Form With Valid Data
@@ -85,10 +85,12 @@ Select Date From Future
 Change Important Number
     [Documentation]     If `execute_javascript` is TRUE,
     ...                 the UI doesn't update with the value.
-    [Arguments]     ${wanted_value}     ${execute_javascript}=${FALSE}
+    [Arguments]     ${wanted_value}     ${execute_javascript}=${TRUE}
     # Exercise 08
-    Run keyword if    ${execute_javascript}    Change slider value with JS    ${wanted_value}
-    Return From Keyword If      ${execute_javascript}
+    IF    ${execute_javascript}
+        Change slider value with JS    ${wanted_value}
+        RETURN
+    END
     # Exercise 07
     ${width}=      Get BoundingBox        ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}     width
     Hover           ${FORM_IFRAME} >>> ${IMPORTANT_NUMBER_FIELD}
@@ -105,9 +107,9 @@ Change Important Number
 # Exercise 08
 Change slider value with JS
     [Arguments]    ${wanted_value}
-    ${ref}=    Get Element    xpath=${IFRAME} >>> xpath=${SLIDER}
+    ${ref}=    Get Element    xpath=${FORM_IFRAME} >>> xpath=${IMPORTANT_NUMBER_FIELD}
     Get Property    ${ref}    value    ==    0
-    Execute JavaScript    (elem) => elem.value = "${wanted_value}"    ${ref}
+    Evaluate JavaScript    ${ref}       (elem) => elem.value = "${wanted_value}"
     Get Property    ${ref}    value    ==    ${wanted_value}
 
 Submit Form
