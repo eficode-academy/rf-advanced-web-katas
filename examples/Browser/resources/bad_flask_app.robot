@@ -35,13 +35,13 @@ Open Browser To Our Application
 
 # Exercise 03
 Close Dropdown If Opened
-    ${visible}=     Get Element States       .dropdown-menu>li>a     contains   visible
-    Run Keyword If      ${visible}      Click       ${OPENED DROPDOWN}
+    ${states}=     Get Element States       .dropdown-menu>li>a
+    IF      'visible' in @{states}      Click       ${OPENED DROPDOWN}
 
 # Exercise 03
 Show Form
-    ${visible}=     Get Element States       ${FORM_IFRAME}      contains   visible
-    Run Keyword If      not ${visible}      Click           button
+    ${states}=     Get Element States       ${FORM_IFRAME}
+    IF      'visible' not in @{states}      Click           button
 
 # Exercise 05
 Fill All Form Fields
