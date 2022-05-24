@@ -26,7 +26,8 @@ your test case. You can use JavaScript queries in browser console:
 `$x("//path/to/my/element");`
 
 3. Ensure your locator matches **exactly** 1 element. The first element that
-matches a given XPath is used even if more were found.
+matches a given XPath is used even if more were found. Newer Browser library versions
+will raise an error by default if your locator matches more than 1 element.
 
 ## Exercise
 
