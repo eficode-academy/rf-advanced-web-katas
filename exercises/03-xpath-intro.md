@@ -105,7 +105,8 @@ Since our locator is pretty generic, we add it to the `Variables` table in our r
 Following Robot Framework's best practices, we give our
 variable an UPPER CASE name. As we write more code, we can add new XPaths into the table of `Variables`, every time giving them meaningful names.
 
-We check if the dropdown is open, or not, and store the result in a local variable. We can then use `Run Keyword If` from BuiltIn library, to execute a keyword based on the value of `${element visible}`.
+We check if the dropdown is open, or not, and store the result in a local variable.
+We can the use Robot Framework's native inline `IF` to execute a keyword based on the value of `${element visible}`.
 
 ---
 
