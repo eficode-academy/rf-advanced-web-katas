@@ -40,7 +40,8 @@ What errors do you see?
 
 ### Step-by-step
 
-Implement the logic to close the dropdown if it's open.
+---
+### Implement the logic to close the dropdown if it's open.
 
 - Using your browser's console, look for a suitable locator to identify an opened dropdown.
 - Create a variable in Variables table, called `OPENED DROPDOWN` and give it the value of your locator.
