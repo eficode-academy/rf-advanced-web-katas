@@ -51,12 +51,9 @@ using `Select Frame` and `Unselect Frame` from the SeleniumLibrary.
   - It executes the given keyword as the second step.
   - It deselects the frame as the keyword teardown.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Create new keyword.</summary>
-
-<br />
+### Create new keyword
 
 In order to keep our resource file tidy, let's implement a keyword to work as a wrapper for
 our iframes. Then, we can simply call that keyword whenever we want to run something inside
@@ -79,14 +76,9 @@ wrapper, like this `//div[not(contains(@class,'hidden'))]/iframe`. Let's put thi
 
 - Create a variable for the XPath of the iframe.
 
-</details> <!-- Create new keyword -->
-
 ---
 
-<details>
-  <summary>Add keyword arguments.</summary>
-
-<br />
+### Add keyword arguments
 
 In most cases we might want to change iframes when we're testing. We want to be able to use our
 `Run Inside Iframe` keyword in all possible frames in our website, so we should specify the frame
@@ -130,14 +122,9 @@ selection and deselection.
 
 - Call `Run Keyword` to run your argument `keyword` between selecting and deselecting a frame.
 
-</details>
-
 ---
 
-<details>
-  <summary>Add keyword teardown.</summary>
-
-<br />
+### Add keyword teardown
 
 Our keyword will now select a frame, run a keyword, and finally deselect a frame. But what if
 our keyword fails before it reaches `Unselect Frame`? We would be stuck inside our iframe and
@@ -167,5 +154,3 @@ and keyword.
 >    [Teardown]
 >    [Return]
 > ```
-
-</details>
