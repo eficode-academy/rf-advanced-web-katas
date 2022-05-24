@@ -24,12 +24,9 @@ In this exercise, we're going to move our slider by using Robot Framework's for-
   - Otherwise, keep moving the slider, bit by bit, to the right.
 - Add `Change Important Number` call to your `Fill All Form Fields` keyword, and set it to go to 15.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Create a new keyword to slide the slider.</summary>
-
-<br />
+### Create a new keyword to slide the slider
 
 Let's begin by adding a keyword `Change Important Number`. We want to be able
 to change our important number to any number we want, so our keyword will need an argument `wanted_value`.
@@ -45,14 +42,9 @@ immediately and give it the value `15`.
 - Add `DEFAULT_IMPORTANT_NUMBER` variable with the value `15`.
 - Give `important_number` a default value of `DEFAULT_IMPORTANT_NUMBER`.
 
-</details> <!-- Define keyword -->
-
 ---
 
-<details>
-  <summary>Find element size.</summary>
-
-<br />
+### Find element size
 
 Before we continue, we should think about our logic for a moment. Usually, when we use a slider
 we do at least one of these things: click the slider at some specific point X to move the selector to
@@ -130,10 +122,7 @@ our mouse button. We can do these directly with the `Hover` and `Mouse Button` k
 
 ---
 
-<details>
-  <summary>Loop through the width of the element</summary>
-
-<br />
+### Loop through the width of the element
 
 Now we have the width of our slider, we're going to need a for-loop. As of Robot Framework 3.1, the
 for-loop syntax is
@@ -224,5 +213,3 @@ our mouse button. We can do it with the same keyword, but giving `up` as an argu
 - Use `Mouse Button` with the argument `up` to release your mouse after the loop has finished.
 
 </details> <!-- Browser -->
-
-</details> <!-- Loop through element width -->

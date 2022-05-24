@@ -8,7 +8,7 @@
 ## Introduction
 
 When web development is done in a way that includes plans for test automation,
-the creation of automated tests is easy. This is not always happening, and the
+the creation of automated tests is easy. This is not always the case, and the
 result is that web UI elements have no `id` attribute. Aside from unique `id`s,
 we could use other attributes like name, and class, or CSS paths. When even
 those are not enough, you can still use XPaths.
@@ -49,6 +49,7 @@ Implement the logic to close the dropdown if it's open.
    - Catch the result of that keyword into a local variable, called `${element visible}`.
    - You can use a keyword from the BuiltIn library to click the dropdown if `${element visible}` is true.
 
+### Useful keywords
 <details>
   <summary>SeleniumLibrary</summary>
 
@@ -63,10 +64,9 @@ Implement the logic to close the dropdown if it's open.
 
 </details> <!-- Browser -->
 
-<details>
-  <summary>If you are stuck, here's a more detailed explanation.</summary>
+---
+### Find the locator
 
-<br />
 
 As we open the Bad Flask App, we _might_ see a huge dropdown opened
 covering the whole website. It opens at random, so we cannot predict it. We need to
@@ -76,20 +76,16 @@ We need a locator that detects it, when it is open, and not when it is closed. W
 open browser's developer console, you will see there's no `id` field. A different approach
 is necessary.
 
+Try to construct the xpath by yourself first.
+<details>
+  <summary>If you are stuck, here's a more detailed explanation.</summary>
+
 The dropdown button is an
 `a` element, which has classes we could use, for example `dropdown-toggle`. However, there's a similar, but hidden `a`
 element before in the HTML, so we can't use that `a` alone. Instead, we can use its parent
 `div` element to handle the click, as it is the size of the button. Also, it has a class called `open` when the dropdown is opened which disappears when it's closed. So, in other words _if_ the `div` element has a class called `open`, we can click it to close it.
 
 So the xpath that we can use here is `//div[contains(@class, 'open')]`.
-
-Since our locator is pretty generic, we add it to the `Variables` table in our resource file.
-Following Robot Framework's best practices, we give our
-variable an UPPER CASE name. As we write more code, we can add next XPaths into the table of `Variables`, every time giving them meaningful names.
-
-We check the dropdown is open, or not, and we store the results of that check in a local variable. We can then use `Run Keyword If` from BuiltIn library, to execute a keyword based on the value of `${element visible}`.
-
-</details> <!-- What just happened? Here's a more detailed explanation. -->
 
 > :bulb: Bad Flask App's code is deceptive. When you click the dropdown in your browser window, there is an additional attribute
 > added to the dropdown element: `aria-expanded: "true"` (or `false`). However, using this
@@ -101,31 +97,37 @@ We check the dropdown is open, or not, and we store the results of that check in
 > `dropdown-menu` is visible in the page, after checking that the page is fully loaded, to avoid
 > creating race conditions. Often with XPaths, there is more than "one true answer".
 
+</details> <!-- Constructing the xpath. Here's a more detailed explanation. -->
+<br/>
+
+Since our locator is pretty generic, we add it to the `Variables` table in our resource file.
+Following Robot Framework's best practices, we give our
+variable an UPPER CASE name. As we write more code, we can add new XPaths into the table of `Variables`, every time giving them meaningful names.
+
+We check if the dropdown is open, or not, and store the result in a local variable. We can then use `Run Keyword If` from BuiltIn library, to execute a keyword based on the value of `${element visible}`.
+
 ---
 
-Implement the keyword to open the form, and make it a part of the test setup.
+### Implement the keyword to open the form, and make it a part of the test setup.
 
 - Using your browser's console, look for a suitable locator for the button that shows the form.
-- Create a variable in Variables table, called `SHOW FORM BUTTON`, and give it the value of your locator
+- Create a variable in Variables table, called `SHOW FORM BUTTON`, and give it the value of your locator.
 - Implement the keyword called `Show Form` which clicks that element.
-
 - Add `Test Setup` to your `Settings` table and find a way to call both `Close Dropdown If Opened` and `Show Form`.
 
-<details>
-  <summary>If you are stuck, here's a more detailed explanation.</summary>
-
-Now we're able to close the dropdown if it's opened. We still need to show our form.
+Now we're able to close the dropdown if it's opened but we still need to show our form.
 Again, we don't have an `id` for our element, but luckily the page has only one `button`,
 so our XPath is fairly straightforward: `//button`. Again, even though our XPath is short,
 it sounds too general, so better add it to the `Variables` table.
 
+<details>
+  <summary>How to run multiple keywords in setup</summary>
 Now we have two new keywords: one that closes the dropdown if it is opened and one
 that clicks the `SHOW FORM BUTTON`. Let's add this to our `Test Setup`. We could
 write a wrapper keyword that calls both our new keywords, or we can use the `Run Keywords`
 keyword from the BuiltIn library directly. Using `Run Keywords` is a way to group
 keywords into a single step if needed. We can link different keywords with `AND` after
 each keyword and its parameters.
-
 
 > It's possible that your line becomes quite long when you call multiple keywords.
 > You can always split your keywords into multiple lines using `...` at the beginning
@@ -141,14 +143,12 @@ each keyword and its parameters.
 > ...           My Second Keyword
 > ```
 
+</details> <!-- Setup multiple keywords -->
 <br />
-
-</details> <!-- If you are stuck, here's a more detailed explanation. -->
 
 Run the test with `robot -d output tests/form.robot`.
 It should open the browser to Bad Flask App, check if the dropdown is opened and close it
 when possible, click the "Show Form" button, and finally close the browser.
-
 
 ---
 

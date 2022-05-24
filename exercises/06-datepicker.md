@@ -32,12 +32,9 @@ to find a keyword, which allows you to add a certain amount of days into another
   - The keyword should handle the situation that we need to click to next month and/or year.
 - Add `Select Date From Future` keyword call to your `Fill All Form Fields` keyword.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Create a new keyword.</summary>
-
-<br />
+### Create a new keyword
 
 Next, we're going to handle selecting a date for our `Date` field. It's a read-only field,
 so we're not able to simply type in our wanted date. Clicking a date in a datepicker
@@ -66,14 +63,9 @@ datepicker has an `id` attribute with the value `datepicker`.
 
 - Make the keyword click the `datepicker` element.
 
-</details> <!-- Define keyword -->
-
 ---
 
-<details>
-  <summary>Use <code>Datetime</code> library to get a date in the future</summary>
-
-<br />
+### Use the <code>Datetime</code> library to get a date in the future
 
 Bad Flask App requires a date that is within the next two weeks, excluding today (i.e.
 tomorrow to 14 days into the future).
@@ -102,14 +94,9 @@ into a variable.
 Excellent! We now have two dates, both in `datetime` format. We can now evaluate and parse those as
 needed for the purpose of selecting a date.
 
-</details> <!-- Get date from future -->
-
 ---
 
-<details>
-  <summary>Select date in the form</summary>
-
-<br />
+### Select a date in the form
 
 Let's continue by deciding if we need to go to the next month or not. Just like when we closed
 the dropdown, we're going to use `Run Keyword If`. The condition for that keyword is evaluated
@@ -159,14 +146,9 @@ the date as text. Just like with accessing the year and month, we can select `da
 > `//table[@class='ui-datepicker-calendar']//td/a[text()='${future_date.day}']`. But since we want
 > to keep our XPaths as short as possible, we can ignore everything before `a` in this particular website.
 
-</details> <!-- Select date -->
-
 ---
 
-<details>
-  <summary>Add your keyword to <code>Fill All Form Fields</code></summary>
-
-<br />
+### Add your keyword to <code>Fill All Form Fields</code>
 
 While we're still at it. Let's do one more quick step to get rid of our hard-coded `3` in our
 `Fill All Form Fields` keyword. Let's add that as a new `DEFAULT_DAYS` variable and have the keyword
@@ -176,5 +158,3 @@ use that as a default value for its own `days` argument.
 - Give `Fill All Form Fields` a new argument `days` and give it `DEFAULT_DAYS` as a default value.
 - Add your `Select Date From Future` call to `Fill All Form Fields` keyword with the argument `days`
 to make it go 3 days into the future by default.
-
-</details> <!-- Add to fill all form fields -->

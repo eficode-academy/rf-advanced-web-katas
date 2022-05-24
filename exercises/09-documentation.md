@@ -33,12 +33,9 @@ restrictions, possible return values, expected arguments, etc.
 running with `execute_javascript=${TRUE}` or with `${FALSE}`.
 - Add proper tags to your test case.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Add meaningful documentation.</summary>
-
-<br />
+### Add meaningful documentation
 
 Keyword and test case documentation shouldn't be added just to state the obvious. However,
 in case of special requirements and nontrivial cases, there should be documented explanation.
@@ -52,14 +49,9 @@ but using the `Execute Javascript` doesn't update the UI, even though it works.
 `execute_javascript` causes an issue with the UI, but not using it dramatically
 slows down the test.
 
-</details>
-
 ---
 
-<details>
-  <summary>Tag your test case.</summary>
-
-<br />
+### Tag your test case
 
 One final touch we should add to our test suite is to update the test tags.
 If this was a test with a real requirement linked to a requirement management
@@ -81,5 +73,3 @@ in particular, so we'll add those separately to our test case.
 - Remove the `wip` tag from your test suite.
 - Add `contacts` and `UI` as `Force Tags` to your `Settings` table.
 - Add `ABC-123` and `smoke` as tags to your test case.
-
-</details>

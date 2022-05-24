@@ -31,12 +31,9 @@ extremely time-consuming at worst.
 execute its task using `Execute JavaScript`.
 - Implement a keyword that submits your form and validates that the submission succeeded.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Change "Important number" with <code>Execute Javascript</code></summary>
-
-<br />
+### Change "Important number" with <code>Execute Javascript</code>
 
 Even though we've successfully filled our form, we notice the run takes time, most of which is spent on executing `Change Important Number`. 
 We could try to optimize the clicking at a specific point, but we can also bypass this extremely operation by using
@@ -141,14 +138,9 @@ As we now have our JavaScript implementation ready, we can modify the logic insi
 
 - Add `${TRUE}` as a final argument when you call `Change Important Number` inside `Fill All Form Fields`.
 
-</details> <!-- Change important number -->
-
 ---
 
-<details>
-  <summary>Submit form</summary>
-
-<br />
+### Submit form
 
 When we run our test, we can see that the slider is automatically moved to the correct position. However, the
 label doesn't change. This might cause trouble, but we should test our solution if it works. The only
@@ -157,6 +149,8 @@ way to test it is to submit our form and validate the outcome.
 Let's create a keyword, which submits the form and validates submission succeeded.
 
 - Create a keyword called `Submit Form Successfully`.
+
+> :bulb: Remember that the form is inside an iframe
 
 <details>
   <summary>SeleniumLibrary</summary>
@@ -185,7 +179,3 @@ that we simply need to use `Get Text` from the header element and verify the tex
 - Use `Get Text` to verify the `h3` has the text `Submit successful!`.
 
 </details> <!-- Browser -->
-
-> :bulb: Remember that the form is inside an iframe
-
-</details> <!-- Submit form -->

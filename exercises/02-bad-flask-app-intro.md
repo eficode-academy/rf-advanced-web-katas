@@ -29,12 +29,8 @@ in the `resources` directory and our test case in the `form.robot` file.
 - Have your test pass by running only setup (and teardown).
 - **Optional:** Parametrize opening browser in headless/headful mode
 
-### Step-by-step
-
-<details>
-  <summary>Create your test case and tag it as unfinished.</summary>
-
-<br />
+---
+### Create your test case and tag it as unfinished
 
 A test suite file is not useful without any test cases. Moreover, each test case should have a descriptive name.
 Our goal is to submit the form successfully, so a name like `Form Filled With Valid Data Should
@@ -53,14 +49,9 @@ is commonly used to indicate this.
 
 > :bulb: Test case specific tags need be defined with a `[Tags]` at the beginning of your test case.
 
-</details> <!-- Create your test case -->
-
 ---
 
-<details>
-  <summary>Implement setup and teardown.</summary>
-
-<br />
+### Implement setup and teardown
 
 Our goal is to fill the form in a website. Opening a browser is a relatively time-consuming task,
 and it's not really part of our test, so we should add that to our `Suite Setup` in the `Settings`
@@ -121,12 +112,9 @@ library for this purpose. This will give you a popup when you reach the
 keyword and nothing will happen in the test case until you manually
 close the popup.
 
-</details> <!-- Implement setup and teardown. -->
-
 ---
 
-<details>
-  <summary>Optional: Parametrize opening browser to headless or headful mode.</summary>
+### Optional: Parametrize opening browser to headless or headful mode
 
 <details>
   <Summary>SeleniumLibrary</summary>
@@ -171,5 +159,3 @@ value.
 - Add a parameter to your `Suite Setup` to set `headless=${TRUE}`.
 
 </details> <!-- Browser -->
-
-</details> <!-- Optional exercise -->
