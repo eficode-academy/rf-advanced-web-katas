@@ -215,7 +215,6 @@ our mouse button. We can do it with the same keyword, but giving `up` as an argu
 
 </details> <!-- Browser -->
 
-</details> <!-- Loop through element width -->
 
 ---
 
