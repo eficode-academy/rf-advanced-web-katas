@@ -38,7 +38,6 @@ matches a given XPath is used even if more were found.
 - **Optional:** Investigate what happens if you don't close the dropdown beforehand.
 What errors do you see?
 
-### Step-by-step
 
 ---
 ### Implement the logic to close the dropdown if it's open.
