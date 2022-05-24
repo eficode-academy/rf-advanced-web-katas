@@ -23,6 +23,7 @@ In this exercise, we're going to move our slider by using Robot Framework's for-
   - Use `Exit For Loop If` as soon as the loop reaches the wanted value.
   - Otherwise, keep moving the slider, bit by bit, to the right.
 - Add `Change Important Number` call to your `Fill All Form Fields` keyword, and set it to go to 15.
+- Implement a keyword that submits your form and validates that the submission succeeded.
 
 ---
 
@@ -211,5 +212,48 @@ earlier to press and hold the left mouse button. Now that we're at the correct e
 our mouse button. We can do it with the same keyword, but giving `up` as an argument.
 
 - Use `Mouse Button` with the argument `up` to release your mouse after the loop has finished.
+
+</details> <!-- Browser -->
+
+
+---
+
+### Submit form
+
+When we run our test, we can see that the slider is automatically moved to the correct position. However, the
+label doesn't change. This might cause trouble, but we should test our solution if it works. The only
+way to test it is to submit our form and validate the outcome.
+
+Let's create a keyword, which submits the form and validates submission succeeded.
+
+- Create a keyword called `Submit Form Successfully`.
+
+> :bulb: Remember that the form is inside an iframe
+
+<details>
+  <summary>SeleniumLibrary</summary>
+
+We can submit the form directly with the SeleniumLibrary `Submit Form` keyword. This means that we're
+left with validating that the submission succeeded.
+If our form was successfully filled, we should see `Submit successful!` at the top of the page.
+We can validate that with `Wait Until Page Contains` to check that our submission
+succeeded.
+
+- Inside `Submit Form Successfully` call `Submit Form` inside an iframe.
+- Call `Wait Until Page Contains` inside an iframe to validate the page contains `Submit successful!`.
+
+</details> <!-- SeleniumLibrary -->
+
+<details>
+  <summary>Browser</summary>
+
+We can submit the form by using the `Click` keyword. There's only one `button` in the whole form,
+so we can just simply use that as the locator.
+
+If the submission was successful, we should see a `Submit successful!` text in a `h3` element. That means
+that we simply need to use `Get Text` from the header element and verify the text is what is expected.
+
+- Use `Click` to click the `button` on the form.
+- Use `Get Text` to verify the `h3` has the text `Submit successful!`.
 
 </details> <!-- Browser -->
