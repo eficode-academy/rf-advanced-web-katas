@@ -25,12 +25,9 @@ In this exercise, we're going to move our slider by using Robot Framework's for-
 - Add `Change Important Number` call to your `Fill All Form Fields` keyword, and set it to go to 15.
 - Implement a keyword that submits your form and validates that the submission succeeded.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Create a new keyword to slide the slider.</summary>
-
-<br />
+### Create a new keyword to slide the slider
 
 Let's begin by adding a keyword `Change Important Number`. We want to be able
 to change our important number to any number we want, so our keyword will need an argument `wanted_value`.
@@ -46,14 +43,9 @@ immediately and give it the value `15`.
 - Add `DEFAULT_IMPORTANT_NUMBER` variable with the value `15`.
 - Give `important_number` a default value of `DEFAULT_IMPORTANT_NUMBER`.
 
-</details> <!-- Define keyword -->
-
 ---
 
-<details>
-  <summary>Find element size.</summary>
-
-<br />
+### Find element size
 
 Before we continue, we should think about our logic for a moment. Usually, when we use a slider
 we do at least one of these things: click the slider at some specific point X to move the selector to
@@ -131,10 +123,7 @@ our mouse button. We can do these directly with the `Hover` and `Mouse Button` k
 
 ---
 
-<details>
-  <summary>Loop through the width of the element</summary>
-
-<br />
+### Loop through the width of the element
 
 Now we have the width of our slider, we're going to need a for-loop. As of Robot Framework 3.1, the
 for-loop syntax is
@@ -230,10 +219,7 @@ our mouse button. We can do it with the same keyword, but giving `up` as an argu
 
 ---
 
-<details>
-  <summary>Submit form</summary>
-
-<br />
+### Submit form
 
 When we run our test, we can see that the slider is automatically moved to the correct position. However, the
 label doesn't change. This might cause trouble, but we should test our solution if it works. The only
@@ -242,6 +228,8 @@ way to test it is to submit our form and validate the outcome.
 Let's create a keyword, which submits the form and validates submission succeeded.
 
 - Create a keyword called `Submit Form Successfully`.
+
+> :bulb: Remember that the form is inside an iframe
 
 <details>
   <summary>SeleniumLibrary</summary>
@@ -270,7 +258,3 @@ that we simply need to use `Get Text` from the header element and verify the tex
 - Use `Get Text` to verify the `h3` has the text `Submit successful!`.
 
 </details> <!-- Browser -->
-
-> :bulb: Remember that the form is inside an iframe
-
-</details> <!-- Submit form -->

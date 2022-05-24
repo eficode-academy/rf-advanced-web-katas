@@ -35,12 +35,9 @@ extremely time-consuming at worst.
 - Add logic to the keyword you implemented in the [previous exercise](./07-slider.md) to optionally
 execute its task using `Execute JavaScript` (SeleniumLibrary) or `Evaluate Javascript` (Browser).
 
-### Step-by-step
+---
 
-<details>
-  <summary>Change "Important number" with <code>Execute Javascript</code></summary>
-
-<br />
+### Change "Important number" with <code>Execute Javascript</code>
 
 Even though we've successfully filled our form, we notice the run takes time, most of which is spent on executing `Change Important Number`.
 We could try to optimize the clicking at a specific point, but we can also bypass this extremely operation by using

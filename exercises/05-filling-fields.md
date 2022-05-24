@@ -33,12 +33,9 @@ usages of a similar XPath if we can check only one.
 - **Optional:** Investigate what errors you get if you don't select the iframe beforehand.
 - **Optional:** Investigate what errors you get if you don't show the form filling your form.
 
-### Step-by-step
+---
 
-<details>
-  <summary>Define your keyword.</summary>
-
-<br />
+### Define your keyword
 
 We've finally reached a point where we can start filling out our form. The easiest
 fields to tackle are the name, email, and message fields. They're similar fields,
@@ -48,20 +45,16 @@ the field we want to fill, and the value we want to give that field.
 
 - Define a keyword `Fill Form Field`, which takes 2 arguments: `field` and `value`.
 
-</details>
-
 ---
 
-<details>
-  <summary>Find a good locator strategy to match name, email, and message field.</summary>
-
-<br />
+### Find a good locator strategy to match name, email, and message fields
 
 We know we'll input the value of the `value` argument, but we still don't know how
 to access our element. Unfortunately, as we look at the form source code, we see that
 the fields don't have any attributes that could really help us. Even worse, they're different
 types: name and email fields are `input` and the message field is `textarea`. Seems like the
 only element we can get a hand on is the `label` for each form field.
+#### Selecting inputs
 
 Let's first handle the situation with our mismatching input fields. One thing we know for sure:
 our input field is _after_ the `label`. This means we can use the XPath `following-sibling` to
@@ -81,15 +74,17 @@ in our `Variables` table.
 `following-sibling::*[self::input or self::textarea]`.
 
 > You can use `preceding-sibling` to get an element _before_ some other element. Both elements have to be direct `children` of the same `parent` element.
->
+
 > :bulb: Remember to **test your XPath** in the browser. Without the `following-sibling` your XPath
 > should match 6 fields, which are all the fields in the form.
+
+#### Selecting inputs with label text
 
 Ok, we are now able to select all `input` and `textarea` fields in the form. Now we can start
 to make our XPaths unique using the `label`. The label has a `:` and some extra spaces we don't
 want to match in our XPath, so we'll use `contains()` again. This time we're not checking
 the value of an attribute, so we can't use `contains(@attribute, 'value')`. Instead, we're matching
-the `text` of the attribute. It works the same way, but the syntax is slightly different. Instead
+the `text` of the element. It works the same way, but the syntax is slightly different. Instead
 of `@text`, we have to use `text()`.
 
 Now, we have our `label` selector as well. This time however, the label holds a variable (our `field`
@@ -151,14 +146,9 @@ click a button with the locator `my-button` inside an iframe with the locator `m
 
 </details> <!-- Browser -->
 
-</details> <!-- Find a locator -->
-
 ---
 
-<details>
-  <summary>Write a keyword to fill all form fields</summary>
-
-<br />
+### Write a keyword to fill all form fields
 
 Now that we have our modular keyword we can use to fill any of our fields, we can
 implement a new keyword, which calls our modular keyword several times for different
