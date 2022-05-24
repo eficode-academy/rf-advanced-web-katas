@@ -117,7 +117,7 @@ We can the use Robot Framework's native inline `IF` to execute a keyword based o
 - Implement the keyword called `Show Form` which clicks that element.
 - Add `Test Setup` to your `Settings` table and find a way to call both `Close Dropdown If Opened` and `Show Form`.
 
-Now we're able to close the dropdown if it's opened but we still need to show our form.
+Now we're able to close the dropdown if it's opened, but we still need to show our form.
 Again, we don't have an `id` for our element, but luckily the page has only one `button`,
 so our XPath is fairly straightforward: `//button`. Again, even though our XPath is short,
 it sounds too general, so better add it to the `Variables` table.
