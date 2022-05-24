@@ -150,5 +150,3 @@ As we now have our JavaScript implementation ready, we can modify the logic insi
 `Fill All Form Fields` keyword to change the important number with JavaScript.
 
 - Add `${TRUE}` as a final argument when you call `Change Important Number` inside `Fill All Form Fields`.
-
-</details> <!-- Change important number -->
