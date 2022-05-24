@@ -21,9 +21,9 @@ elements that test automation developers struggle with when they write tests.
 
 ## Prerequisites
 
-You should already have Python 3.x with pip, and Robot Framework 4.1.1
-installed. As of writing this documentation Robot Framework
-4.1.1 is the latest version that works with all the following libraries.
+You should already have Python 3 with pip, and Robot Framework 5 installed.
+As of writing this documentation Robot Framework 5.0.1 is the latest 
+version that works with all the following libraries.
 You can use Python's virtual environments.
 
 To find suitable keywords fast, keep open the official reference pages for
