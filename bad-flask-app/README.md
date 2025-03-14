@@ -19,3 +19,10 @@ or
 
 1. `pip install -r requirements.txt`
 2. `python app.py`
+
+### Troubleshooting
+
+If port 5000 is already in use, you can modify the run commands by changing the port mapping the `PORT` environment variable:
+
+* Docker: `docker run -p 4999:4999 -e PORT=4999 pleksi/bad-flask-app`
+* Python: `export PORT=4999; python app.py`
