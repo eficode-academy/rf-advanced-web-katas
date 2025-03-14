@@ -1,18 +1,20 @@
 import random
 from copy import deepcopy
-from flask import Flask, render_template, request, flash, jsonify, make_response
-from flask_session import Session
+from flask import Flask, render_template, request, jsonify, make_response
 from flask_restful import Resource, Api
+import os
 
 app = Flask(__name__, template_folder='templates')
 api = Api(app)
+
+PORT = os.getenv("PORT", 5000)
 
 @app.route('/')
 def index():
     r1 = random.randint(10000, 900000)
     r2 = random.randint(10000, 900000)
     dropdown_open = "open" if random.randint(1,5) > 2 else ""
-    return render_template('index.html', iframe="http://localhost:5000/form", random_number1=r1, random_number2=r2, open=dropdown_open)
+    return render_template('index.html', iframe=f"http://localhost:{PORT}/form", random_number1=r1, random_number2=r2, open=dropdown_open)
 
 @app.route('/form', methods = ['GET', 'POST'])
 def form():
